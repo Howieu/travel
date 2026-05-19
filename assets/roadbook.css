@@ -1,0 +1,63 @@
+:root{
+  --bg:#f5f4ef;
+  --panel:#fff;
+  --ink:#171717;
+  --muted:#666b72;
+  --line:#dedbd2;
+  --accent:#1f5f70;
+  --accent-2:#9a5a38;
+  --shadow:0 14px 38px rgba(30,34,38,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.65}
+a{color:inherit}
+.topnav{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow-x:auto;padding:10px 14px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topnav a{white-space:nowrap;text-decoration:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;font-size:13px;color:#273238}
+.topnav a:hover{border-color:var(--accent);color:var(--accent)}
+.hero{min-height:46vh;background-size:cover;background-position:center;display:flex;align-items:end;color:white}
+.hero-inner{width:min(1120px,100%);margin:0 auto;padding:86px 20px 42px}
+.eyebrow{text-transform:uppercase;letter-spacing:.08em;font-size:12px;font-weight:800;opacity:.84}
+h1{margin:8px 0 10px;font-size:clamp(38px,7vw,76px);line-height:.95;letter-spacing:0}
+.hero p{max-width:720px;margin:0;font-size:18px;color:rgba(255,255,255,.90)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:7px 11px;font-size:13px}
+.layout{width:min(1120px,100%);margin:0 auto;display:grid;grid-template-columns:310px 1fr;gap:18px;padding:24px 20px 64px}
+.side-panel{position:sticky;top:58px;align-self:start}
+.summary{display:grid;gap:8px;margin-bottom:14px}
+.summary div,.quick-links,iframe{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.summary div{padding:12px 14px;color:var(--muted);font-size:13px}
+.summary b{display:block;color:var(--ink);font-size:15px}
+.quick-links{padding:14px;margin-bottom:14px}
+.quick-links h2{margin:0 0 10px;font-size:16px}
+.quick-links a{display:block;text-decoration:none;color:var(--accent);font-weight:700;font-size:13px;padding:7px 0;border-top:1px solid #efede7}
+.quick-links a:first-of-type{border-top:0}
+iframe{width:100%;height:260px;border:0}
+.days{display:grid;gap:18px}
+.day-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);overflow:hidden}
+.day-head{padding:20px 22px 14px;border-bottom:1px solid var(--line);background:#fffdf8}
+.day-head h2{margin:0;font-size:25px;letter-spacing:0}
+.day-head p{margin:6px 0 0;color:var(--muted)}
+.timeline{padding:10px 22px 8px}
+.stop{display:grid;grid-template-columns:92px 1fr;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.stop:last-child{border-bottom:0}
+.time{font-weight:800;color:var(--accent-2);font-size:13px}
+.stop h3{margin:0 0 4px;font-size:19px}
+.stop p{margin:0;color:var(--muted)}
+.stop-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.stop-links a{font-size:13px;text-decoration:none;background:#f1f4f4;color:#173f49;border:1px solid #d9e4e6;border-radius:8px;padding:7px 10px;font-weight:700}
+.collection{background:#f4f2ec}
+.collection-hero{width:min(1120px,100%);margin:0 auto;padding:58px 20px 22px}
+.collection-hero h1{color:var(--ink)}
+.collection-hero p{max-width:760px;color:var(--muted);font-size:18px;margin:0}
+.collection-grid{width:min(1120px,100%);margin:0 auto;padding:18px 20px 70px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.collection-card{min-height:178px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+.collection-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.collection-card span{font-size:12px;font-weight:800;color:var(--accent-2);text-transform:uppercase;letter-spacing:.04em}
+.collection-card h2{margin:28px 0 8px;font-size:24px}
+.collection-card p{margin:0;color:var(--muted)}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .side-panel{position:relative;top:auto}
+  .stop{grid-template-columns:1fr;gap:4px}
+  .hero{min-height:42vh}
+}

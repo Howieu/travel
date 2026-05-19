@@ -1,310 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>zurich</title>
-<style>
-:root{
-  --bg:#f7f1e7;
-  --card:#fffaf2;
-  --ink:#211b14;
-  --muted:#756a5d;
-  --accent:#b45b18;
-  --accent2:#0a67a3;
-  --green:#22702b;
-  --red:#b00018;
-  --border:#e7d7c2;
-  --shadow:0 10px 28px rgba(75,45,14,.08);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",Arial,sans-serif;
-}
-.wrap{
-  max-width:1180px;
-  margin:0 auto;
-  padding:calc(10px + env(safe-area-inset-top)) 10px 30px;
-}
-#mapBox{
-  height:58vh;
-  min-height:440px;
-  border-radius:20px;
-  border:1px solid var(--border);
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  margin-bottom:12px;
-  background:#fff;
-}
-#googleMap{
-  width:100%;
-  height:100%;
-  border:0;
-  display:block;
-}
-.card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  padding:14px;
-  margin-bottom:12px;
-}
-.section-title{
-  font-size:22px;
-  margin:0 0 12px;
-  font-weight:900;
-  letter-spacing:.2px;
-}
-.modules{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.stop{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:18px;
-  padding:15px;
-  scroll-margin-top:12px;
-}
-.stop h2{
-  margin:0;
-  font-size:19px;
-  line-height:1.25;
-  font-weight:950;
-}
-.sub{
-  margin-top:4px;
-  color:var(--muted);
-  font-size:12px;
-  font-weight:800;
-}
-.time{
-  margin-top:8px;
-  display:inline-block;
-  font-size:12px;
-  color:#8b5522;
-  background:#f3e3cf;
-  border-radius:999px;
-  padding:3px 9px;
-  font-weight:900;
-}
-.txt{
-  margin:10px 0 0;
-  font-size:14px;
-  line-height:1.65;
-  color:#332a21;
-}
-.tag{
-  display:inline-block;
-  border-radius:999px;
-  background:#f0e2d1;
-  color:#7b4d18;
-  padding:2px 8px;
-  margin-right:6px;
-  font-size:12px;
-  font-weight:900;
-}
-.actions{
-  display:flex;
-  flex-direction:row;
-  flex-wrap:nowrap;
-  gap:8px;
-  overflow-x:auto;
-  overflow-y:hidden;
-  padding-top:11px;
-  -webkit-overflow-scrolling:touch;
-}
-.btn{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  border-radius:999px;
-  padding:9px 13px;
-  font-size:13px;
-  font-weight:900;
-  border:1px solid transparent;
-  white-space:nowrap;
-}
-.btn.google{background:#e8f4ff;color:var(--accent2);border-color:#cae4fa}
-.btn.apple{background:#ebf7eb;color:var(--green);border-color:#cbe7c9}
-.btn.sbb{background:#fff0f1;color:var(--red);border-color:#f3cbd0}
-.btn.dark{background:#2b251e;color:#fff;border-color:#2b251e}
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:calc(18px + env(safe-area-inset-bottom));
-  transform:translateX(-50%);
-  background:#211b14;
-  color:#fff;
-  padding:10px 14px;
-  border-radius:999px;
-  font-size:13px;
-  font-weight:800;
-  opacity:0;
-  pointer-events:none;
-  transition:.2s;
-  z-index:9999;
-}
-.toast.show{opacity:1}
-@media(max-width:860px){
-  .modules{grid-template-columns:1fr}
-  #mapBox{height:54vh;min-height:390px}
-  .section-title{font-size:20px}
-  .card{padding:12px}
-}
-@media(max-width:430px){
-  .stop{padding:13px}
-  .stop h2{font-size:18px}
-  #mapBox{min-height:370px}
-  .btn{font-size:12px;padding:8px 11px}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zurich Roadbook</title>
+  <link rel="stylesheet" href="../assets/roadbook.css">
 </head>
 <body>
-<div class="wrap">
-  <div id="mapBox">
-    <iframe id="googleMap" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
+  <nav class="topnav" aria-label="Route navigation">
+    <a href="../index.html">合集</a>
+<a href="../uk/london.html">UK</a>
+<a href="../france/paris.html">Paris</a>
+<a href="../spain/barcelona.html">Barcelona</a>
+<a href="../netherlands/amsterdam.html">Amsterdam</a>
+<a href="../norway/tromso.html">Tromso</a>
+<a href="../italy-switzerland/italy-switzerland.html">Italy + Swiss</a>
+<a href="../france-switzerland/south-france-switzerland.html">France + Swiss</a>
+  </nav>
 
-  <div class="card">
-    <h2 class="section-title">点位详情</h2>
-    <div id="modules" class="modules"></div>
-  </div>
-</div>
-<div id="toast" class="toast">已复制查询信息</div>
+  <header class="hero" style="background-image:linear-gradient(90deg,rgba(0,0,0,.62),rgba(0,0,0,.20)),url('https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=1800&auto=format&fit=crop')">
+    <div class="hero-inner">
+      <div class="eyebrow">Travel Roadbook</div>
+      <h1>Zurich</h1>
+      <p>ETH viewpoint, old town, lake and airport transfer</p>
+      <div class="chips"><span>城市漫步</span><span>湖边</span><span>返程</span></div>
+    </div>
+  </header>
 
-<script>
-const points = [
-  {
-    id:'olten', type:'rail', title:'奥尔滕出发', en:'Olten → Zürich HB', time:'建议 12:20 左右',
-    purpose:'从奥尔滕坐火车到苏黎世主站，抵达后开始市区倒序打卡。',
-    shoot:'这里不是拍照点，重点是用 SBB Mobile 查询实时站台、延误和换乘信息。',
-    sbb:'sbbmobile://timetable?from=Olten&to=Z%C3%BCrich%20HB&traveldate=2026-05-14&traveltime=12%3A20&timemode=departure&appid=zurich',
-    copy:'Olten → Zürich HB，建议 12:20 左右出发'
-  },
-  {
-    id:'eth-main', type:'city', title:'联邦理工学院主楼', en:'ETH Hauptgebäude', time:'13:20–13:35',
-    purpose:'先到苏黎世高处的 ETH 主楼，作为整条路线的第一个城市高点。',
-    shoot:'拍主楼外观、台阶、校园建筑线条，以及从主楼区域望向老城的开阔感。',
-    lat:47.37639, lng:8.54762, query:'ETH Hauptgebäude Zürich'
-  },
-  {
-    id:'polyterrasse', type:'city', title:'联邦理工观景大平台', en:'Polyterrasse', time:'13:35–14:05',
-    purpose:'在观景平台看苏黎世全景，是这条路线最重要的俯拍点之一。',
-    shoot:'拍利马特河、苏黎世老城、教堂尖顶、湖面方向和人站在栏杆边的城市背景照。',
-    lat:47.37687, lng:8.54786, query:'Polyterrasse Zürich'
-  },
-  {
-    id:'kunsthaus', type:'city', title:'苏黎世美术馆', en:'Kunsthaus Zürich', time:'14:05–14:35',
-    purpose:'从 ETH 下山后的顺路建筑点，用来补充苏黎世的城市文化感。',
-    shoot:'拍美术馆外立面、门口街景、电车经过、路牌和干净的城市建筑画面。',
-    lat:47.37026, lng:8.54813, query:'Kunsthaus Zürich'
-  },
-  {
-    id:'lake', type:'city', title:'天鹅湖附近', en:'Salon Theater Herzbaracke', time:'14:35–15:25',
-    purpose:'到湖边拍水面和天鹅，是整条路线最有旅行氛围的位置。',
-    shoot:'拍天鹅、湖面反光、湖边长椅、船只、歌剧院附近街景和人物湖景照。',
-    lat:47.36644, lng:8.54436, query:'Salon Theater Herzbaracke Zürich'
-  },
-  {
-    id:'grossmunster', type:'city', title:'苏黎世大教堂', en:'Grossmünster', time:'15:25–15:55',
-    purpose:'回到老城核心，打卡苏黎世最有辨识度的双塔教堂。',
-    shoot:'拍双塔教堂外观、桥上回望教堂、利马特河两岸和教堂与河道同框。',
-    lat:47.37005, lng:8.54408, query:'Grossmünster Zürich'
-  },
-  {
-    id:'fraumunster', type:'city', title:'圣母大教堂', en:'Fraumünster', time:'15:55–16:25',
-    purpose:'从苏黎世大教堂过桥到圣母大教堂，完成老城两座核心教堂的对照打卡。',
-    shoot:'拍尖顶、桥面视角、河岸建筑、蓝绿色屋顶和老城街巷转角。',
-    lat:47.36972, lng:8.54108, query:'Fraumünster Zürich'
-  },
-  {
-    id:'bahnhofstrasse', type:'city', title:'班霍夫大街', en:'Bahnhofstrasse', time:'16:25–16:50',
-    purpose:'从教堂区切换到苏黎世商业主街，快速感受市中心街道氛围。',
-    shoot:'拍街道纵深、橱窗、电车、路牌、行人和整齐的商业街画面。',
-    lat:47.37165, lng:8.53856, query:'Bahnhofstrasse Zürich'
-  },
-  {
-    id:'augustinergasse', type:'city', title:'奥古斯丁巷', en:'Augustinergasse', time:'16:50–17:20',
-    purpose:'专门拍苏黎世老城最经典的彩色凸窗和窄巷氛围。',
-    shoot:'拍彩色窗户、石板路、窄巷纵深、街角招牌和人走在老城小巷里的画面。',
-    lat:47.37137, lng:8.54010, query:'Augustinergasse Zürich'
-  },
-  {
-    id:'lindenhof', type:'city', title:'林登霍夫山丘', en:'Lindenhof', time:'17:20–18:00',
-    purpose:'最后一个老城高点，适合离开前再拍一次苏黎世经典俯瞰。',
-    shoot:'拍利马特河俯瞰、老城屋顶、苏黎世大教堂双塔、河对岸建筑和全景照。',
-    lat:47.37310, lng:8.54055, query:'Lindenhof Zürich'
-  },
-  {
-    id:'zurich-hb', type:'station', title:'苏黎世火车站', en:'Zürich HB', time:'18:00–18:35',
-    purpose:'回到苏黎世主站，预留买水、上厕所、找站台和处理行李的时间。',
-    shoot:'拍车站外观、站内大钟、站台信息屏；随后坐车去苏黎世机场。',
-    lat:47.37818, lng:8.54019, query:'Zürich HB',
-    sbb:'sbbmobile://timetable?from=Z%C3%BCrich%20HB&to=Z%C3%BCrich%20Flughafen&traveldate=2026-05-14&traveltime=18%3A52&timemode=departure&appid=zurich',
-    copy:'Zürich HB → Zürich Flughafen，建议 18:52 左右出发'
-  },
-  {
-    id:'airport', type:'airport', title:'苏黎世机场', en:'Zürich Flughafen', time:'19:05–19:30 抵达并进入机场',
-    purpose:'最终到达机场，目标是在舱门 21:00 关闭前约 1.5 小时进入机场。',
-    shoot:'拍机场站到达、航站楼入口、出发大厅屏幕；之后优先办理安检和登机。',
-    lat:47.45822, lng:8.55548, query:'Zürich Flughafen',
-    sbb:'sbbmobile://timetable?from=Z%C3%BCrich%20HB&to=Z%C3%BCrich%20Flughafen&traveldate=2026-05-14&traveltime=18%3A52&timemode=departure&appid=zurich',
-    copy:'Zürich HB → Zürich Flughafen，建议 18:52 左右出发'
-  }
-];
-
-function enc(x){return encodeURIComponent(x)}
-function googleApp(p){return `comgooglemaps://?q=${p.lat},${p.lng}&center=${p.lat},${p.lng}&zoom=16`}
-function appleApp(p){return `maps://?q=${enc(p.title)}&ll=${p.lat},${p.lng}`}
-function googleEmbedPoint(p){return `https://maps.google.com/maps?q=${enc(p.query || p.title)}&ll=${p.lat},${p.lng}&z=16&output=embed`}
-function googleEmbedRoute(){
-  const route = points.filter(p=>p.lat && p.lng).map(p=>p.query || p.title);
-  const start = route.shift();
-  return `https://maps.google.com/maps?f=d&source=s_d&saddr=${enc(start)}&daddr=${route.map(enc).join('+to:')}&dirflg=w&output=embed`;
-}
-function showToast(){const t=document.getElementById('toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1400)}
-function copyText(text){try{navigator.clipboard.writeText(text).then(showToast).catch(showToast)}catch(e){showToast()}}
-function focusPoint(id){
-  const p=points.find(x=>x.id===id);
-  if(!p || !p.lat)return;
-  document.getElementById('googleMap').src=googleEmbedPoint(p);
-  document.getElementById('mapBox').scrollIntoView({behavior:'smooth', block:'start'});
-}
-
-document.getElementById('googleMap').src=googleEmbedRoute();
-
-const modules=document.getElementById('modules');
-points.forEach(p=>{
-  const div=document.createElement('section');
-  div.className='stop';
-  div.id=`module-${p.id}`;
-  const links=[];
-  if(p.lat){
-    links.push(`<a class="btn google" href="${googleApp(p)}">Google 地图</a>`);
-    links.push(`<a class="btn apple" href="${appleApp(p)}">Apple 地图</a>`);
-    links.push(`<button class="btn dark" type="button" onclick="focusPoint('${p.id}')">地图定位</button>`);
-  }
-  if(p.sbb){
-    links.push(`<a class="btn sbb" href="${p.sbb}" onclick="copyText('${p.copy}')">SBB Mobile</a>`);
-  }
-  div.innerHTML=`
-    <h2>${p.title}</h2>
-    <div class="sub">${p.en}</div>
-    <div class="time">${p.time}</div>
-    <p class="txt"><span class="tag">去干嘛</span>${p.purpose}</p>
-    <p class="txt"><span class="tag">拍什么</span>${p.shoot}</p>
-    <div class="actions">${links.join('')}</div>`;
-  modules.appendChild(div);
-});
-</script>
+  <main class="layout">
+    <aside class="side-panel">
+      <div class="summary"><div><b>1 day</b></div><div><b>Zurich</b></div><div><b>Viewpoint / old town / shopping</b></div></div>
+      <div class="quick-links">
+        <h2>路线跳转</h2>
+        <a href="#zurich-city-walk">Zurich City Walk</a>
+      </div>
+      <iframe title="Zurich map" src="https://www.google.com/maps?q=Zurich&output=embed" loading="lazy"></iframe>
+    </aside>
+    <section class="days">
+      
+            <section class="day-card" id="zurich-city-walk">
+              <div class="day-head">
+                <h2>Zurich City Walk</h2>
+                <p>适合返程日前的轻量城市线。</p>
+              </div>
+              <div class="timeline">
+                
+                <article class="stop">
+                  <div class="time">13:20</div>
+                  <div class="stop-body">
+                    <h3>ETH Hauptgebaude</h3>
+                    <p>校园主楼和观景平台。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=ETH+Zurich+main+building" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=ETH+Zurich+main+building" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">13:35</div>
+                  <div class="stop-body">
+                    <h3>Polyterrasse</h3>
+                    <p>俯瞰苏黎世老城。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Polyterrasse+Zurich" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Polyterrasse+Zurich" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">14:05</div>
+                  <div class="stop-body">
+                    <h3>Kunsthaus Zurich</h3>
+                    <p>美术馆外观或短停。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Kunsthaus+Zurich" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Kunsthaus+Zurich" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">14:35</div>
+                  <div class="stop-body">
+                    <h3>Lake Zurich</h3>
+                    <p>湖边和天鹅。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Lake+Zurich" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Lake+Zurich" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">15:25</div>
+                  <div class="stop-body">
+                    <h3>Grossmunster / Fraumunster</h3>
+                    <p>老城双教堂。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Grossmunster+Zurich" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Grossmunster+Zurich" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">16:25</div>
+                  <div class="stop-body">
+                    <h3>Bahnhofstrasse</h3>
+                    <p>购物街。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Bahnhofstrasse+Zurich" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Bahnhofstrasse+Zurich" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">17:20</div>
+                  <div class="stop-body">
+                    <h3>Lindenhof</h3>
+                    <p>老城高点。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Lindenhof+Zurich" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Lindenhof+Zurich" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="stop">
+                  <div class="time">19:05</div>
+                  <div class="stop-body">
+                    <h3>Zurich Airport</h3>
+                    <p>取行李后去机场。</p>
+                    <div class="stop-links">
+                      <a href="https://www.google.com/maps/search/?api=1&query=Zurich+Airport" target="_blank" rel="noopener">Google Maps</a>
+                      <a href="https://maps.apple.com/?q=Zurich+Airport" target="_blank" rel="noopener">Apple Maps</a>
+                    </div>
+                  </div>
+                </article>
+                
+              </div>
+            </section>
+            
+    </section>
+  </main>
 </body>
 </html>
