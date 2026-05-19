@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>London Travel Guide</title>
+<style>
+body{
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:#f5f5f5;
+margin:0;
+padding:0;
+color:#111;
+line-height:1.7;
+}
+.hero{
+height:50vh;
+background:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1600&auto=format&fit=crop') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:48px;
+font-weight:700;
+letter-spacing:2px;
+}
+.container{
+max-width:1100px;
+margin:auto;
+padding:30px 20px 80px;
+}
+.day{
+background:white;
+padding:30px;
+border-radius:24px;
+margin-bottom:30px;
+box-shadow:0 8px 30px rgba(0,0,0,0.08);
+}
+.day h2{
+margin-top:0;
+font-size:32px;
+}
+.route-buttons{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin:20px 0 30px;
+}
+.route-buttons a{
+background:#111;
+color:white;
+padding:12px 18px;
+text-decoration:none;
+border-radius:999px;
+font-size:14px;
+}
+.timeline{
+border-left:3px solid #111;
+padding-left:24px;
+margin-top:20px;
+}
+.stop{
+margin-bottom:42px;
+}
+.stop h3{
+margin-bottom:10px;
+font-size:24px;
+}
+.time{
+font-weight:700;
+margin-bottom:10px;
+}
+.links{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-top:12px;
+}
+.links a{
+background:#efefef;
+padding:10px 14px;
+text-decoration:none;
+color:#111;
+border-radius:12px;
+font-size:14px;
+}
+iframe{
+width:100%;
+height:420px;
+border:none;
+border-radius:20px;
+margin-top:20px;
+}
+.note{
+background:#f7f7f7;
+padding:18px;
+border-radius:16px;
+margin-top:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+London · Eastbourne
+</div>
+
+<div class="container">
+
+<div class="day">
+<h2>Day 1 · 5月20日 周三</h2>
+<p>Notting Hill → Cheeky Scone → Harrods</p>
+
+<div class="route-buttons">
+<a href="#nottinghill">Notting Hill</a>
+<a href="#cheeky">Cheeky Scone</a>
+<a href="#harrods">Harrods</a>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Notting+Hill+London&output=embed"></iframe>
+
+<div class="timeline">
+
+<div class="stop" id="nottinghill">
+<div class="time">16:10 - 17:20</div>
+<h3>Notting Hill</h3>
+<p>Portobello Road、彩色街区、古董店与伦敦电影感街景。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Notting+Hill+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Notting+Hill+London">Apple Maps</a>
+</div>
+</div>
+
+<div class="stop" id="cheeky">
+<div class="time">17:20 - 18:00</div>
+<h3>Cheeky Scone</h3>
+<p>推荐：Original / Sultana / English Breakfast Tea</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Cheeky+Scone+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Cheeky+Scone+London">Apple Maps</a>
+</div>
+<div class="note">
+无需预约，建议 walk-in。17:00 后部分口味可能售罄。
+</div>
+</div>
+
+<div class="stop" id="harrods">
+<div class="time">18:35 - 20:00</div>
+<h3>Harrods</h3>
+<p>重点区域：Vivienne Westwood / Designer Floor</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Harrods+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Harrods+London">Apple Maps</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="day">
+<h2>Day 2 · 5月21日 周四</h2>
+<p>美签 → Westminster → Borough Market → St Paul's → Horizon 22</p>
+
+<div class="route-buttons">
+<a href="#embassy">U.S. Embassy</a>
+<a href="#bigben">Big Ben</a>
+<a href="#borough">Borough Market</a>
+<a href="#stpaul">St Paul's</a>
+<a href="#horizon">Horizon 22</a>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Big+Ben+London&output=embed"></iframe>
+
+<div class="timeline">
+
+<div class="stop" id="embassy">
+<div class="time">09:15 - 11:30</div>
+<h3>U.S. Embassy London</h3>
+<p>建议提前 15 分钟到达，不要携带大包。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=US+Embassy+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=US+Embassy+London">Apple Maps</a>
+</div>
+</div>
+
+<div class="stop" id="bigben">
+<div class="time">12:00 - 13:00</div>
+<h3>Big Ben · Westminster Abbey</h3>
+<p>伦敦经典核心区域，建议河岸视角拍摄。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Big+Ben+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Big+Ben+London">Apple Maps</a>
+<a href="https://tickets.westminster-abbey.org/home/index">Westminster Abbey Tickets</a>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">13:00 - 14:00</div>
+<h3>South Bank Walk</h3>
+<p>Westminster Bridge → London Eye → Southbank 河岸步行。</p>
+</div>
+
+<div class="stop" id="borough">
+<div class="time">14:00 - 15:00</div>
+<h3>Borough Market</h3>
+<p>推荐：Roast Pork Sandwich / Fish & Chips / Strawberry Cup</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Borough+Market+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Borough+Market+London">Apple Maps</a>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">15:00 - 15:20</div>
+<h3>Millennium Bridge</h3>
+<p>伦敦经典桥梁视角，可拍 St Paul’s 正面。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Millennium+Bridge+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Millennium+Bridge+London">Apple Maps</a>
+</div>
+</div>
+
+<div class="stop" id="stpaul">
+<div class="time">15:20 - 17:00</div>
+<h3>St Paul’s Cathedral</h3>
+<p>建议登顶 Dome Skyline。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=St+Paul's+Cathedral+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=St+Paul's+Cathedral+London">Apple Maps</a>
+<a href="https://www.stpauls.co.uk/book-tickets">St Paul's Tickets</a>
+</div>
+</div>
+
+<div class="stop" id="horizon">
+<div class="time">17:20 之后</div>
+<h3>Horizon 22</h3>
+<p>可尝试 walk-in 排队入场。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Horizon+22+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Horizon+22+London">Apple Maps</a>
+<a href="https://horizon22.co.uk/book">Official Booking</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="day">
+<h2>Day 3 · 5月22日 周五</h2>
+<p>Greenwich → Eastbourne → Seven Sisters</p>
+
+<div class="route-buttons">
+<a href="#greenwich">Greenwich</a>
+<a href="#observatory">Observatory</a>
+<a href="#seven">Seven Sisters</a>
+</div>
+
+<iframe src="https://www.google.com/maps?q=Greenwich+London&output=embed"></iframe>
+
+<div class="timeline">
+
+<div class="stop" id="greenwich">
+<div class="time">09:15 - 11:15</div>
+<h3>Greenwich</h3>
+<p>Cutty Sark → Old Royal Naval College → Greenwich Park</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Greenwich+London">Google Maps</a>
+<a href="https://maps.apple.com/?q=Greenwich+London">Apple Maps</a>
+</div>
+</div>
+
+<div class="stop" id="observatory">
+<div class="time">10:15 - 11:15</div>
+<h3>Royal Observatory Greenwich</h3>
+<p>格林尼治天文台与 Prime Meridian。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Royal+Observatory+Greenwich">Google Maps</a>
+<a href="https://maps.apple.com/?q=Royal+Observatory+Greenwich">Apple Maps</a>
+<a href="https://www.rmg.co.uk/royal-observatory">Official Tickets</a>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">13:16 - 14:40</div>
+<h3>Victoria → Eastbourne</h3>
+<p>建议提前 20 分钟到站。</p>
+</div>
+
+<div class="stop" id="seven">
+<div class="time">16:00 - 19:30</div>
+<h3>Seven Sisters</h3>
+<p>推荐路线：Eastbourne → Bus 12/12A → Birling Gap</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Seven+Sisters+Cliffs">Google Maps</a>
+<a href="https://maps.apple.com/?q=Seven+Sisters+Cliffs">Apple Maps</a>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="day">
+<h2>Day 4 · 5月23日 周六</h2>
+<p>Eastbourne → London → Manchester</p>
+
+<iframe src="https://www.google.com/maps?q=Eastbourne+Pier&output=embed"></iframe>
+
+<div class="timeline">
+
+<div class="stop">
+<div class="time">09:00 - 11:30</div>
+<h3>Eastbourne Seafront</h3>
+<p>海边 promenade、Pier 与 brunch。</p>
+<div class="links">
+<a href="https://maps.google.com/?q=Eastbourne+Pier">Google Maps</a>
+<a href="https://maps.apple.com/?q=Eastbourne+Pier">Apple Maps</a>
+</div>
+</div>
+
+<div class="stop">
+<div class="time">14:05</div>
+<h3>Eastbourne → London Victoria</h3>
+</div>
+
+<div class="stop">
+<div class="time">16:53</div>
+<h3>London Euston → Manchester</h3>
+<div class="links">
+<a href="https://maps.google.com/?q=London+Euston">Google Maps</a>
+<a href="https://maps.apple.com/?q=London+Euston">Apple Maps</a>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</body>
+</html>
