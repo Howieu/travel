@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Tromsø 行程（Google Maps 嵌入版）</title>
+  <style>
+    body { margin:0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; background:#fff; color:#111; }
+    header { padding:16px 16px 8px; border-bottom:1px solid #e5e5e5; }
+    h1 { font-size:18px; margin:0 0 6px; }
+    .sub { font-size:12px; color:#444; line-height:1.4; }
+    .layout { display:flex; flex-direction:column; gap:12px; padding:12px 12px 18px; }
+    .mapwrap { border:1px solid #e5e5e5; border-radius:12px; overflow:hidden; }
+    iframe { width:100%; height:340px; border:0; }
+    .tabs { display:flex; gap:8px; flex-wrap:wrap; padding:8px 0 0; }
+    .tab { border:1px solid #d0d0d0; background:#fafafa; padding:8px 10px; border-radius:999px; font-size:12px; }
+    .tab.active { background:#111; color:#fff; border-color:#111; }
+    .day { display:none; }
+    .day.active { display:block; }
+    .stop { border:1px solid #e5e5e5; border-radius:12px; padding:12px; margin:10px 0; }
+    .stop-head { display:flex; flex-direction:column; gap:6px; }
+    .time { font-size:12px; color:#444; }
+    .title { font-size:14px; font-weight:600; line-height:1.35; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    .btn { display:inline-block; padding:9px 10px; border-radius:10px; border:1px solid #111; background:#111; color:#fff; font-size:12px; text-decoration:none; }
+    .btn.secondary { background:#fff; color:#111; }
+    .note { font-size:12px; color:#333; line-height:1.45; margin-top:8px; }
+    .footer { font-size:11px; color:#666; padding:8px 12px 16px; }
+    @media (min-width: 900px) {
+      .layout { flex-direction:row; }
+      .left { flex: 1.1; }
+      .right { flex: 0.9; }
+      iframe { height: 82vh; min-height: 520px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Tromsø 行程（Google Maps 嵌入版）</h1>
+  <div class="sub">
+    使用方法：先选日期，再按顺序点每一站的「在页面内查看地图」或「打开 Google Maps 导航」。
+    <br/>提示：Fjellheisen（缆车）受风影响可能停运；1 月 7 日为尝试日，1 月 10 日为保底日（返程当天请严格遵守机场时间线）。
+  </div>
+  <div class="tabs">
+    <button class="tab active" onclick="showDay('day0')">Jan 7 (Wed)</button><button class="tab " onclick="showDay('day1')">Jan 8 (Thu)</button><button class="tab " onclick="showDay('day2')">Jan 9 (Fri)</button><button class="tab " onclick="showDay('day3')">Jan 10 (Sat)</button>
+  </div>
+</header>
+
+<div class="layout">
+  <div class="left">
+    <div class="mapwrap">
+      <iframe id="mapframe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=Tromsø&output=embed"></iframe>
+    </div>
+    <div class="note">
+      如果嵌入地图偶尔显示空白：直接点每一站的「打开 Google Maps 导航」即可（最稳定）。
+    </div>
+  </div>
+  <div class="right">
+    <section id="day0" class="day active">
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">09:10 – 09:40</div>
+            <div class="title">Tromsø Airport → Hotel</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Tromsø Airport&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Tromsø+Airport&amp;destination=Simen+Workinns+veg+15+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">11:30 – 11:45</div>
+            <div class="title">Hotel (store luggage after 11:30)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Simen Workinns veg 15, Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Simen+Workinns+veg+15+Tromsø&amp;destination=Simen+Workinns+veg+15+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">12:00 – 12:30</div>
+            <div class="title">Hotel → Storgata (city center)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Storgata, Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Simen+Workinns+veg+15+Tromsø&amp;destination=Storgata+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">12:30 – 13:00</div>
+            <div class="title">Ice spikes (buy/rent) — pick one nearby store</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=isbrodder tromsø Storgata&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=isbrodder%20troms%C3%B8%20Storgata" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">13:00 – 14:00</div>
+            <div class="title">Lunch: McDonald&#x27;s Tromsø</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=McDonald&amp;#x27;s Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=McDonald%27s%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">14:00 – 14:15</div>
+            <div class="title">Raketten Bar &amp; Pølse (world&#x27;s smallest bar)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Raketten Bar &amp;amp; Pølse Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Raketten%20Bar%20%26%20P%C3%B8lse%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">14:30 – 14:50</div>
+            <div class="title">Tromsø Cathedral</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Tromsø Cathedral&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Troms%C3%B8%20Cathedral" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">15:00 – 15:30</div>
+            <div class="title">Harbor walk: Prostneset / waterfront</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Prostneset%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">15:30 – 16:20</div>
+            <div class="title">(Plan A) Walk via Tromsø Bridge → Arctic Cathedral</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Arctic Cathedral Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prostneset+Tromsø&amp;destination=Arctic+Cathedral+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">17:00 – 20:00</div>
+            <div class="title">(Plan A) Fjellheisen cable car (up &amp; down)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Fjellheisen lower station&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Arctic+Cathedral+Tromsø&amp;destination=Fjellheisen+lower+station" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">20:15 – 20:45</div>
+            <div class="title">Return to hotel</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Simen Workinns veg 15, Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Fjellheisen&amp;destination=Simen+Workinns+veg+15+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        </section><section id="day1" class="day ">
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">08:15 – 08:35</div>
+            <div class="title">Hotel → Prostneset Bus Terminal (Best Arctic desk)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Bus Terminal Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Simen+Workinns+veg+15+Tromsø&amp;destination=Prostneset+Bus+Terminal" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">08:45 – 15:45</div>
+            <div class="title">Husky Safari (Booked)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Prostneset%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">16:30 – 22:00</div>
+            <div class="title">Easy evening: dinner + rest</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Storgata Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=restaurants%20Storgata%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        </section><section id="day2" class="day ">
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">08:30 – 08:55</div>
+            <div class="title">Hotel → Harbor (whale tour meeting point)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Simen+Workinns+veg+15+Tromsø&amp;destination=Prostneset+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">09:00 – 15:00</div>
+            <div class="title">Whale watching tour (approx.)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Prostneset%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">15:30 – 18:00</div>
+            <div class="title">Rest / flexible city time</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        </section><section id="day3" class="day ">
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">09:30 – 10:00</div>
+            <div class="title">Hotel → Prostneset (luggage storage)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Simen+Workinns+veg+15+Tromsø&amp;destination=Prostneset+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">10:00 – 10:15</div>
+            <div class="title">Store luggage (per Visit Tromsø page)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=bagasjeoppbevaring Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=bagasjeoppbevaring%20Troms%C3%B8%20Prostneset" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">10:15 – 11:30</div>
+            <div class="title">Buffer: coffee / last shopping</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Storgata Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=coffee%20Storgata%20Troms%C3%B8" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">11:30 – 12:00</div>
+            <div class="title">Prostneset → Fjellheisen lower station</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Fjellheisen lower station&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prostneset+Tromsø&amp;destination=Fjellheisen+lower+station" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">12:00 – 14:00</div>
+            <div class="title">Fjellheisen cable car (backup day)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Fjellheisen&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Fjellheisen" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">14:00 – 15:00</div>
+            <div class="title">Return to Prostneset &amp; pick up luggage</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Prostneset Tromsø&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Fjellheisen&amp;destination=Prostneset+Tromsø" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">15:00 – 15:30</div>
+            <div class="title">Prostneset → Tromsø Airport (aim to arrive by 16:30)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Tromsø Airport&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/dir/?api=1&amp;origin=Prostneset+Tromsø&amp;destination=Tromsø+Airport" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">16:30 – 19:00</div>
+            <div class="title">Airport check-in / security</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Tromsø Airport&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Tromsø+Airport" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        
+        <div class="stop">
+          <div class="stop-head">
+            <div class="time">19:30 – —</div>
+            <div class="title">Flight departs (easyJet U22292)</div>
+          </div>
+          <div class="actions">
+            <button class="btn" onclick="setMapSrc('https://www.google.com/maps?q=Tromsø Airport&amp;output=embed')">在页面内查看地图</button>
+            <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&amp;query=Tromsø+Airport" target="_blank" rel="noopener">打开 Google Maps 导航</a>
+          </div>
+        </div>
+        </section>
+  </div>
+</div>
+
+<div class="footer">
+  说明：本页面未使用 Google Maps API key（无需登录/无需付费）。嵌入地图为查询模式；导航以外链方式打开 Google Maps App/网页。
+</div>
+
+<script>
+  function setMapSrc(src) {
+    document.getElementById('mapframe').src = src;
+    // scroll map into view on mobile
+    if (window.innerWidth < 900) {
+      document.querySelector('.mapwrap').scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }
+  function showDay(dayId) {
+    document.querySelectorAll('.day').forEach(el => el.classList.remove('active'));
+    document.getElementById(dayId).classList.add('active');
+    document.querySelectorAll('.tab').forEach(el => el.classList.remove('active'));
+    // set active tab by matching onclick content
+    document.querySelectorAll('.tab').forEach(btn => {
+      if (btn.getAttribute('onclick') === "showDay('" + dayId + "')") btn.classList.add('active');
+    });
+  }
+</script>
+</body>
+</html>

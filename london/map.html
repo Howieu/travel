@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>伦敦两日精华行程（Apple Maps版，可分享）</title>
+  <style>
+    :root { --sidebar-w: 360px; }
+    html, body { height: 100%; margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif; }
+    .app { display: flex; height: 100%; width: 100%; }
+    .sidebar {
+      width: var(--sidebar-w);
+      max-width: 92vw;
+      border-right: 1px solid #e6e6e6;
+      padding: 14px 14px 10px 14px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      background: #fff;
+    }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 200px;
+      justify-content: flex-start;
+    }
+    .topbar {
+      border-bottom: 1px solid #eee;
+      padding: 10px 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      background: #fff;
+    }
+    .btn {
+      border: 1px solid #ddd; border-radius: 10px;
+      padding: 8px 10px;
+      background: #fafafa;
+      cursor: pointer;
+      font-size: 12px;
+      text-decoration: none;
+      color: inherit;
+      display: inline-block;
+    }
+    .btn:hover { background: #f2f2f2; }
+    h1 { font-size: 16px; margin: 0 0 10px 0; line-height: 1.25; }
+    .meta { font-size: 12px; color: #555; margin-bottom: 10px; line-height: 1.35; }
+    .section-title { font-size: 13px; margin: 14px 0 6px 0; color: #111; }
+    .list { display: grid; gap: 8px; }
+    .card {
+      border: 1px solid #eee; border-radius: 10px;
+      padding: 10px; cursor: pointer; background: #fafafa;
+    }
+    .card:hover { background: #f4f4f4; }
+    .row-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+    .time { font-weight: 700; font-size: 12px; color: #111; white-space: nowrap; }
+    .name { font-weight: 600; font-size: 13px; color: #111; margin-top: 4px; }
+    .note { font-size: 12px; color: #555; margin-top: 6px; line-height: 1.35; }
+    .badge {
+      font-size: 11px; padding: 2px 8px; border-radius: 999px;
+      border: 1px solid #ddd; background: #fff; color: #333;
+      white-space: nowrap;
+    }
+    .footer { margin-top: 14px; font-size: 12px; color: #666; line-height: 1.35; }
+    .hr { height: 1px; background: #eee; margin: 12px 0; }
+    .small { font-size: 11px; color: #777; }
+    @media (max-width: 860px) { :root { --sidebar-w: 320px; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h1>伦敦两日精华行程（Apple Maps版，可分享）</h1>
+      <div class="meta">
+        住：Royal National Hotel（Bloomsbury）<br>
+        已锁定：大英博物馆 14:50；伦敦眼 19:30；卫兵换岗；Euston 19:31 返程<br>
+        游船：City Cruises（最值得段）Westminster Pier → Tower Pier；塔桥路过拍照<br>
+        用餐：不在船上吃；Day 1 上船前晚餐固定为 McDonald’s（155 Victoria St）
+      </div>
+      <div class="section-title">Day 1</div>
+      <div id="listDay1" class="list"></div>
+      <div class="section-title">Day 2</div>
+      <div id="listDay2" class="list"></div>
+      <div class="footer">
+        点击每个事件内的“在 Apple Maps 打开”按钮，可直接打开地图以查看地点或导航。
+      </div>
+    </aside>
+    <main class="main">
+      <div class="topbar">
+        <span>请选择左侧行程查看详情并在 Apple Maps 中打开导航。</span>
+      </div>
+      <div style="padding: 10px; font-size: 12px; color: #555;">
+        本页面不包含内嵌地图。使用列表中的按钮在 Apple Maps 中查看地点或导航。
+      </div>
+    </main>
+  </div>
+  <script>
+    // 定义地点查询。每个地点包含可传入 Apple Maps 的查询字符串。
+    const PLACES = {
+      "hotel": { query: "Royal National Hotel, 38-51 Bedford Way, London WC1H 0DG" },
+      "britishMuseum": { query: "British Museum, Great Russell St, London WC1B 3DG" },
+      "coventGarden": { query: "Covent Garden, London" },
+      "westminster": { query: "Westminster, London" },
+      "mcd_victoria": { query: "McDonald's, 155 Victoria St, London SW1E 5NA" },
+      "westminsterPier": { query: "Westminster Pier, Victoria Embankment, London SW1A 2JH" },
+      "towerPier": { query: "Tower Millennium Pier, Lower Thames St, London EC3N 4DT" },
+      "towerBridge": { query: "Tower Bridge, London SE1 2UP" },
+      "londonEye": { query: "London Eye, Riverside Building, County Hall, London SE1 7PB" },
+      "buckingham": { query: "Buckingham Palace, London SW1A 1AA" },
+      "borough": { query: "Borough Market, 8 Southwark St, London SE1 1TL" },
+      "selfridges": { query: "Selfridges, 400 Oxford St, London W1A 1AB" },
+      "oxfordCircus": { query: "Oxford Circus Station, London W1B 3AG" },
+      "regentStreet": { query: "Regent Street, London" },
+      "chinatown": { query: "Chinatown, Gerrard St, London W1D" },
+      "euston": { query: "London Euston Station, London NW1 2DU" }
+    };
+
+    // Day 1 行程条目
+    const DAY1 = [
+      { time: "10:00–11:00", poi: "hotel", title: "Euston 抵达 → 酒店放行李/入住", badge: "固定", note: "先把行李处理好；下午走动更轻松。" },
+      { time: "11:00–12:00", poi: "hotel", title: "休整/补给", badge: "机动", note: "咖啡+点心。" },
+      { time: "12:00–13:00", poi: "coventGarden", title: "考文特花园午餐 + 逛一圈", badge: "精华", note: "控制在 1 小时。" },
+      { time: "13:00–14:20", poi: "britishMuseum", title: "回 Bloomsbury & 入馆前缓冲", badge: "缓冲", note: "建议 14:20 前到馆附近，留安检/排队时间。" },
+      { time: "14:50–17:00", poi: "britishMuseum", title: "大英博物馆（已预约 14:50）", badge: "已预约", note: "埃及/希腊等重点展厅优先。" },
+      { time: "17:10–17:30", poi: "westminster", title: "Westminster 外观快拍（大本钟 + 威斯敏斯特教堂）", badge: "外观", note: "教堂不进；拍完直接去吃饭。" },
+      { time: "17:30–17:50", poi: "mcd_victoria", title: "上船前晚餐：McDonald’s（155 Victoria St）", badge: "用餐", note: "快餐效率高；吃完直接去 Westminster Pier。" },
+      { time: "17:50–18:00", poi: "westminsterPier", title: "到 Westminster Pier 登船准备", badge: "关键", note: "建议至少提前 10 分钟到码头附近。" },
+      { time: "18:00–18:35", poi: "towerPier", title: "泰晤士河游船（最值得段）Westminster Pier → Tower Pier", badge: "必做", note: "公司：City Cruises（纯观光，不含晚餐）。建议提前在线购票。" },
+      { time: "18:35–19:05", poi: "towerBridge", title: "塔桥路过拍照（20–30 分钟）", badge: "精华", note: "只拍经典角度即可，不进展览。" },
+      { time: "19:05–19:25", poi: "londonEye", title: "前往伦敦眼 + 排队缓冲", badge: "硬点", note: "目标 19:25 前到伦敦眼入口附近。" },
+      { time: "19:30–21:00", poi: "londonEye", title: "伦敦眼（已预约 19:30）", badge: "已预约", note: "结束后可再决定是否散步回酒店。" },
+      { time: "21:00–22:00", poi: "hotel", title: "返回酒店休息", badge: "收尾", note: "第二天早起看卫兵换岗。" }
+    ];
+
+    // Day 2 行程条目
+    const DAY2 = [
+      { time: "08:30–09:30", poi: "hotel", title: "早餐 + 退房准备（行李寄存前台）", badge: "固定", note: "寄存行李后出发。" },
+      { time: "09:30–10:30", poi: "buckingham", title: "前往白金汉宫周边占位", badge: "关键", note: "建议 10:30 前到达宫区。" },
+      { time: "10:30–11:00", poi: "buckingham", title: "站位/找视野", badge: "缓冲", note: "The Mall / St James’s Park 一侧更舒适。" },
+      { time: "11:00–12:00", poi: "buckingham", title: "卫兵换岗（观看）", badge: "必看", note: "以现场为准。" },
+      { time: "12:00–13:00", poi: "borough", title: "（可选）Borough Market 午餐", badge: "可选", note: "若不去市场，直接去 Oxford Street。" },
+      { time: "13:00–14:00", poi: "selfridges", title: "Selfridges（重点购物）", badge: "重点", note: "可能早关门；先完成核心购物。" },
+      { time: "14:00–15:00", poi: "oxfordCircus", title: "牛津街（Oxford Street）主街购物/逛街", badge: "精华", note: "从 Selfridges 往 Oxford Circus 方向走最顺。" },
+      { time: "15:00–16:00", poi: "regentStreet", title: "摄政街 Regent Street（天使灯核心）", badge: "必逛", note: "建议天色变暗后走这一段更有氛围。" },
+      { time: "16:00–16:30", poi: "regentStreet", title: "双层巴士看灯（在灯区坐几站）", badge: "体验", note: "上层前排。坐 20–30 分钟即可。" },
+      { time: "16:30–17:30", poi: "chinatown", title: "唐人街晚餐 + 打卡", badge: "必到", note: "控制节奏，避免排队过久。" },
+      { time: "17:30–18:15", poi: "hotel", title: "回酒店取行李", badge: "关键", note: "取行李后直接去 Euston。" },
+      { time: "18:15–18:45", poi: "euston", title: "抵达 Euston（务必）", badge: "硬点", note: "预留站台变更/找站台时间。" },
+      { time: "19:31", poi: "euston", title: "Euston 发车回曼城", badge: "硬点", note: "行程结束。" }
+    ];
+
+    function openAppleMap(query) {
+      const url = 'https://maps.apple.com/?q=' + encodeURIComponent(query);
+      window.open(url, '_blank', 'noopener');
+    }
+
+    function cardHtml(item) {
+      const p = PLACES[item.poi] || { query: '' };
+      return `
+      <div class="card" data-poi="${item.poi}">
+        <div class="row-top">
+          <div class="time">${item.time}</div>
+          <div class="badge">${item.badge}</div>
+        </div>
+        <div class="name">${item.title}</div>
+        <div class="note">${p.query}${item.note ? '｜' + item.note : ''}</div>
+        <div class="note" style="margin-top:8px;">
+          <button class="btn" onclick="event.stopPropagation(); openAppleMap('${p.query}')">在 Apple Maps 打开</button>
+        </div>
+      </div>
+      `;
+    }
+
+    document.getElementById('listDay1').innerHTML = DAY1.map(cardHtml).join('');
+    document.getElementById('listDay2').innerHTML = DAY2.map(cardHtml).join('');
+  </script>
+</body>
+</html>

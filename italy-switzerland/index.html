@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ 意瑞全新路线 | 罗马血拼+奥尔滕大本营 ✨</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Sans SC', sans-serif; background-color: #f7f8fa; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-panel { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border-right: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 4px 0 24px rgba(0,0,0,0.06); }
+        .gm-err-container, .gm-err-dialog, .gm-err-content { display: none !important; }
+        .gm-style .gm-style-iw-c { border-radius: 16px !important; padding: 0 !important; box-shadow: 0 10px 40px -10px rgba(0,0,0,0.15) !important; }
+        .gm-style .gm-style-iw-tc::after { background: white !important; }
+        .custom-info-window { padding: 16px 20px; min-width: 200px; }
+        .hover-scale { transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .hover-scale:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .timeline-line { position: absolute; left: 24px; top: 40px; bottom: 0; width: 2px; background: linear-gradient(to bottom, #e2e8f0 0%, #cbd5e1 100%); z-index: 0; }
+    </style>
+</head>
+<body class="flex flex-col md:flex-row h-screen overflow-hidden">
+
+    <!-- 左侧面板 -->
+    <div class="w-full md:w-[420px] h-[45%] md:h-full glass-panel z-10 flex flex-col relative">
+        <div class="px-6 pt-8 pb-4 shrink-0 bg-white/60 border-b border-gray-100">
+            <div class="flex items-center gap-2 mb-2">
+                <span class="bg-gradient-to-r from-pink-500 to-rose-400 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-sm">#奥尔滕大本营</span>
+                <span class="bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-[10px] font-black px-2 py-1 rounded-md shadow-sm">#拒绝搬行李</span>
+            </div>
+            <h1 class="text-2xl font-black text-gray-800 tracking-tight mb-1">最强大脑优化版 🧠</h1>
+            <p class="text-xs text-gray-500 font-medium">机场直奔枢纽，三天不换酒店</p>
+        </div>
+        
+        <div class="flex px-6 py-4 gap-3 shrink-0 bg-white/40">
+            <button onclick="showCountry('all')" class="flex-1 py-2 bg-gray-900 text-white text-sm font-bold rounded-xl hover-scale">🌍 全局</button>
+            <button onclick="showCountry('italy')" class="flex-1 py-2 bg-gradient-to-br from-orange-50 to-red-50 text-red-700 text-sm font-bold rounded-xl hover-scale border border-red-200">🇮🇹 意大利</button>
+            <button onclick="showCountry('swiss')" class="flex-1 py-2 bg-gradient-to-br from-blue-50 to-indigo-50 text-blue-700 text-sm font-bold rounded-xl hover-scale border border-blue-200">🇨🇭 瑞士</button>
+        </div>
+
+        <div class="flex-grow overflow-y-auto no-scrollbar px-6 pb-10 relative" id="route-list"></div>
+    </div>
+
+    <!-- 右侧地图 -->
+    <div class="flex-grow relative h-[55%] md:h-full z-0 bg-gray-100" id="map"></div>
+
+    <script>
+        let map;
+        let markers = [];
+        let polylines = [];
+
+        // --- 行程数据 (奥尔滕大本营升级版) ---
+        const itinerary = [
+            {
+                day: "9-10日",
+                title: "米兰漫步 赴 佛罗伦萨",
+                theme: "from-purple-500 to-pink-500",
+                country: "italy",
+                appleStart: "Milano Centrale", appleEnd: "Firenze SMN",
+                points: [
+                    { name: "Milano Centrale", lat: 45.4859, lng: 9.2035, icon: '🚉', desc: '9日晚20:00抵达，大本营' },
+                    { name: "斯福尔扎古堡", lat: 45.4705, lng: 9.1793, icon: '🏰', desc: '10日早晨漫步，无需门票' },
+                    { name: "米兰大教堂", lat: 45.4641, lng: 9.1919, icon: '⛪', desc: '哥特尖塔，广场喂白鸽' },
+                    { name: "米兰运河", lat: 45.4522, lng: 9.1764, icon: '🍷', desc: '可中午去吃个简餐' },
+                    { name: "Firenze SMN", lat: 43.7765, lng: 11.2478, icon: '🚉', desc: '10日下午高铁抵达佛罗伦萨' },
+                    { name: "圣母百花大教堂", lat: 43.7731, lng: 11.2560, icon: '⛪', desc: '10日晚上看夜景，吃牛排' }
+                ]
+            },
+            {
+                day: "11日",
+                title: "佛城漫步 赴 罗马",
+                theme: "from-orange-500 to-amber-500",
+                country: "italy",
+                appleStart: "Piazza della Signoria", appleEnd: "Roma Termini",
+                points: [
+                    { name: "领主广场", lat: 43.7696, lng: 11.2558, icon: '🗿', desc: '早起看露天雕塑' },
+                    { name: "老桥 (Ponte Vecchio)", lat: 43.7680, lng: 11.2532, icon: '🌉', desc: '阿诺河畔漫步' },
+                    { name: "Roma Termini", lat: 41.9014, lng: 12.5005, icon: '🚉', desc: '下午高铁抵达罗马' },
+                    { name: "特雷维喷泉", lat: 41.9009, lng: 12.4833, icon: '⛲', desc: '晚上去许愿池投币' }
+                ]
+            },
+            {
+                day: "12日",
+                title: "罗马帝国暴走大白天",
+                theme: "from-red-600 to-orange-500",
+                country: "italy",
+                appleStart: "Colosseum, Rome", appleEnd: "Pantheon, Rome",
+                points: [
+                    { name: "斗兽场 & 凯旋门", lat: 41.8902, lng: 12.4922, icon: '🏛️', desc: '只拍外观不排队' },
+                    { name: "威尼斯广场", lat: 41.8955, lng: 12.4823, icon: '👑', desc: '宏伟的打字机建筑' },
+                    { name: "万神殿", lat: 41.8986, lng: 12.4769, icon: '🏛️', desc: '罗马古建筑奇迹' },
+                    { name: "纳沃纳广场", lat: 41.8992, lng: 12.4731, icon: '⛲', desc: '看四河喷泉吃冰淇淋' }
+                ]
+            },
+            {
+                day: "13日",
+                title: "罗马血拼 飞 瑞士大本营",
+                theme: "from-teal-500 to-blue-500",
+                country: "flight", // 特殊标记为飞行日
+                appleStart: "Piazza di Spagna", appleEnd: "Olten, Switzerland",
+                points: [
+                    { name: "西班牙广场", lat: 41.9059, lng: 12.4827, icon: '🛍️', desc: '上午开启血拼模式' },
+                    { name: "罗马文艺复兴百货", lat: 41.9028, lng: 12.4842, icon: '🏬', desc: '找西太后专柜' },
+                    { name: "Longchamp (龙骧)", lat: 41.9022, lng: 12.4778, icon: '👜', desc: '买完开退税单' },
+                    { name: "罗马 FCO 机场", lat: 41.7998, lng: 12.2462, icon: '🛂', desc: '提前到办理海关盖章退税' },
+                    { name: "苏黎世机场 (ZRH)", lat: 47.4582, lng: 8.5555, icon: '🛬', desc: '21:20降落，拿完行李直奔火车站' },
+                    { name: "奥尔滕 (Olten)", lat: 47.3518, lng: 7.9076, icon: '🏨', desc: '机场直达！Hotel Amaris 连住两晚' }
+                ]
+            },
+            {
+                day: "14日",
+                title: "瑞士湖山特种兵",
+                theme: "from-green-500 to-emerald-400",
+                country: "swiss",
+                appleStart: "Olten", appleEnd: "Interlaken Ost",
+                points: [
+                    { name: "奥尔滕 (Olten)", lat: 47.3518, lng: 7.9076, icon: '🚉', desc: '无需带行李，早晨空手出发' },
+                    { name: "卢塞恩 (Luzern)", lat: 47.0502, lng: 8.3093, icon: '🦢', desc: '打卡卡贝尔桥、看壁画' },
+                    { name: "龙疆小镇", lat: 46.7884, lng: 8.1597, icon: '🏡', desc: '坐金色山口列车途径打卡' },
+                    { name: "因特拉肯", lat: 46.6905, lng: 7.8690, icon: '🏔️', desc: '看少女峰，晚上回奥尔滕大本营' }
+                ]
+            },
+            {
+                day: "15日",
+                title: "苏黎世压轴 飞 曼城",
+                theme: "from-blue-600 to-indigo-500",
+                country: "swiss",
+                appleStart: "Olten", appleEnd: "Zurich Airport",
+                points: [
+                    { name: "奥尔滕 (Olten)", lat: 47.3518, lng: 7.9076, icon: '💼', desc: '退房，带着行李去苏黎世' },
+                    { name: "苏黎世主站 (Zürich HB)", lat: 47.3782, lng: 8.5402, icon: '🚉', desc: '在火车站寄存行李' },
+                    { name: "班霍夫大街", lat: 47.3743, lng: 8.5393, icon: '💸', desc: '逛最贵街道，买散装巧克力' },
+                    { name: "林登霍夫山", lat: 47.3732, lng: 8.5414, icon: '📸', desc: '《爱的迫降》片头绝佳俯瞰' },
+                    { name: "苏黎世机场 (ZRH)", lat: 47.4582, lng: 8.5555, icon: '🛫', desc: '取行李赴机场，晚上21:00起飞回家！' }
+                ]
+            }
+        ];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 5,
+                center: { lat: 44.0, lng: 10.0 }, // 居中意大利和瑞士之间
+                disableDefaultUI: true,
+                zoomControl: true,
+                zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_BOTTOM }
+            });
+
+            const infoWindow = new google.maps.InfoWindow();
+            let previousLastPoint = null;
+
+            itinerary.forEach((dayData, index) => {
+                let dailyPath = [];
+
+                dayData.points.forEach((pt) => {
+                    const isFlight = dayData.country === 'flight';
+                    const countryColor = isFlight ? '#3b82f6' : (dayData.country === 'italy' ? '#f43f5e' : '#10b981');
+                    
+                    const svgMarker = {
+                        path: "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z",
+                        fillColor: countryColor,
+                        fillOpacity: 1,
+                        strokeWeight: 2,
+                        strokeColor: "#ffffff",
+                        scale: 1.5,
+                        anchor: new google.maps.Point(12, 22),
+                        labelOrigin: new google.maps.Point(12, 9)
+                    };
+
+                    const marker = new google.maps.Marker({
+                        position: { lat: pt.lat, lng: pt.lng },
+                        map: map,
+                        icon: svgMarker,
+                        label: { text: pt.icon, fontSize: "14px" },
+                        title: pt.name,
+                        _country: isFlight ? 'all' : dayData.country, // 航班日两边都可见
+                        _dayIndex: index
+                    });
+
+                    marker.addListener('click', () => {
+                        infoWindow.setContent(`
+                            <div class="custom-info-window font-sans">
+                                <div class="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">${dayData.day}</div>
+                                <h3 class="text-base font-black text-gray-800 mb-1">${pt.name}</h3>
+                                <p class="text-xs text-gray-500">${pt.desc}</p>
+                            </div>
+                        `);
+                        infoWindow.open(map, marker);
+                    });
+
+                    markers.push(marker);
+                    dailyPath.push({ lat: pt.lat, lng: pt.lng });
+                });
+
+                // 区分飞行航线和地面交通
+                if (dayData.day === "13日") {
+                    // 13号的 罗马机场 -> 苏黎世机场 画特殊飞行线
+                    const flightLine = new google.maps.Polyline({
+                        path: [
+                            { lat: 41.7998, lng: 12.2462 }, // FCO
+                            { lat: 47.4582, lng: 8.5555 }   // ZRH
+                        ],
+                        geodesic: true,
+                        strokeColor: '#3b82f6',
+                        strokeOpacity: 0.8,
+                        strokeWeight: 3,
+                        icons: [{ icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 4 }, offset: '0', repeat: '20px' }],
+                        map: map,
+                        _country: 'all',
+                        _dayIndex: index,
+                        _isFlight: true
+                    });
+                    polylines.push(flightLine);
+
+                    // 13号晚：苏黎世机场 -> 奥尔滕 的地面连线
+                    const zrhToOltenLine = new google.maps.Polyline({
+                        path: [
+                            { lat: 47.4582, lng: 8.5555 }, // ZRH
+                            { lat: 47.3518, lng: 7.9076 }  // Olten
+                        ],
+                        geodesic: true,
+                        strokeColor: '#10b981', // 使用瑞士段的绿色
+                        strokeOpacity: 0.8,
+                        strokeWeight: 4,
+                        map: map,
+                        _country: 'swiss',
+                        _dayIndex: index,
+                        _isIntercity: false
+                    });
+                    polylines.push(zrhToOltenLine);
+
+                } else {
+                    const dailyPolyline = new google.maps.Polyline({
+                        path: dailyPath, 
+                        geodesic: true, 
+                        strokeColor: dayData.country === 'italy' ? '#f43f5e' : '#10b981', 
+                        strokeOpacity: 0.8, 
+                        strokeWeight: 4,
+                        map: map,
+                        _country: dayData.country,
+                        _dayIndex: index,
+                        _isIntercity: false
+                    });
+                    polylines.push(dailyPolyline);
+                }
+
+                // 城市间的火车连线 (跳过13日，因为它的逻辑特殊)
+                if (previousLastPoint && dayData.day !== "13日") {
+                    const interCityPolyline = new google.maps.Polyline({
+                        path: [previousLastPoint, { lat: dayData.points[0].lat, lng: dayData.points[0].lng }],
+                        geodesic: true,
+                        strokeColor: '#9ca3af',
+                        strokeOpacity: 0.6,
+                        strokeWeight: 2,
+                        icons: [{ icon: { path: 'M 0,-1 0,1', strokeOpacity: 1, scale: 3 }, offset: '0', repeat: '15px' }],
+                        map: map,
+                        _country: dayData.country,
+                        _dayIndex: index,
+                        _isIntercity: true
+                    });
+                    polylines.push(interCityPolyline);
+                }
+                previousLastPoint = { lat: dayData.points[dayData.points.length - 1].lat, lng: dayData.points[dayData.points.length - 1].lng };
+            });
+
+            renderSidebar();
+            setTimeout(() => showCountry('all'), 600);
+        }
+
+        function renderSidebar() {
+            const container = document.getElementById('route-list');
+            let html = '<div class="timeline-line hidden md:block"></div>';
+
+            itinerary.forEach((day, index) => {
+                const waypoints = day.points.slice(1, -1).map(p => `${p.lat},${p.lng}`).join('|');
+                const start = `${day.points[0].lat},${day.points[0].lng}`;
+                const end = `${day.points[day.points.length-1].lat},${day.points[day.points.length-1].lng}`;
+                
+                const googleUrl = `https://www.google.com/maps/dir/?api=1&origin=${start}&destination=${end}&waypoints=${waypoints}&travelmode=walking`;
+                const appleUrl = `http://maps.apple.com/?saddr=${encodeURIComponent(day.appleStart)}&daddr=${encodeURIComponent(day.appleEnd)}&dirflg=w`;
+
+                let pointsHtml = '';
+                day.points.forEach((pt, ptIndex) => {
+                    const ptGoogleUrl = `https://www.google.com/maps/search/?api=1&query=${pt.lat},${pt.lng}`;
+                    const ptAppleUrl = `http://maps.apple.com/?ll=${pt.lat},${pt.lng}&q=${encodeURIComponent(pt.name)}`;
+
+                    pointsHtml += `
+                        <div class="flex items-center justify-between gap-2 mb-2 group/point cursor-pointer hover:bg-white rounded-lg p-2 transition-colors" onclick="event.stopPropagation(); focusPoint(${index}, ${ptIndex})">
+                            <div class="flex items-start gap-2">
+                                <span class="text-base grayscale group-hover/point:grayscale-0 transition-all mt-0.5">${pt.icon}</span>
+                                <div>
+                                    <h4 class="text-xs font-bold text-gray-700 group-hover/point:text-blue-600 transition-colors">${pt.name}</h4>
+                                    <p class="text-[10px] text-gray-400">${pt.desc}</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-1 shrink-0 opacity-40 group-hover/point:opacity-100 transition-opacity">
+                                <a href="${ptGoogleUrl}" target="_blank" onclick="event.stopPropagation()" class="w-7 h-6 flex items-center justify-center bg-blue-50 border border-blue-100 text-blue-600 hover:bg-blue-100 rounded text-[10px] transition-colors shadow-sm" title="Google Maps">📍</a>
+                                <a href="${ptAppleUrl}" target="_blank" onclick="event.stopPropagation()" class="w-7 h-6 flex items-center justify-center bg-gray-100 border border-gray-200 text-gray-800 hover:bg-gray-200 rounded text-[10px] transition-colors shadow-sm" title="Apple Maps">🍎</a>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <div class="relative z-10 pl-0 md:pl-8 mt-8 cursor-pointer group" onclick="focusDay(${index})">
+                        <div class="hidden md:block absolute left-[-5px] top-1 w-3 h-3 rounded-full bg-gradient-to-r ${day.theme} shadow-sm border-2 border-white group-hover:scale-125 transition-transform"></div>
+                        <div class="bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-[0_4px_20px_rgba(0,0,0,0.03)] border border-transparent group-hover:border-blue-200 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] group-hover:bg-white transition-all">
+                            <div class="flex justify-between items-center mb-4">
+                                <div>
+                                    <span class="inline-block px-2 py-0.5 rounded text-[10px] font-black text-white bg-gradient-to-r ${day.theme} mb-1 shadow-sm">${day.day}</span>
+                                    <h3 class="text-sm font-bold text-gray-800 group-hover:text-blue-600 transition-colors">${day.title}</h3>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <a href="${googleUrl}" target="_blank" onclick="event.stopPropagation()" class="bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-600 text-[10px] font-bold py-1 px-2 rounded-lg flex items-center justify-center gap-1 transition-colors">📍 全日</a>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50/70 rounded-xl p-3 border border-gray-100">${pointsHtml}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        function focusPoint(dayIndex, ptIndex) {
+            if(!map) return;
+            const pt = itinerary[dayIndex].points[ptIndex];
+            map.panTo({ lat: pt.lat, lng: pt.lng });
+            map.setZoom(17);
+            const marker = markers.find(m => m._dayIndex === dayIndex && m.getTitle() === pt.name);
+            if(marker) google.maps.event.trigger(marker, 'click');
+        }
+
+        function focusDay(index) {
+            if(!map) return;
+            const bounds = new google.maps.LatLngBounds();
+            let hasVisible = false;
+
+            markers.forEach(m => {
+                if (m._dayIndex === index) { m.setOpacity(1.0); m.setZIndex(100); bounds.extend(m.getPosition()); hasVisible = true; }
+                else { m.setOpacity(0.3); m.setZIndex(1); }
+            });
+
+            polylines.forEach(p => {
+                if (p._dayIndex === index && !p._isIntercity && !p._isFlight) { p.setOptions({ strokeOpacity: 1.0, strokeWeight: 6, zIndex: 100 }); }
+                else if (p._dayIndex === index && (p._isIntercity || p._isFlight)) { p.setOptions({ strokeOpacity: 0.8, strokeWeight: 3, zIndex: 90 }); }
+                else { p.setOptions({ strokeOpacity: 0.1, strokeWeight: 2, zIndex: 10 }); }
+            });
+
+            if(hasVisible) {
+                const padding = { top: 80, bottom: 80, left: window.innerWidth > 768 ? 480 : 80, right: 80 };
+                map.fitBounds(bounds, padding);
+            }
+        }
+
+        function showCountry(filter) {
+            if(!map) return;
+            const bounds = new google.maps.LatLngBounds();
+            let hasVisible = false;
+
+            markers.forEach(m => {
+                m.setOpacity(1.0); m.setZIndex(10);
+                if (filter === 'all' || m._country === filter || m._country === 'all') { m.setMap(map); bounds.extend(m.getPosition()); hasVisible = true; }
+                else { m.setMap(null); }
+            });
+
+            polylines.forEach(p => {
+                p.setOptions({ strokeOpacity: p._isFlight ? 0.8 : (p._isIntercity ? 0.6 : 0.8), strokeWeight: p._isIntercity ? 2 : 4, zIndex: 20 });
+                if (filter === 'all' || p._country === filter || p._country === 'all') { p.setMap(map); }
+                else { p.setMap(null); }
+            });
+
+            if(hasVisible) {
+                const padding = { top: 60, bottom: 60, left: window.innerWidth > 768 ? 480 : 60, right: 60 };
+                map.fitBounds(bounds, padding);
+            }
+        }
+    </script>
+</body>
+</html>

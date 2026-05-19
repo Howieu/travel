@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>day2</title>
+<style>
+:root {
+  --bg:#f5f3ee; --card:#fff; --ink:#151515; --muted:#666; --line:#e7e0d4;
+  --black:#111; --blue:#1a73e8; --soft:#faf8f3;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang SC",sans-serif;
+}
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(245,243,238,.94); backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  padding:12px 16px;
+}
+.header-inner { max-width:1180px; margin:auto; }
+h1 { margin:0 0 8px; font-size:24px; }
+.city-switch {
+  display:grid; grid-template-columns:1fr 1fr; gap:10px;
+}
+.city-switch a {
+  text-align:center; text-decoration:none; background:#111; color:#fff;
+  padding:12px 10px; border-radius:16px; font-weight:800;
+}
+.container { max-width:1180px; margin:auto; padding:18px 16px 34px; }
+.city-section {
+  background:var(--card); border:1px solid var(--line); border-radius:26px;
+  padding:18px; margin:18px 0 28px;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  scroll-margin-top:98px;
+}
+.city-top {
+  display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap;
+  margin-bottom:14px;
+}
+h2 { margin:0; font-size:26px; }
+.route-link {
+  display:inline-block; text-decoration:none; background:#111; color:#fff;
+  padding:10px 13px; border-radius:13px; font-size:13px; font-weight:800;
+}
+.spot-row {
+  display:flex; gap:10px; overflow-x:auto; padding:4px 2px 14px;
+  -webkit-overflow-scrolling:touch;
+}
+.spot-btn {
+  flex:0 0 auto; border:1px solid var(--line); background:var(--soft);
+  border-radius:999px; padding:9px 12px; cursor:pointer;
+  display:flex; align-items:center; gap:7px; font-size:13px; white-space:nowrap;
+}
+.spot-btn.active { background:#111; color:#fff; border-color:#111; }
+.spot-id {
+  background:rgba(0,0,0,.12); border-radius:999px; padding:2px 6px; font-weight:900; font-size:11px;
+}
+.spot-btn.active .spot-id { background:rgba(255,255,255,.22); }
+.map-grid {
+  display:grid; grid-template-columns:1.15fr .85fr; gap:16px; align-items:stretch;
+}
+.map-box {
+  min-height:430px; border-radius:22px; overflow:hidden; border:1px solid var(--line); background:#ddd;
+}
+iframe { width:100%; height:100%; min-height:430px; border:0; display:block; }
+.info-box {
+  background:#fbfaf7; border:1px solid var(--line); border-radius:22px; padding:16px;
+}
+.info-badge {
+  display:inline-block; background:#111; color:#fff; border-radius:999px; padding:5px 9px;
+  font-size:12px; font-weight:900; margin-bottom:10px;
+}
+.info-title { font-size:20px; font-weight:900; margin-bottom:5px; }
+.info-type { color:#8a6d2f; font-size:13px; font-weight:800; margin-bottom:10px; }
+.info-note { color:#333; font-size:14px; line-height:1.6; margin-bottom:16px; }
+.info-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.info-actions a {
+  text-decoration:none; padding:10px 12px; border-radius:12px; font-weight:800; font-size:13px;
+}
+.info-actions .g { background:#e8f0fe; color:#1a73e8; }
+.info-actions .a { background:#efefef; color:#222; }
+.list-title { margin:20px 0 10px; font-size:15px; font-weight:900; color:#444; }
+.card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px; }
+.mini-card {
+  background:#fafafa; border:1px solid #eee; border-radius:18px; padding:13px;
+}
+.card-head { display:flex; gap:8px; align-items:center; margin-bottom:4px; }
+.pill { background:#111; color:#fff; border-radius:999px; padding:3px 7px; font-size:11px; font-weight:900; }
+.type { font-size:12px; color:#8a6d2f; font-weight:800; margin-bottom:6px; }
+.mini-card p { margin:0 0 10px; color:#666; font-size:12.5px; line-height:1.45; }
+.links { display:flex; gap:8px; flex-wrap:wrap; }
+.links a {
+  text-decoration:none; padding:7px 9px; border-radius:10px; font-size:12px; font-weight:800;
+}
+.links .g { background:#e8f0fe; color:#1a73e8; }
+.links .a { background:#efefef; color:#222; }
+@media(max-width:860px) {
+  .map-grid { grid-template-columns:1fr; }
+  .map-box, iframe { min-height:360px; }
+  h2 { font-size:22px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <h1>第二天路线</h1>
+    <div class="city-switch">
+      <a href="#monaco">🇲🇨 摩纳哥</a>
+      <a href="#menton">🇫🇷 芒通</a>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+<section class="city-section" id="monaco">
+  <div class="city-top">
+    <h2>🇲🇨 摩纳哥</h2>
+    <a class="route-link" target="_blank" href="https://www.google.com/maps/dir/43.7381,7.421/43.7385,7.4215/43.7396,7.4275/43.7388,7.425/43.7325,7.4198/43.7308,7.4256/43.7303,7.4246/43.7301,7.4228/43.7313,7.4198">打开摩纳哥全路线</a>
+  </div>
+  <div class="spot-row"><button class="spot-btn" onclick="showSpot('monaco', 'M1')">
+            <span class="spot-id">M1</span>
+            <span>摩纳哥火车站</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M2')">
+            <span class="spot-id">M2</span>
+            <span>摩纳哥游客中心</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M3')">
+            <span class="spot-id">M3</span>
+            <span>蒙特卡洛大赌场</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M4')">
+            <span class="spot-id">M4</span>
+            <span>摩纳哥F1赛道</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M5')">
+            <span class="spot-id">M5</span>
+            <span>王子汽车博物馆</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M6')">
+            <span class="spot-id">M6</span>
+            <span>海洋博物馆</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M7')">
+            <span class="spot-id">M7</span>
+            <span>圣马丁花园</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M8')">
+            <span class="spot-id">M8</span>
+            <span>摩纳哥大教堂</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('monaco', 'M9')">
+            <span class="spot-id">M9</span>
+            <span>王子宫殿观景台</span>
+        </button></div>
+  <div class="map-grid">
+    <div class="map-box"><iframe id="monaco-map" src="https://maps.google.com/maps?q=%E6%91%A9%E7%BA%B3%E5%93%A5%E7%81%AB%E8%BD%A6%E7%AB%99+43.7381%2C7.421&z=16&output=embed" loading="lazy" allowfullscreen></iframe></div>
+    <div class="info-box">
+      <div class="info-badge" id="monaco-id">M1</div>
+      <div class="info-title" id="monaco-name">摩纳哥火车站</div>
+      <div class="info-type" id="monaco-type">交通</div>
+      <div class="info-note" id="monaco-note">摩纳哥行程起点。出站后先去游客中心拿免费地图和景点手册。</div>
+      <div class="info-actions">
+        <a class="g" id="monaco-google" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7381,7.421">跳转谷歌地图</a>
+        <a class="a" id="monaco-apple" target="_blank" href="https://maps.apple.com/?ll=43.7381,7.421&q=%E6%91%A9%E7%BA%B3%E5%93%A5%E7%81%AB%E8%BD%A6%E7%AB%99">跳转苹果地图</a>
+      </div>
+    </div>
+  </div>
+  <div class="list-title">摩纳哥打卡点说明</div>
+  <div class="card-grid">
+        <div class="mini-card" id="card-M1">
+          <div class="card-head"><span class="pill">M1</span><b>摩纳哥火车站</b></div>
+          <div class="type">交通</div>
+          <p>摩纳哥行程起点。出站后先去游客中心拿免费地图和景点手册。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7381,7.421">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7381,7.421&q=%E6%91%A9%E7%BA%B3%E5%93%A5%E7%81%AB%E8%BD%A6%E7%AB%99">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M2">
+          <div class="card-head"><span class="pill">M2</span><b>摩纳哥游客中心</b></div>
+          <div class="type">游客中心</div>
+          <p>这里主要用来拿免费地图、景点手册，并询问护照纪念章应该去哪里盖。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7385,7.4215">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7385,7.4215&q=%E6%91%A9%E7%BA%B3%E5%93%A5%E6%B8%B8%E5%AE%A2%E4%B8%AD%E5%BF%83">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M3">
+          <div class="card-head"><span class="pill">M3</span><b>蒙特卡洛大赌场</b></div>
+          <div class="type">赌场/地标</div>
+          <p>摩纳哥最经典的地标之一。重点拍赌场正门、台阶、广场喷泉、豪车区和电影感建筑外观。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7396,7.4275">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7396,7.4275&q=%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E5%A4%A7%E8%B5%8C%E5%9C%BA">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M4">
+          <div class="card-head"><span class="pill">M4</span><b>摩纳哥F1赛道</b></div>
+          <div class="type">F1打卡</div>
+          <p>摩纳哥城市赛道打卡点。适合拍赛道弯道、港口边道路和跑车氛围。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7388,7.425">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7388,7.425&q=%E6%91%A9%E7%BA%B3%E5%93%A5F1%E8%B5%9B%E9%81%93">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M5">
+          <div class="card-head"><span class="pill">M5</span><b>王子汽车博物馆</b></div>
+          <div class="type">博物馆</div>
+          <p>展示摩纳哥亲王收藏的古董车、老爷车和赛车。喜欢汽车可以进去，不进也可以作为顺路打卡点。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7325,7.4198">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7325,7.4198&q=%E7%8E%8B%E5%AD%90%E6%B1%BD%E8%BD%A6%E5%8D%9A%E7%89%A9%E9%A6%86">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M6">
+          <div class="card-head"><span class="pill">M6</span><b>海洋博物馆</b></div>
+          <div class="type">博物馆/海景</div>
+          <p>建筑本身很壮观，位于靠海悬崖边。适合拍蓝白地中海背景和建筑外观。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7308,7.4256">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7308,7.4256&q=%E6%B5%B7%E6%B4%8B%E5%8D%9A%E7%89%A9%E9%A6%86">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M7">
+          <div class="card-head"><span class="pill">M7</span><b>圣马丁花园</b></div>
+          <div class="type">花园</div>
+          <p>海边花园步道，适合看摩纳哥港口、地中海和悬崖景观。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7303,7.4246">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7303,7.4246&q=%E5%9C%A3%E9%A9%AC%E4%B8%81%E8%8A%B1%E5%9B%AD">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M8">
+          <div class="card-head"><span class="pill">M8</span><b>摩纳哥大教堂</b></div>
+          <div class="type">教堂</div>
+          <p>白色教堂地标，格蕾丝王妃长眠于此。外面蓝天、白墙、棕榈树很出片。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7301,7.4228">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7301,7.4228&q=%E6%91%A9%E7%BA%B3%E5%93%A5%E5%A4%A7%E6%95%99%E5%A0%82">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-M9">
+          <div class="card-head"><span class="pill">M9</span><b>王子宫殿观景台</b></div>
+          <div class="type">王宫/观景台</div>
+          <p>可以俯瞰摩纳哥港、游艇和密集城市景观。黄昏或傍晚光线会更好。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7313,7.4198">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7313,7.4198&q=%E7%8E%8B%E5%AD%90%E5%AE%AB%E6%AE%BF%E8%A7%82%E6%99%AF%E5%8F%B0">跳转苹果地图</a>
+          </div>
+        </div>
+        </div>
+</section>
+
+<section class="city-section" id="menton">
+  <div class="city-top">
+    <h2>🇫🇷 芒通</h2>
+    <a class="route-link" target="_blank" href="https://www.google.com/maps/dir/43.7756,7.5044/43.775,7.5078/43.7765,7.5108/43.7761,7.5102/43.776,7.5104/43.7752,7.51/43.775,7.509/43.7747,7.5084/43.7745,7.5078/43.774,7.5068/43.7738,7.5062/43.7741,7.5015/43.7768,7.4938">打开芒通全路线</a>
+  </div>
+  <div class="spot-row"><button class="spot-btn" onclick="showSpot('menton', 'T1')">
+            <span class="spot-id">T1</span>
+            <span>芒通东侧火车站</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T2')">
+            <span class="spot-id">T2</span>
+            <span>沙滩海湾</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T3')">
+            <span class="spot-id">T3</span>
+            <span>芒通老城观景点</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T4')">
+            <span class="spot-id">T4</span>
+            <span>圣米歇尔石阶</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T5')">
+            <span class="spot-id">T5</span>
+            <span>圣米歇尔教堂</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T6')">
+            <span class="spot-id">T6</span>
+            <span>老城彩色小巷</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T7')">
+            <span class="spot-id">T7</span>
+            <span>冰箱贴小店</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T8')">
+            <span class="spot-id">T8</span>
+            <span>柠檬冰淇淋店</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T9')">
+            <span class="spot-id">T9</span>
+            <span>柠檬蛋糕店</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T10')">
+            <span class="spot-id">T10</span>
+            <span>本地香氛店</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T11')">
+            <span class="spot-id">T11</span>
+            <span>马赛皂伴手礼店</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T12')">
+            <span class="spot-id">T12</span>
+            <span>柠檬主题花园</span>
+        </button>
+<button class="spot-btn" onclick="showSpot('menton', 'T13')">
+            <span class="spot-id">T13</span>
+            <span>芒通主火车站</span>
+        </button></div>
+  <div class="map-grid">
+    <div class="map-box"><iframe id="menton-map" src="https://maps.google.com/maps?q=%E8%8A%92%E9%80%9A%E4%B8%9C%E4%BE%A7%E7%81%AB%E8%BD%A6%E7%AB%99+43.7756%2C7.5044&z=16&output=embed" loading="lazy" allowfullscreen></iframe></div>
+    <div class="info-box">
+      <div class="info-badge" id="menton-id">T1</div>
+      <div class="info-title" id="menton-name">芒通东侧火车站</div>
+      <div class="info-type" id="menton-type">交通</div>
+      <div class="info-note" id="menton-note">芒通行程起点。从这里开始走海滩和老城更顺，不用从主火车站折返。</div>
+      <div class="info-actions">
+        <a class="g" id="menton-google" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7756,7.5044">跳转谷歌地图</a>
+        <a class="a" id="menton-apple" target="_blank" href="https://maps.apple.com/?ll=43.7756,7.5044&q=%E8%8A%92%E9%80%9A%E4%B8%9C%E4%BE%A7%E7%81%AB%E8%BD%A6%E7%AB%99">跳转苹果地图</a>
+      </div>
+    </div>
+  </div>
+  <div class="list-title">芒通打卡点说明</div>
+  <div class="card-grid">
+        <div class="mini-card" id="card-T1">
+          <div class="card-head"><span class="pill">T1</span><b>芒通东侧火车站</b></div>
+          <div class="type">交通</div>
+          <p>芒通行程起点。从这里开始走海滩和老城更顺，不用从主火车站折返。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7756,7.5044">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7756,7.5044&q=%E8%8A%92%E9%80%9A%E4%B8%9C%E4%BE%A7%E7%81%AB%E8%BD%A6%E7%AB%99">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T2">
+          <div class="card-head"><span class="pill">T2</span><b>沙滩海湾</b></div>
+          <div class="type">海滩</div>
+          <p>芒通经典海滩。可以拍彩色老城和海岸线，是进入芒通老城前的第一个看海点。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.775,7.5078">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.775,7.5078&q=%E6%B2%99%E6%BB%A9%E6%B5%B7%E6%B9%BE">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T3">
+          <div class="card-head"><span class="pill">T3</span><b>芒通老城观景点</b></div>
+          <div class="type">观景点</div>
+          <p>拍彩色老城、海湾和蔚蓝海岸的全景机位。适合作为芒通最重要的拍照点之一。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7765,7.5108">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7765,7.5108&q=%E8%8A%92%E9%80%9A%E8%80%81%E5%9F%8E%E8%A7%82%E6%99%AF%E7%82%B9">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T4">
+          <div class="card-head"><span class="pill">T4</span><b>圣米歇尔石阶</b></div>
+          <div class="type">拍照点</div>
+          <p>通往教堂的网红阶梯。适合拍人像、台阶纵深和老城层次感。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7761,7.5102">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7761,7.5102&q=%E5%9C%A3%E7%B1%B3%E6%AD%87%E5%B0%94%E7%9F%B3%E9%98%B6">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T5">
+          <div class="card-head"><span class="pill">T5</span><b>圣米歇尔教堂</b></div>
+          <div class="type">教堂</div>
+          <p>芒通老城的巴洛克风格地标。外立面和广场都很有南法色彩。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.776,7.5104">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.776,7.5104&q=%E5%9C%A3%E7%B1%B3%E6%AD%87%E5%B0%94%E6%95%99%E5%A0%82">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T6">
+          <div class="card-head"><span class="pill">T6</span><b>老城彩色小巷</b></div>
+          <div class="type">老城小巷</div>
+          <p>黄、橙、粉色建筑很多，适合慢慢逛和随手拍。这里是芒通最有南法感的街区。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7752,7.51">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7752,7.51&q=%E8%80%81%E5%9F%8E%E5%BD%A9%E8%89%B2%E5%B0%8F%E5%B7%B7">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T7">
+          <div class="card-head"><span class="pill">T7</span><b>冰箱贴小店</b></div>
+          <div class="type">购物</div>
+          <p>适合买冰箱贴、明信片等芒通纪念品。可以作为老城购物停留点。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.775,7.509">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.775,7.509&q=%E5%86%B0%E7%AE%B1%E8%B4%B4%E5%B0%8F%E5%BA%97">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T8">
+          <div class="card-head"><span class="pill">T8</span><b>柠檬冰淇淋店</b></div>
+          <div class="type">甜品</div>
+          <p>重点试柠檬雪酪、柑橘口味。酸甜清爽，很适合芒通。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7747,7.5084">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7747,7.5084&q=%E6%9F%A0%E6%AA%AC%E5%86%B0%E6%B7%87%E6%B7%8B%E5%BA%97">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T9">
+          <div class="card-head"><span class="pill">T9</span><b>柠檬蛋糕店</b></div>
+          <div class="type">甜品</div>
+          <p>主打芒通柠檬甜点。属于网红小吃点，可以买来尝一下。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7745,7.5078">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7745,7.5078&q=%E6%9F%A0%E6%AA%AC%E8%9B%8B%E7%B3%95%E5%BA%97">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T10">
+          <div class="card-head"><span class="pill">T10</span><b>本地香氛店</b></div>
+          <div class="type">香氛</div>
+          <p>芒通本地香氛工坊。适合买带有柠檬、柑橘气息的香水或小礼物。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.774,7.5068">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.774,7.5068&q=%E6%9C%AC%E5%9C%B0%E9%A6%99%E6%B0%9B%E5%BA%97">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T11">
+          <div class="card-head"><span class="pill">T11</span><b>马赛皂伴手礼店</b></div>
+          <div class="type">购物</div>
+          <p>适合买香皂、香氛类小礼物和纪念品。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7738,7.5062">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7738,7.5062&q=%E9%A9%AC%E8%B5%9B%E7%9A%82%E4%BC%B4%E6%89%8B%E7%A4%BC%E5%BA%97">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T12">
+          <div class="card-head"><span class="pill">T12</span><b>柠檬主题花园</b></div>
+          <div class="type">花园</div>
+          <p>芒通市中心花园，和柠檬节氛围相关。适合作为回火车站前的散步收尾点。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7741,7.5015">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7741,7.5015&q=%E6%9F%A0%E6%AA%AC%E4%B8%BB%E9%A2%98%E8%8A%B1%E5%9B%AD">跳转苹果地图</a>
+          </div>
+        </div>
+        
+
+        <div class="mini-card" id="card-T13">
+          <div class="card-head"><span class="pill">T13</span><b>芒通主火车站</b></div>
+          <div class="type">交通</div>
+          <p>从这里坐火车回尼斯，然后去吃晚饭。</p>
+          <div class="links">
+            <a class="g" target="_blank" href="https://www.google.com/maps/search/?api=1&query=43.7768,7.4938">跳转谷歌地图</a>
+            <a class="a" target="_blank" href="https://maps.apple.com/?ll=43.7768,7.4938&q=%E8%8A%92%E9%80%9A%E4%B8%BB%E7%81%AB%E8%BD%A6%E7%AB%99">跳转苹果地图</a>
+          </div>
+        </div>
+        </div>
+</section>
+
+</div>
+
+<script>
+const DATA = {"monaco": [{"id": "M1", "name": "摩纳哥火车站", "lat": 43.7381, "lng": 7.421, "note": "摩纳哥行程起点。出站后先去游客中心拿免费地图和景点手册。", "type": "交通"}, {"id": "M2", "name": "摩纳哥游客中心", "lat": 43.7385, "lng": 7.4215, "note": "这里主要用来拿免费地图、景点手册，并询问护照纪念章应该去哪里盖。", "type": "游客中心"}, {"id": "M3", "name": "蒙特卡洛大赌场", "lat": 43.7396, "lng": 7.4275, "note": "摩纳哥最经典的地标之一。重点拍赌场正门、台阶、广场喷泉、豪车区和电影感建筑外观。", "type": "赌场/地标"}, {"id": "M4", "name": "摩纳哥F1赛道", "lat": 43.7388, "lng": 7.425, "note": "摩纳哥城市赛道打卡点。适合拍赛道弯道、港口边道路和跑车氛围。", "type": "F1打卡"}, {"id": "M5", "name": "王子汽车博物馆", "lat": 43.7325, "lng": 7.4198, "note": "展示摩纳哥亲王收藏的古董车、老爷车和赛车。喜欢汽车可以进去，不进也可以作为顺路打卡点。", "type": "博物馆"}, {"id": "M6", "name": "海洋博物馆", "lat": 43.7308, "lng": 7.4256, "note": "建筑本身很壮观，位于靠海悬崖边。适合拍蓝白地中海背景和建筑外观。", "type": "博物馆/海景"}, {"id": "M7", "name": "圣马丁花园", "lat": 43.7303, "lng": 7.4246, "note": "海边花园步道，适合看摩纳哥港口、地中海和悬崖景观。", "type": "花园"}, {"id": "M8", "name": "摩纳哥大教堂", "lat": 43.7301, "lng": 7.4228, "note": "白色教堂地标，格蕾丝王妃长眠于此。外面蓝天、白墙、棕榈树很出片。", "type": "教堂"}, {"id": "M9", "name": "王子宫殿观景台", "lat": 43.7313, "lng": 7.4198, "note": "可以俯瞰摩纳哥港、游艇和密集城市景观。黄昏或傍晚光线会更好。", "type": "王宫/观景台"}], "menton": [{"id": "T1", "name": "芒通东侧火车站", "lat": 43.7756, "lng": 7.5044, "note": "芒通行程起点。从这里开始走海滩和老城更顺，不用从主火车站折返。", "type": "交通"}, {"id": "T2", "name": "沙滩海湾", "lat": 43.775, "lng": 7.5078, "note": "芒通经典海滩。可以拍彩色老城和海岸线，是进入芒通老城前的第一个看海点。", "type": "海滩"}, {"id": "T3", "name": "芒通老城观景点", "lat": 43.7765, "lng": 7.5108, "note": "拍彩色老城、海湾和蔚蓝海岸的全景机位。适合作为芒通最重要的拍照点之一。", "type": "观景点"}, {"id": "T4", "name": "圣米歇尔石阶", "lat": 43.7761, "lng": 7.5102, "note": "通往教堂的网红阶梯。适合拍人像、台阶纵深和老城层次感。", "type": "拍照点"}, {"id": "T5", "name": "圣米歇尔教堂", "lat": 43.776, "lng": 7.5104, "note": "芒通老城的巴洛克风格地标。外立面和广场都很有南法色彩。", "type": "教堂"}, {"id": "T6", "name": "老城彩色小巷", "lat": 43.7752, "lng": 7.51, "note": "黄、橙、粉色建筑很多，适合慢慢逛和随手拍。这里是芒通最有南法感的街区。", "type": "老城小巷"}, {"id": "T7", "name": "冰箱贴小店", "lat": 43.775, "lng": 7.509, "note": "适合买冰箱贴、明信片等芒通纪念品。可以作为老城购物停留点。", "type": "购物"}, {"id": "T8", "name": "柠檬冰淇淋店", "lat": 43.7747, "lng": 7.5084, "note": "重点试柠檬雪酪、柑橘口味。酸甜清爽，很适合芒通。", "type": "甜品"}, {"id": "T9", "name": "柠檬蛋糕店", "lat": 43.7745, "lng": 7.5078, "note": "主打芒通柠檬甜点。属于网红小吃点，可以买来尝一下。", "type": "甜品"}, {"id": "T10", "name": "本地香氛店", "lat": 43.774, "lng": 7.5068, "note": "芒通本地香氛工坊。适合买带有柠檬、柑橘气息的香水或小礼物。", "type": "香氛"}, {"id": "T11", "name": "马赛皂伴手礼店", "lat": 43.7738, "lng": 7.5062, "note": "适合买香皂、香氛类小礼物和纪念品。", "type": "购物"}, {"id": "T12", "name": "柠檬主题花园", "lat": 43.7741, "lng": 7.5015, "note": "芒通市中心花园，和柠檬节氛围相关。适合作为回火车站前的散步收尾点。", "type": "花园"}, {"id": "T13", "name": "芒通主火车站", "lat": 43.7768, "lng": 7.4938, "note": "从这里坐火车回尼斯，然后去吃晚饭。", "type": "交通"}]};
+
+function googlePlace(lat,lng) {
+  return `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+}
+function applePlace(name,lat,lng) {
+  return `https://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(name)}`;
+}
+function embedMap(lat,lng,name) {
+  return `https://maps.google.com/maps?q=${encodeURIComponent(name + ' ' + lat + ',' + lng)}&z=16&output=embed`;
+}
+function showSpot(city, id) {
+  const p = DATA[city].find(x => x.id === id);
+  document.getElementById(`${city}-map`).src = embedMap(p.lat,p.lng,p.name);
+  document.getElementById(`${city}-id`).textContent = p.id;
+  document.getElementById(`${city}-name`).textContent = p.name;
+  document.getElementById(`${city}-type`).textContent = p.type;
+  document.getElementById(`${city}-note`).textContent = p.note;
+  document.getElementById(`${city}-google`).href = googlePlace(p.lat,p.lng);
+  document.getElementById(`${city}-apple`).href = applePlace(p.name,p.lat,p.lng);
+  document.querySelectorAll(`#${city} .spot-btn`).forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim().startsWith(id));
+  });
+}
+showSpot('monaco','M1');
+showSpot('menton','T1');
+</script>
+</body>
+</html>

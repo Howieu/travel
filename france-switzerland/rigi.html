@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>rigi｜瑞吉山一日路线交互式地图</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  :root{
+    --bg:#f5f7fb;--card:#fff;--line:#dbe4ef;--text:#152033;--muted:#5b6779;--blue:#0f62fe;--blue-2:#eef5ff;
+    --green:#eefaf1;--green-b:#bfe6cb;--orange:#fff7ed;--orange-b:#fed7aa;--gray:#f8fafc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+  header{padding:18px 16px 14px;background:linear-gradient(135deg,#edf6ff,#ffffff);border-bottom:1px solid var(--line)}
+  h1{margin:0 0 8px;font-size:24px;line-height:1.25}
+  .sub{font-size:14px;color:var(--muted);line-height:1.6}
+  .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;padding:12px 16px;background:#fff;border-bottom:1px solid var(--line)}
+  .mini{padding:12px 14px;border-radius:16px;border:1px solid #cfe0ff;background:var(--blue-2)}
+  .mini.green{background:var(--green);border-color:var(--green-b)}
+  .mini.orange{background:var(--orange);border-color:var(--orange-b)}
+  .mini .label{font-size:12px;color:#445468;margin-bottom:4px}
+  .mini .value{font-size:20px;font-weight:700;line-height:1.2}
+  .mini .desc{font-size:13px;color:#526174;line-height:1.45;margin-top:5px}
+  .navwrap{padding:12px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:1000}
+  .navtitle{font-size:13px;font-weight:700;margin:0 0 8px;color:#334155}
+  .tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;gap:8px}
+  .tabs button{white-space:nowrap;border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:9px 12px;font-size:14px;color:#243247;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .tabs button.active{background:var(--blue);border-color:var(--blue);color:#fff}
+  #map{height:52vh;min-height:390px;width:100%}
+  .wrap{padding:14px 16px 28px;display:grid;gap:14px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 2px 10px rgba(15,23,42,.05)}
+  .card h2{margin:0 0 10px;font-size:17px}
+  .card p,.card li{font-size:14px;line-height:1.6;color:#334155}
+  .timeline{display:grid;gap:10px}
+  .step{display:grid;grid-template-columns:82px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed #d7dee7}
+  .step:last-child{border-bottom:none}
+  .time{font-weight:700;color:var(--blue);font-size:14px}
+  .content b{display:block;margin-bottom:4px;font-size:14px;color:#172033}
+  .tag{display:inline-block;padding:4px 8px;border-radius:999px;background:#eef2ff;border:1px solid #dbeafe;font-size:12px;margin:2px 5px 2px 0;color:#334155}
+  .stop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:12px}
+  .stop-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 2px 10px rgba(15,23,42,.05)}
+  .stop-card .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:999px;background:var(--blue);color:#fff;font-size:13px;font-weight:700;flex:0 0 auto}
+  .stop-card h3{margin:0;font-size:16px;line-height:1.35}
+  .meta{font-size:13px;color:#566579;margin-top:6px;line-height:1.5}
+  .note{background:#f8fafc;border:1px solid #dbe4ef;border-radius:14px;padding:10px 12px;margin-top:10px;font-size:14px;line-height:1.6;color:#334155}
+  .transport-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .transport-buttons a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:12px;text-decoration:none;font-size:13px;font-weight:600;border:1px solid #d3dce6;background:#fff;color:#1f2a37}
+  .transport-buttons a:hover{background:#f8fbff}
+  .leaflet-popup-content{font-size:14px;line-height:1.55;min-width:250px}
+  .foot{font-size:12px;color:#6b7280;line-height:1.55}
+</style>
+</head>
+<body>
+<header>
+  <h1>rigi｜瑞吉山经典环线：卢塞恩上船 → Vitznau → Rigi Kulm → Kaltbad → Weggis → 卢塞恩</h1>
+  <div class="sub">这个文件按你给的瑞吉山打卡方式制作：9 点左右上船看最干净湖光，先到 Rigi Kulm 山顶拍全景，中途在 Rigi Kaltbad 小镇喝咖啡或泡温泉，再坐缆车下 Weggis，最后从 Weggis 码头坐船回卢塞恩。每个打卡点都有独立按钮、地图定位、Google Maps、Apple 地图和 SBB 查询。</div>
+</header>
+
+<section class="summary">
+  <div class="mini green">
+    <div class="label">推荐出发节奏</div>
+    <div class="value">07:35–07:50 离开酒店</div>
+    <div class="desc">从 Olten 去卢塞恩，再赶 9 点左右的湖船。</div>
+  </div>
+  <div class="mini">
+    <div class="label">核心玩法</div>
+    <div class="value">船 + 登山火车 + 缆车</div>
+    <div class="desc">卢塞恩船到 Vitznau，登山火车上 Rigi Kulm，Kaltbad 缆车下 Weggis。</div>
+  </div>
+  <div class="mini orange">
+    <div class="label">Friends 通票适配度</div>
+    <div class="value">比 First 更适合</div>
+    <div class="desc">Friends 按 GA 有效范围；Rigi 官方写 GA / Swiss Travel Pass 可免费乘坐。</div>
+  </div>
+  <div class="mini">
+    <div class="label">拍照逻辑</div>
+    <div class="value">上午湖光，下午远景</div>
+    <div class="desc">上午坐船拍湖面层次，山顶拍全景，下午 Weggis / 卢塞恩顺光更舒服。</div>
+  </div>
+</section>
+
+<div class="navwrap">
+  <div class="navtitle">点击任意地点按钮即可跳转到对应打卡点</div>
+  <div class="tabs" id="jumpButtons"></div>
+</div>
+<div id="map"></div>
+
+<div class="wrap">
+  <div class="grid">
+    <div class="card">
+      <h2>这条路线怎么走最顺</h2>
+      <p><span class="tag">Olten</span><span class="tag">卢塞恩</span><span class="tag">Vitznau</span><span class="tag">Rigi Kulm</span><span class="tag">Rigi Kaltbad</span><span class="tag">Weggis</span><span class="tag">卢塞恩</span></p>
+      <p>你给的攻略是非常经典的瑞吉山环线：先用湖船进入风景，再用登山火车上山，最后从 Kaltbad 坐缆车下到 Weggis 回船。这个顺序比原路返回更有层次，也更适合拍照。</p>
+    </div>
+
+    <div class="card">
+      <h2>Friends 通票核对结论</h2>
+      <p><b>这条 Rigi 线基本适合用 Friends。</b> SBB 写明 Friends Day Pass for Youth 的有效范围是 GA Travelcard 有效范围；Rigi 官方售票页写明 <b>GA and Swiss Travel Pass free ride</b>，不需要另外订 Rigi 车票。</p>
+      <p><b>湖船也通常包含。</b> 因为 Friends 有效范围跟 GA 一样，而 GA 有效范围包含公共交通和船。你当天仍建议点 SBB 查询确认具体船班和连接。</p>
+      <p class="foot">注意：餐饮、咖啡、温泉 Spa、私人消费不属于通票范围。</p>
+    </div>
+
+    <div class="card">
+      <h2>不包含 / 需要额外付费的部分</h2>
+      <ul>
+        <li><b>Rigi Kaltbad 温泉 Spa</b>：如果要泡温泉，需要单独买票。</li>
+        <li><b>咖啡、餐厅、纪念品</b>：单独消费。</li>
+        <li><b>特殊游船餐饮或高级舱差价</b>：如果涉及餐食、特殊座位或升舱，需要另付。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>当天时间轴</h2>
+    <div class="timeline">
+      <div class="step"><div class="time">06:30–07:10</div><div class="content"><b>酒店早餐</b><span>正常吃早餐，准备好相机、外套和充电宝。</span></div></div>
+      <div class="step"><div class="time">07:35–07:50</div><div class="content"><b>离开 Hotel Olten</b><span>步行去 Olten 火车站，坐车去卢塞恩。</span></div></div>
+      <div class="step"><div class="time">09:00 左右</div><div class="content"><b>卢塞恩上船</b><span>这个时间湖光通常比较干净，适合拍湖面和雪山层次。</span></div></div>
+      <div class="step"><div class="time">10:00 左右</div><div class="content"><b>Vitznau 换登山火车</b><span>从湖船换红色登山齿轨火车上山。</span></div></div>
+      <div class="step"><div class="time">10:40–12:20</div><div class="content"><b>Rigi Kulm 山顶</b><span>拍阿尔卑斯山、卢塞恩湖和 360° 全景。</span></div></div>
+      <div class="step"><div class="time">12:40–15:00</div><div class="content"><b>Rigi Kaltbad 小镇</b><span>喝咖啡、散步，或泡温泉。</span></div></div>
+      <div class="step"><div class="time">15:00–16:00</div><div class="content"><b>缆车下 Weggis</b><span>从 Kaltbad 坐缆车下山，步行去 Weggis 码头。</span></div></div>
+      <div class="step"><div class="time">16:00–17:00</div><div class="content"><b>Weggis 坐船回卢塞恩</b><span>下午顺光更适合拍远景和湖岸。</span></div></div>
+      <div class="step"><div class="time">17:30 后</div><div class="content"><b>卢塞恩可选慢逛</b><span>卡佩尔廊桥、湖边、老城，或者吃晚饭后回 Olten。</span></div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>每个打卡点独立跳转</h2>
+    <p>下面每张卡就是一个独立打卡点。点击 <b>定位到地图</b> 会跳回地图并打开该点说明；点击 <b>Google Maps</b>、<b>Apple 地图</b> 或 <b>SBB App</b> 可以直接跳转到对应软件/网页。</p>
+  </div>
+
+  <div class="stop-grid" id="stopGrid"></div>
+</div>
+
+<script>
+const stops = [{"id": "hotel", "no": 1, "zh": "Hotel Olten｜酒店", "lat": 47.351, "lng": 7.9063, "time": "07:35–07:50 推荐离开", "stay": "早餐后出发", "purpose": "当天出发点。目标是先到卢塞恩，然后赶 9 点左右的湖船。", "note": "如果你想赶最干净的湖光，建议不要晚于 07:50 离开酒店。早餐可 06:30–07:10 吃完。", "google": "https://www.google.com/maps/search/?api=1&query=Hotel%20Olten%20Bahnhofstrasse%205%20Olten", "apple": "https://maps.apple.com/?ll=47.351,7.9063&q=Hotel%20Olten", "sbb": "https://app.sbbmobile.ch/timetable?from=Olten&to=Luzern", "zoom": 15}, {"id": "olten", "no": 2, "zh": "Olten 火车站", "lat": 47.3519, "lng": 7.9078, "time": "约 07:50–08:05 出发", "stay": "提前到站", "purpose": "从 Olten 坐火车去卢塞恩，接湖船。", "note": "具体班次以 SBB 当天为准；地图里 SBB 按钮已预设 Olten → Luzern。", "google": "https://www.google.com/maps/dir/?api=1&origin=Hotel%20Olten&destination=Olten%20Bahnhof&travelmode=walking", "apple": "https://maps.apple.com/?ll=47.3519,7.9078&q=Olten%20Bahnhof", "sbb": "https://app.sbbmobile.ch/timetable?from=Olten&to=Luzern", "zoom": 15}, {"id": "luzernbahnhof", "no": 3, "zh": "卢塞恩火车站", "lat": 47.0502, "lng": 8.3102, "time": "约 08:35–08:50 到达", "stay": "10–20 分钟", "purpose": "火车到达后，直接去旁边码头，不要在市区逛太久。", "note": "卢塞恩火车站和湖船码头非常近，出站后跟着湖边/码头方向走。", "google": "https://www.google.com/maps/search/?api=1&query=Luzern%20Bahnhof", "apple": "https://maps.apple.com/?ll=47.0502,8.3102&q=Luzern%20Bahnhof", "sbb": "https://app.sbbmobile.ch/timetable?from=Olten&to=Luzern", "zoom": 15}, {"id": "luzernpier", "no": 4, "zh": "卢塞恩码头｜上船点", "lat": 47.0507, "lng": 8.3117, "time": "09:00 左右上船", "stay": "等船 + 上船", "purpose": "这是瑞吉经典环线的开始：先坐船穿过卢塞恩湖去 Vitznau。", "note": "你给的攻略说 9 点左右上船湖光最干净，这个时间很适合。具体船班点 SBB 或 SGV 查询。", "google": "https://www.google.com/maps/search/?api=1&query=Luzern%20Bahnhofquai", "apple": "https://maps.apple.com/?ll=47.0507,8.3117&q=Luzern%20Bahnhofquai", "sbb": "https://app.sbbmobile.ch/timetable?from=Luzern%20Bahnhofquai&to=Vitznau", "zoom": 16}, {"id": "vitznau", "no": 5, "zh": "Vitznau 码头 / 登山火车站", "lat": 47.0091, "lng": 8.4842, "time": "约 10:00 到达", "stay": "换乘登山火车", "purpose": "船到 Vitznau 后，换乘红色登山齿轨火车上 Rigi Kulm。", "note": "Rigi 官方说明，卢塞恩到 Vitznau 坐船约 1 小时，Vitznau 到 Rigi Kulm 登山火车约 30 分钟。", "google": "https://www.google.com/maps/search/?api=1&query=Vitznau%20Bahnhof%20Rigi", "apple": "https://maps.apple.com/?ll=47.0091,8.4842&q=Vitznau", "sbb": "https://app.sbbmobile.ch/timetable?from=Vitznau&to=Rigi%20Kulm", "zoom": 16}, {"id": "rigikulm", "no": 6, "zh": "Rigi Kulm｜山顶景观台", "lat": 47.0568, "lng": 8.4857, "time": "约 10:40–12:20", "stay": "1–1.5 小时", "purpose": "瑞吉山最高点，适合拍阿尔卑斯山、卢塞恩湖和全景照。", "note": "山顶风可能比较大，先拍照再慢慢看景。上午人像可能逆光，但湖面层次好。", "google": "https://www.google.com/maps/search/?api=1&query=Rigi%20Kulm", "apple": "https://maps.apple.com/?ll=47.0568,8.4857&q=Rigi%20Kulm", "sbb": "https://app.sbbmobile.ch/timetable?from=Vitznau&to=Rigi%20Kulm", "zoom": 15}, {"id": "kaltbad", "no": 7, "zh": "Rigi Kaltbad｜小镇 / 咖啡 / 温泉", "lat": 47.0448, "lng": 8.466, "time": "约 12:40–15:00", "stay": "1.5–2 小时", "purpose": "中途慢下来休息的点，可以喝咖啡、逛小镇，或者去 Mineralbad & Spa。", "note": "从 Rigi Kulm 下来途中在 Rigi Kaltbad 下。小镇和缆车站、温泉都很近。", "google": "https://www.google.com/maps/search/?api=1&query=Rigi%20Kaltbad", "apple": "https://maps.apple.com/?ll=47.0448,8.466&q=Rigi%20Kaltbad", "sbb": "https://app.sbbmobile.ch/timetable?from=Rigi%20Kulm&to=Rigi%20Kaltbad-First", "zoom": 16}, {"id": "kaltbadcable", "no": 8, "zh": "Rigi Kaltbad 缆车站", "lat": 47.0452, "lng": 8.465, "time": "约 15:00–15:30", "stay": "排队 + 下山", "purpose": "从 Rigi Kaltbad 坐缆车下到 Weggis。", "note": "Rigi 官方说明，Weggis ↔ Rigi Kaltbad 缆车约 10 分钟，山站与 Rigi Kaltbad-First 火车站相距约 200 米。", "google": "https://www.google.com/maps/search/?api=1&query=Rigi%20Kaltbad%20Luftseilbahn", "apple": "https://maps.apple.com/?ll=47.0452,8.465&q=Rigi%20Kaltbad%20cable%20car", "sbb": "https://app.sbbmobile.ch/timetable?from=Rigi%20Kaltbad-First&to=Weggis", "zoom": 17}, {"id": "weggiscable", "no": 9, "zh": "Weggis 缆车下站", "lat": 47.0343, "lng": 8.4334, "time": "约 15:20–15:50", "stay": "短暂停留", "purpose": "缆车下山后的落地点。接下来步行去 Weggis 码头。", "note": "从缆车站走到 Weggis 码头通常约 10–15 分钟，你给的攻略写 5 分钟也可以按快走理解。", "google": "https://www.google.com/maps/search/?api=1&query=Weggis%20Luftseilbahn", "apple": "https://maps.apple.com/?ll=47.0343,8.4334&q=Weggis%20cable%20car%20station", "sbb": "https://app.sbbmobile.ch/timetable?from=Weggis&to=Luzern", "zoom": 16}, {"id": "weggispier", "no": 10, "zh": "Weggis 码头｜回卢塞恩上船点", "lat": 47.0329, "lng": 8.4324, "time": "约 16:00–17:00 上船", "stay": "看船班", "purpose": "从这里坐船回卢塞恩，完成瑞吉经典环线。", "note": "如果你想拍下午顺光远景，可以在 Weggis 湖边多留一会儿，再坐晚一点的船。", "google": "https://www.google.com/maps/search/?api=1&query=Weggis%20Schiffstation", "apple": "https://maps.apple.com/?ll=47.0329,8.4324&q=Weggis%20Schiffstation", "sbb": "https://app.sbbmobile.ch/timetable?from=Weggis&to=Luzern%20Bahnhofquai", "zoom": 16}, {"id": "luzernreturn", "no": 11, "zh": "卢塞恩码头｜回到市区", "lat": 47.0507, "lng": 8.3117, "time": "约 17:00–18:00", "stay": "可短逛", "purpose": "坐船回到卢塞恩后，可以看卡佩尔廊桥、湖边和老城。", "note": "如果你们当天不想太赶，可以在卢塞恩吃晚饭再回 Olten。", "google": "https://www.google.com/maps/search/?api=1&query=Luzern%20Bahnhofquai", "apple": "https://maps.apple.com/?ll=47.0507,8.3117&q=Luzern%20Bahnhofquai", "sbb": "https://app.sbbmobile.ch/timetable?from=Luzern&to=Olten", "zoom": 16}, {"id": "kapell", "no": 12, "zh": "卡佩尔廊桥｜卢塞恩顺路打卡", "lat": 47.0517, "lng": 8.3076, "time": "可选 17:30–18:30", "stay": "30–60 分钟", "purpose": "如果回到卢塞恩后还有体力，这是最顺路的市区经典拍照点。", "note": "这个点是可选项；如果下雨或太累，可以直接去火车站返程。", "google": "https://www.google.com/maps/search/?api=1&query=Kapellbr%C3%BCcke%20Luzern", "apple": "https://maps.apple.com/?ll=47.0517,8.3076&q=Kapellbr%C3%BCcke%20Luzern", "sbb": "https://app.sbbmobile.ch/timetable?from=Luzern&to=Olten", "zoom": 16}, {"id": "oltenreturn", "no": 13, "zh": "Olten 火车站｜返程", "lat": 47.3519, "lng": 7.9078, "time": "约 20:00–21:30 到达", "stay": "回酒店", "purpose": "返程到 Olten 后步行回酒店。", "note": "如果你愿意晚一点到酒店，可以在卢塞恩吃晚饭后再坐车回 Olten。", "google": "https://www.google.com/maps/dir/?api=1&origin=Olten%20Bahnhof&destination=Hotel%20Olten&travelmode=walking", "apple": "https://maps.apple.com/?ll=47.3519,7.9078&q=Olten%20Bahnhof", "sbb": "https://app.sbbmobile.ch/timetable?from=Luzern&to=Olten", "zoom": 15}];
+
+const map = L.map('map').setView([47.04,8.39], 11);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:18, attribution:'© OpenStreetMap'}).addTo(map);
+const markers = [];
+
+stops.forEach((s) => {
+  const popup = `
+    <b>${s.no}. ${s.zh}</b><br>
+    <b>建议时间：</b>${s.time}<br>
+    <b>建议停留：</b>${s.stay}<br>
+    <b>这里是干嘛的：</b>${s.purpose}<br>
+    <b>提醒：</b>${s.note}<br><br>
+    <a href="${s.google}" target="_blank">Google Maps</a> ｜
+    <a href="${s.apple}" target="_blank">Apple 地图</a> ｜
+    <a href="${s.sbb}" target="_blank">SBB App</a>`;
+  const marker = L.marker([s.lat,s.lng]).addTo(map).bindPopup(popup);
+  markers.push(marker);
+});
+
+const route = stops.map(s => [s.lat, s.lng]);
+L.polyline(route,{weight:4,opacity:.82,dashArray:'8,8'}).addTo(map);
+L.control.scale({imperial:false}).addTo(map);
+
+const jumpButtons = document.getElementById('jumpButtons');
+stops.forEach((s, i) => {
+  const btn = document.createElement('button');
+  btn.textContent = `${s.no}. ${s.zh}`;
+  btn.onclick = () => {
+    document.querySelectorAll('#jumpButtons button').forEach(x => x.classList.remove('active'));
+    btn.classList.add('active');
+    map.setView([s.lat,s.lng], s.zoom || 14);
+    markers[i].openPopup();
+    const card = document.getElementById(`card-${s.id}`);
+    if (card) card.scrollIntoView({behavior:'smooth', block:'start'});
+  };
+  jumpButtons.appendChild(btn);
+});
+
+const stopGrid = document.getElementById('stopGrid');
+stops.forEach((s, i) => {
+  const card = document.createElement('div');
+  card.className = 'stop-card';
+  card.id = `card-${s.id}`;
+  card.innerHTML = `
+    <div class="top">
+      <div><div class="num">${s.no}</div></div>
+      <div style="flex:1">
+        <h3>${s.zh}</h3>
+        <div class="meta"><b>建议时间：</b>${s.time}<br><b>建议停留：</b>${s.stay}</div>
+      </div>
+    </div>
+    <div class="note">
+      <div><b>这里是干嘛的：</b>${s.purpose}</div>
+      <div style="margin-top:6px"><b>提醒：</b>${s.note}</div>
+    </div>
+    <div class="transport-buttons">
+      <a href="#" data-index="${i}" class="focus-link">定位到地图</a>
+      <a href="${s.google}" target="_blank">Google Maps</a>
+      <a href="${s.apple}" target="_blank">Apple 地图</a>
+      <a href="${s.sbb}" target="_blank">SBB App</a>
+    </div>`;
+  stopGrid.appendChild(card);
+});
+
+document.querySelectorAll('.focus-link').forEach(el => {
+  el.addEventListener('click', function(e){
+    e.preventDefault();
+    const i = Number(this.getAttribute('data-index'));
+    map.setView([stops[i].lat, stops[i].lng], stops[i].zoom || 14);
+    markers[i].openPopup();
+    window.scrollTo({top: document.querySelector('#map').offsetTop - 70, behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>

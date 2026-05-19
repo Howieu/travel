@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>阿姆斯特丹4天3夜交互式地图</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        /* 确保地图在移动端显示良好 */
+        #map { z-index: 1; }
+        .custom-popup .leaflet-popup-content-wrapper { border-radius: 0.75rem; }
+        .emoji-marker {
+            font-size: 20px;
+            background: white;
+            border-radius: 50%;
+            width: 32px; height: 32px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border: 2px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex flex-col md:flex-row h-screen overflow-hidden">
+
+    <!-- 侧边栏：行程列表与导航 -->
+    <div class="w-full md:w-1/3 lg:w-1/4 h-1/2 md:h-full bg-white shadow-lg flex flex-col z-10">
+        <div class="p-4 bg-blue-600 text-white shadow-md">
+            <h1 class="text-xl font-bold flex items-center gap-2">🌷 行程导航地图</h1>
+            <p class="text-sm text-blue-100 mt-1">点击地点在地图上查看，或直接唤起导航App</p>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto p-4 space-y-6" id="sidebar-content">
+            <!-- 动态生成的内容将放在这里 -->
+        </div>
+    </div>
+
+    <!-- 地图容器 -->
+    <div id="map" class="w-full h-1/2 md:h-full md:flex-1 relative">
+        <!-- 加载提示 -->
+        <div id="loading" class="absolute inset-0 bg-white/80 flex items-center justify-center z-[1000]">
+            <span class="text-gray-600 font-medium">地图加载中...</span>
+        </div>
+    </div>
+
+    <script>
+        // 核心地点数据 (新增了 Day 4 的备选地点)
+        const locations = [
+            { id: "hotel", name: "Hotel Flipper (住宿)", lat: 52.3469, lng: 4.9080, icon: "🏨", query: "Hotel Flipper Amsterdam", desc: "您的住宿大本营，靠近Amstel火车站。" },
+            { id: "airport", name: "史基浦机场", lat: 52.3105, lng: 4.7683, icon: "✈️", query: "Amsterdam Airport Schiphol", desc: "起降机场，交通枢纽。" },
+            { id: "zaanse", name: "桑斯安斯风车村", lat: 52.4729, lng: 4.8219, icon: "🌬️", query: "Zaanse Schans", desc: "经典荷兰风车、木鞋与奶酪。" },
+            { id: "zaandam", name: "赞丹 (乐高酒店)", lat: 52.4382, lng: 4.8193, icon: "🏢", query: "Inntel Hotels Amsterdam Zaandam", desc: "童话般的积木建筑打卡点。" },
+            { id: "vangogh", name: "梵高博物馆", lat: 52.3584, lng: 4.8811, icon: "🎨", query: "Van Gogh Museum", desc: "务必提前预约。世界最大梵高藏品库。" },
+            { id: "rijks", name: "荷兰国立博物馆", lat: 52.3600, lng: 4.8852, icon: "🏛️", query: "Rijksmuseum", desc: "气势恢宏的拱门与外部花园。" },
+            { id: "dam", name: "水坝广场 & 王宫", lat: 52.3729, lng: 4.8930, icon: "⛲", query: "Dam Square Amsterdam", desc: "阿姆斯特丹的心脏地带。" },
+            { id: "nine", name: "九街 (De Negen Straatjes)", lat: 52.3700, lng: 4.8850, icon: "🛍️", query: "De Negen Straatjes", desc: "充满文艺气息的运河购物街区。" },
+            { id: "flower", name: "水上花卉市场", lat: 52.3667, lng: 4.8911, icon: "💐", query: "Bloemenmarkt Amsterdam", desc: "水上漂浮的鲜花与纪念品集市。" },
+            { id: "redlight", name: "红灯区", lat: 52.3742, lng: 4.8981, icon: "🏮", query: "De Wallen Amsterdam", desc: "体验独特夜生活（切勿对橱窗拍照）。" },
+            { id: "keukenhof", name: "库肯霍夫花园", lat: 52.2700, lng: 4.5464, icon: "🌷", query: "Keukenhof", desc: "世界最大的郁金香花园。" },
+            { id: "tulipbarn", name: "The Tulip Barn", lat: 52.2858, lng: 4.5583, icon: "🚜", query: "The Tulip Barn Lisse", desc: "有超多拍照道具的真实花田。" },
+            { id: "stedelijk", name: "阿姆斯特丹市立博物馆", lat: 52.3580, lng: 4.8797, icon: "🖼️", query: "Stedelijk Museum Amsterdam", desc: "现当代艺术与设计的殿堂。" },
+            { id: "cuyp", name: "艾伯特市集", lat: 52.3557, lng: 4.8948, icon: "🧇", query: "Albert Cuyp Market", desc: "吃焦糖煎饼和生鲱鱼的好去处。" },
+            { id: "heineken", name: "喜力啤酒体验馆", lat: 52.3580, lng: 4.8926, icon: "🍻", query: "Heineken Experience", desc: "沉浸式了解啤酒酿造，顶楼品尝鲜啤。" }
+        ];
+
+        // 每日行程结构与完整路线导航 (Google Maps Directory URL)
+        // Day 4 包含了所有备选地点，您可以根据实际情况在 Google Maps 中跳过某个点
+        const itinerary = [
+            {
+                day: "Day 1 (3.30): 抵达入住",
+                places: ["airport", "hotel"],
+                route: "https://www.google.com/maps/dir/Amsterdam+Airport+Schiphol/Hotel+Flipper+Amsterdam"
+            },
+            {
+                day: "Day 2 (3.31): 风车与梵高",
+                places: ["hotel", "zaanse", "zaandam", "vangogh", "rijks", "redlight", "hotel"],
+                route: "https://www.google.com/maps/dir/Hotel+Flipper+Amsterdam/Zaanse+Schans/Inntel+Hotels+Amsterdam+Zaandam/Van+Gogh+Museum/Rijksmuseum/De+Wallen,+Amsterdam/Hotel+Flipper+Amsterdam"
+            },
+            {
+                day: "Day 3 (4.1): 城市漫步与郁金香",
+                places: ["hotel", "dam", "nine", "flower", "keukenhof", "tulipbarn", "hotel"],
+                route: "https://www.google.com/maps/dir/Hotel+Flipper+Amsterdam/Dam+Square/De+Negen+Straatjes/Bloemenmarkt/Keukenhof/The+Tulip+Barn+Lisse/Hotel+Flipper+Amsterdam"
+            },
+            {
+                day: "Day 4 (4.2): 自由探索与返程",
+                places: ["hotel", "stedelijk", "cuyp", "heineken", "airport"],
+                route: "https://www.google.com/maps/dir/Hotel+Flipper+Amsterdam/Stedelijk+Museum+Amsterdam/Albert+Cuyp+Market/Heineken+Experience/Amsterdam+Airport+Schiphol"
+            }
+        ];
+
+        // 初始化地图
+        const map = L.map('map').setView([52.3676, 4.9041], 11);
+        
+        // 使用 Google Maps 瓦片 (无需申请复杂的API Key即可直接显示原生谷歌地图)
+        L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            maxZoom: 20,
+            subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+            attribution: '&copy; Google Maps'
+        }).addTo(map);
+
+        // 移除加载提示
+        map.on('load', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
+        if(map.getSize().x > 0) document.getElementById('loading').style.display = 'none';
+
+        // 存储标记以便侧边栏联动
+        const markers = {};
+
+        // 生成 App 跳转链接
+        const getGoogleMapsLink = (query) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+        const getAppleMapsLink = (lat, lng, query) => `http://maps.apple.com/?q=${encodeURIComponent(query)}&ll=${lat},${lng}`;
+
+        // 添加标记点
+        locations.forEach(loc => {
+            const icon = L.divIcon({
+                html: `<div class="emoji-marker">${loc.icon}</div>`,
+                className: '',
+                iconSize: [32, 32],
+                iconAnchor: [16, 16]
+            });
+
+            const popupContent = `
+                <div class="text-center p-1 w-48">
+                    <div class="text-2xl mb-1">${loc.icon}</div>
+                    <h3 class="font-bold text-gray-800 mb-1">${loc.name}</h3>
+                    <p class="text-xs text-gray-500 mb-3">${loc.desc}</p>
+                    <div class="flex flex-col gap-2">
+                        <a href="${getGoogleMapsLink(loc.query)}" target="_blank" class="bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 py-1.5 px-3 rounded text-xs font-semibold flex items-center justify-center gap-1 shadow-sm transition">
+                            <svg class="w-4 h-4 text-blue-500" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                            打开 Google 地图
+                        </a>
+                        <a href="${getAppleMapsLink(loc.lat, loc.lng, loc.query)}" target="_blank" class="bg-black text-white hover:bg-gray-800 py-1.5 px-3 rounded text-xs font-semibold flex items-center justify-center gap-1 shadow-sm transition">
+                            <svg class="w-4 h-4" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                            打开 Apple 地图
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            const marker = L.marker([loc.lat, loc.lng], { icon: icon })
+                .bindPopup(popupContent, { className: 'custom-popup' })
+                .addTo(map);
+            
+            markers[loc.id] = { marker, data: loc };
+        });
+
+        // 调整视图以适应所有标记点
+        const bounds = L.latLngBounds(locations.map(loc => [loc.lat, loc.lng]));
+        map.fitBounds(bounds, { padding: [30, 30] });
+
+        // 渲染侧边栏内容
+        const sidebar = document.getElementById('sidebar-content');
+        
+        itinerary.forEach((dayPlan, index) => {
+            const dayCard = document.createElement('div');
+            dayCard.className = 'bg-white border border-gray-100 rounded-xl shadow-sm overflow-hidden';
+            
+            // 每日头部 & 一键导航按钮
+            const dayHeader = `
+                <div class="bg-gray-50 border-b border-gray-100 p-3 flex justify-between items-center">
+                    <h2 class="font-bold text-gray-800">${dayPlan.day}</h2>
+                    <a href="${dayPlan.route}" target="_blank" class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-semibold hover:bg-blue-200 transition flex items-center gap-1">
+                        🗺️ 一键路线
+                    </a>
+                </div>
+            `;
+            
+            // 地点列表
+            let placesHtml = '<div class="p-2 space-y-1">';
+            dayPlan.places.forEach(placeId => {
+                const loc = locations.find(l => l.id === placeId);
+                if(loc) {
+                    placesHtml += `
+                        <div onclick="focusMarker('${loc.id}')" class="flex items-center gap-3 p-2 hover:bg-blue-50 rounded-lg cursor-pointer transition">
+                            <span class="text-xl">${loc.icon}</span>
+                            <div class="flex-1">
+                                <h3 class="text-sm font-semibold text-gray-800">${loc.name}</h3>
+                            </div>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
+                    `;
+                }
+            });
+            placesHtml += '</div>';
+
+            dayCard.innerHTML = dayHeader + placesHtml;
+            sidebar.appendChild(dayCard);
+        });
+
+        // 点击侧边栏地点时，地图平移并打开弹窗
+        window.focusMarker = function(id) {
+            const item = markers[id];
+            if (item) {
+                // 如果在移动端，点击地点后让页面向下滚动一点以显示地图
+                if(window.innerWidth < 768) {
+                    document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+                }
+                
+                map.setView([item.data.lat, item.data.lng], 14, {
+                    animate: true,
+                    duration: 1
+                });
+                setTimeout(() => {
+                    item.marker.openPopup();
+                }, 300);
+            }
+        };
+    </script>
+</body>
+</html>

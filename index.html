@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Travel Routes</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f5f2;
+      --panel: #ffffff;
+      --text: #161616;
+      --muted: #5f6368;
+      --line: #deded8;
+      --accent: #0b57d0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 42px 20px 18px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 6vw, 58px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 720px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 20px 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+    }
+    .route {
+      display: flex;
+      min-height: 150px;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: inherit;
+      text-decoration: none;
+    }
+    .route:hover {
+      border-color: #b7c7ec;
+      box-shadow: 0 10px 24px rgba(30, 40, 55, .08);
+    }
+    .route h2 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+    .route p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .route span {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 650;
+    }
+    .secondary {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    .secondary h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .links a {
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 650;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Travel Routes</h1>
+    <p class="subtitle">Country and region folders for the migrated itinerary pages.</p>
+  </header>
+  <main>
+    <section class="grid" aria-label="Primary travel routes">
+      <a class="route" href="london/">
+        <div>
+          <h2>London</h2>
+          <p>London guide and itinerary.</p>
+        </div>
+        <span>Open london/</span>
+      </a>
+      <a class="route" href="france/">
+        <div>
+          <h2>France</h2>
+          <p>Paris itinerary and map page.</p>
+        </div>
+        <span>Open france/</span>
+      </a>
+      <a class="route" href="france-switzerland/">
+        <div>
+          <h2>France + Switzerland</h2>
+          <p>South France and Switzerland route collection.</p>
+        </div>
+        <span>Open france-switzerland/</span>
+      </a>
+      <a class="route" href="italy-switzerland/">
+        <div>
+          <h2>Italy + Switzerland</h2>
+          <p>Italy and Switzerland route plan.</p>
+        </div>
+        <span>Open italy-switzerland/</span>
+      </a>
+      <a class="route" href="netherlands/">
+        <div>
+          <h2>Netherlands</h2>
+          <p>Amsterdam interactive itinerary map.</p>
+        </div>
+        <span>Open netherlands/</span>
+      </a>
+      <a class="route" href="norway/">
+        <div>
+          <h2>Norway</h2>
+          <p>Tromso itinerary with embedded maps.</p>
+        </div>
+        <span>Open norway/</span>
+      </a>
+      <a class="route" href="spain/">
+        <div>
+          <h2>Spain</h2>
+          <p>Barcelona three-day itinerary.</p>
+        </div>
+        <span>Open spain/</span>
+      </a>
+    </section>
+    <section class="secondary" aria-label="Additional pages">
+      <h2>Additional pages</h2>
+      <div class="links">
+        <a href="london/map.html">London map</a>
+        <a href="spain/barcelona-map.html">Barcelona map</a>
+        <a href="france-switzerland/day2.html">France + Switzerland day 2</a>
+        <a href="france-switzerland/first.html">France + Switzerland first</a>
+        <a href="france-switzerland/plan.html">France + Switzerland plan</a>
+        <a href="france-switzerland/rigi.html">Rigi</a>
+        <a href="france-switzerland/zurich.html">Zurich</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

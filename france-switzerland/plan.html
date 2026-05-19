@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Plan</title>
+<style>
+  :root {
+    --bg:#f6f5f1; --card:#ffffff; --ink:#1d1d1f; --muted:#6b6b72;
+    --line:#e7e2d8; --accent:#111111; --blue:#1a73e8; --apple:#333333;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang SC","Hiragino Sans GB",sans-serif;
+  }
+  .layout { display:grid; grid-template-columns:410px 1fr; height:100vh; }
+  aside {
+    overflow:auto; padding:18px; border-right:1px solid var(--line); background:rgba(255,255,255,.72);
+    backdrop-filter:blur(10px);
+  }
+  main { display:flex; flex-direction:column; min-width:0; }
+  h1 { font-size:24px; margin:0 0 6px; letter-spacing:-.5px; }
+  .subtitle { font-size:13px; color:var(--muted); line-height:1.45; margin-bottom:14px; }
+  .tabs { display:flex; gap:8px; flex-wrap:wrap; padding:12px; background:#fff; border-bottom:1px solid var(--line); }
+  button {
+    border:1px solid var(--line); background:#fff; color:var(--ink); padding:9px 11px; border-radius:999px;
+    font-size:13px; cursor:pointer;
+  }
+  button.active { background:#111; color:#fff; border-color:#111; }
+  .mapwrap { flex:1; min-height:0; position:relative; background:#ddd; }
+  iframe { width:100%; height:100%; border:0; display:block; }
+  .route-title {
+    position:absolute; left:16px; top:16px; z-index:2; background:rgba(255,255,255,.94);
+    border:1px solid var(--line); border-radius:16px; padding:12px 14px; max-width:min(520px,calc(100% - 32px));
+    box-shadow:0 10px 28px rgba(0,0,0,.12);
+  }
+  .route-title b { display:block; font-size:15px; margin-bottom:3px; }
+  .route-title span { font-size:12px; color:var(--muted); }
+  .route-actions { margin-top:9px; display:flex; gap:8px; flex-wrap:wrap; }
+  a.action {
+    display:inline-flex; align-items:center; gap:5px; text-decoration:none; color:#fff; background:var(--blue);
+    padding:7px 9px; border-radius:10px; font-size:12px; font-weight:600;
+  }
+  a.action.apple { background:var(--apple); }
+  .section-title { font-size:14px; font-weight:800; margin:18px 0 9px; }
+  .route-card, .point-card {
+    background:var(--card); border:1px solid var(--line); border-radius:16px; padding:12px; margin:10px 0;
+    box-shadow:0 6px 16px rgba(0,0,0,.04);
+  }
+  .route-card b { font-size:13px; }
+  .route-card p { font-size:12px; color:var(--muted); line-height:1.45; margin:6px 0 10px; }
+  .mini-actions { display:flex; gap:7px; flex-wrap:wrap; }
+  .mini-actions a {
+    text-decoration:none; font-size:11.5px; font-weight:700; padding:6px 8px; border-radius:9px;
+    background:#eef4ff; color:#1558b0;
+  }
+  .mini-actions a.apple { background:#f0f0f0; color:#222; }
+  .point-card {
+    display:grid; grid-template-columns:36px 1fr; gap:10px; align-items:start;
+  }
+  .badge {
+    width:32px; height:32px; border-radius:50%; color:#fff; display:flex; align-items:center; justify-content:center;
+    font-size:12px; font-weight:900; background:#111; box-shadow:0 3px 8px rgba(0,0,0,.18);
+  }
+  .badge.photo { background:#d33; }
+  .badge.walk, .badge.beach, .badge.harbour { background:#1a73e8; }
+  .badge.market, .badge.landmark, .badge.view { background:#078452; }
+  .point-name { font-size:13px; font-weight:800; line-height:1.25; }
+  .point-note { font-size:12px; color:var(--muted); line-height:1.45; margin:5px 0 9px; }
+  .city-pill {
+    display:inline-block; font-size:10.5px; color:#555; background:#f4f1ea; border-radius:999px; padding:3px 7px; margin-top:5px;
+  }
+  .notice {
+    font-size:11.5px; color:#6b5b2a; background:#fff8dc; border:1px solid #f0df9a; padding:9px 10px;
+    border-radius:12px; line-height:1.45; margin:12px 0;
+  }
+  @media (max-width:900px) {
+    .layout { grid-template-columns:1fr; grid-template-rows:46vh 54vh; height:100vh; }
+    aside { order:2; border-right:0; border-top:1px solid var(--line); padding:14px; }
+    main { order:1; min-height:0; }
+    .tabs { overflow:auto; flex-wrap:nowrap; }
+    button { white-space:nowrap; }
+    .route-title { top:auto; bottom:12px; left:12px; right:12px; max-width:none; }
+  }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <h1>Plan</h1>
+    <div class="subtitle">所有打卡点都已编号标注。右侧/上方是 Google Maps 互动展示；每个点位都支持跳转 Google Maps 和 Apple Maps。</div>
+    <div class="notice">提示：Google Maps 嵌入路线会按 Google 自己的路径算法显示；具体步行/公交时间以打开 Google Maps 或 Apple Maps 后的实时结果为准。</div>
+
+    <div class="section-title">路线快捷打开</div>
+    <div id="routeCards"></div>
+
+    <div class="section-title">全部打卡点标注</div>
+    <div id="pointList"></div>
+  </aside>
+
+  <main>
+    <div class="tabs">
+      <button class="active" data-route="cannes">🎬 Cannes</button>
+      <button data-route="antibes_old">🏛 Antibes 老城</button>
+      <button data-route="antibes_coast">🌊 海岸延伸</button>
+      <button data-route="hotel_to_cannes">🚆 酒店→戛纳</button>
+      <button data-route="antibes_to_hotel">🏨 昂蒂布→酒店</button>
+    </div>
+    <div class="mapwrap">
+      <div class="route-title">
+        <b id="routeName"></b>
+        <span id="routeSummary"></span>
+        <div class="route-actions">
+          <a class="action" id="googleRoute" target="_blank">Google Maps 打开路线</a>
+          <a class="action apple" id="appleRoute" target="_blank">Apple Maps 打开路线</a>
+        </div>
+      </div>
+      <iframe id="gmap" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </main>
+</div>
+
+<script>
+const points = [{"id": "H", "name": "Hotel / 你的酒店", "short": "酒店", "city": "Start", "lat": 43.65997222222222, "lng": 7.182972222222222, "type": "hotel", "note": "起点：43°39'35.9\"N 7°10'58.7\"E"}, {"id": "C1", "name": "Gare de Cannes / 戛纳火车站", "short": "戛纳站", "city": "Cannes", "lat": 43.55472, "lng": 7.01972, "type": "transport", "note": "620公交/火车到达点；梦露墙在车站上方，走大阶梯上去。"}, {"id": "C2", "name": "Fresque Marilyn Monroe / 梦露涂鸦墙", "short": "梦露墙", "city": "Cannes", "lat": 43.55525, "lng": 7.01965, "type": "photo", "note": "车站上方的大壁画，先拍这里最顺路。"}, {"id": "C3", "name": "Palais des Festivals / 节庆宫电影宫", "short": "节庆宫", "city": "Cannes", "lat": 43.55051, "lng": 7.01702, "type": "landmark", "note": "戛纳电影节主会场；红毯台阶、明星打卡位。"}, {"id": "C4", "name": "Allée des Étoiles / 星光大道手印", "short": "星光大道", "city": "Cannes", "lat": 43.55037, "lng": 7.0173, "type": "photo", "note": "就在节庆宫正门外步道；低头找影人手印。"}, {"id": "C5", "name": "La Croisette / 小十字大道", "short": "小十字大道", "city": "Cannes", "lat": 43.54892, "lng": 7.0227, "type": "walk", "note": "棕榈树、蓝色长椅、海岸线机位；适合慢走拍照。"}, {"id": "C6", "name": "Vieux Port de Cannes / 戛纳老港", "short": "戛纳老港", "city": "Cannes", "lat": 43.54885, "lng": 7.01355, "type": "harbour", "note": "游艇码头，奢华感强；从节庆宫旁边走过去很近。"}, {"id": "C7", "name": "Le Suquet + Notre-Dame d’Espérance / 苏克老城观景台", "short": "苏克老城", "city": "Cannes", "lat": 43.55126, "lng": 7.01035, "type": "view", "note": "上坡到老城最高机位；俯瞰戛纳、老港、海湾。"}, {"id": "A1", "name": "Gare d’Antibes / 昂蒂布火车站", "short": "昂蒂布站", "city": "Antibes", "lat": 43.5855, "lng": 7.11935, "type": "transport", "note": "昂蒂布主到达点；老城步行可达。"}, {"id": "A2", "name": "Marché Provençal / 普罗旺斯市集", "short": "普罗旺斯市集", "city": "Antibes", "lat": 43.58145, "lng": 7.12808, "type": "market", "note": "老城核心；早市氛围最好，附近小街很好逛。"}, {"id": "A3", "name": "Vieil Antibes / 昂蒂布老城街区", "short": "昂蒂布老城", "city": "Antibes", "lat": 43.5811, "lng": 7.1269, "type": "landmark", "note": "把时间留给老城小巷、城墙海景和市集周边。"}, {"id": "A4", "name": "Remparts d’Antibes / 海边城墙平台", "short": "海边城墙", "city": "Antibes", "lat": 43.58025, "lng": 7.12885, "type": "view", "note": "沿海边平台走，能看到海湾和尼斯方向；不用进馆也很出片。"}, {"id": "A5", "name": "Plage de la Gravette / 老城旁海滩", "short": "老城海滩", "city": "Antibes", "lat": 43.5827, "lng": 7.1273, "type": "beach", "note": "靠近老城和港口的小海滩；适合坐一会儿看海。"}, {"id": "A6", "name": "Le Nomade / 海边白色雕塑", "short": "白色雕塑", "city": "Antibes", "lat": 43.58623, "lng": 7.12975, "type": "photo", "note": "Jaume Plensa 白色字母人像雕塑；从这里回车站约10–15分钟。"}, {"id": "A7", "name": "Point de l’Ilette / 莫奈同款方向机位", "short": "Point de l’Ilette", "city": "Antibes", "lat": 43.5759, "lng": 7.1263, "type": "photo", "note": "下午3点后海面光线更好；可接海岸散步。"}, {"id": "A8", "name": "Plage de la Garoupe / Garoupe海滩", "short": "Garoupe海滩", "city": "Antibes", "lat": 43.56395, "lng": 7.1378, "type": "beach", "note": "Cap d’Antibes 海岸徒步常见节点；适合看海和休息。"}, {"id": "A9", "name": "Sentier du Littoral / 昂蒂布角海岸步道", "short": "海岸步道", "city": "Antibes", "lat": 43.55195, "lng": 7.14055, "type": "walk", "note": "体力路线；石路多，建议穿好走的鞋。"}, {"id": "A10", "name": "Juan-les-Pins / 朱安莱潘站", "short": "Juan-les-Pins", "city": "Antibes", "lat": 43.5709, "lng": 7.1115, "type": "transport", "note": "可作为体力不足时的回程站，也可从这里回尼斯方向。"}];
+const routes = {"cannes": {"name": "Cannes 戛纳电影节线", "ids": ["C1", "C2", "C3", "C4", "C5", "C6", "C7"], "embed": "https://www.google.com/maps/dir/43.55472,7.01972/43.55525,7.01965/43.55051,7.01702/43.55037,7.0173/43.54892,7.0227/43.54885,7.01355/43.55126,7.01035/output=embed", "google": "https://www.google.com/maps/dir/?api=1&origin=43.55472,7.01972&destination=43.55126,7.01035&travelmode=walking&waypoints=43.55525%2C7.01965%7C43.55051%2C7.01702%7C43.55037%2C7.0173%7C43.54892%2C7.0227%7C43.54885%2C7.01355", "apple": "https://maps.apple.com/?saddr=43.55472,7.01972&daddr=43.55126,7.01035&dirflg=w", "summary": "戛纳站 → 梦露墙 → 节庆宫 → 星光大道 → 小十字大道 → 老港 → 苏克老城观景台"}, "antibes_old": {"name": "Antibes 昂蒂布老城线", "ids": ["A1", "A2", "A3", "A4", "A5", "A6", "A1"], "embed": "https://www.google.com/maps/dir/43.5855,7.11935/43.58145,7.12808/43.5811,7.1269/43.58025,7.12885/43.5827,7.1273/43.58623,7.12975/43.5855,7.11935/output=embed", "google": "https://www.google.com/maps/dir/?api=1&origin=43.5855,7.11935&destination=43.5855,7.11935&travelmode=walking&waypoints=43.58145%2C7.12808%7C43.5811%2C7.1269%7C43.58025%2C7.12885%7C43.5827%2C7.1273%7C43.58623%2C7.12975", "apple": "https://maps.apple.com/?saddr=43.5855,7.11935&daddr=43.5855,7.11935&dirflg=w", "summary": "昂蒂布站 → 普罗旺斯市集 → 老城小巷 → 海边城墙 → 老城海滩 → 白色雕塑 → 昂蒂布站"}, "antibes_coast": {"name": "Antibes 昂蒂布角海岸延伸线", "ids": ["A1", "A7", "A8", "A9", "A10"], "embed": "https://www.google.com/maps/dir/43.5855,7.11935/43.5759,7.1263/43.56395,7.1378/43.55195,7.14055/43.5709,7.1115/output=embed", "google": "https://www.google.com/maps/dir/?api=1&origin=43.5855,7.11935&destination=43.5709,7.1115&travelmode=walking&waypoints=43.5759%2C7.1263%7C43.56395%2C7.1378%7C43.55195%2C7.14055", "apple": "https://maps.apple.com/?saddr=43.5855,7.11935&daddr=43.5709,7.1115&dirflg=w", "summary": "昂蒂布站 → Point de l’Ilette → Garoupe 海滩 → 海岸步道 → Juan-les-Pins"}, "hotel_to_cannes": {"name": "酒店 → Cannes", "ids": ["H", "C1"], "embed": "https://www.google.com/maps/dir/43.65997222222222,7.182972222222222/43.55472,7.01972/output=embed", "google": "https://www.google.com/maps/dir/?api=1&origin=43.65997222222222,7.182972222222222&destination=43.55472,7.01972&travelmode=transit", "apple": "https://maps.apple.com/?saddr=43.65997222222222,7.182972222222222&daddr=43.55472,7.01972&dirflg=w", "summary": "酒店到 Gare de Cannes"}, "antibes_to_hotel": {"name": "Antibes → 酒店", "ids": ["A1", "H"], "embed": "https://www.google.com/maps/dir/43.5855,7.11935/43.65997222222222,7.182972222222222/output=embed", "google": "https://www.google.com/maps/dir/?api=1&origin=43.5855,7.11935&destination=43.65997222222222,7.182972222222222&travelmode=transit", "apple": "https://maps.apple.com/?saddr=43.5855,7.11935&daddr=43.65997222222222,7.182972222222222&dirflg=w", "summary": "Gare d’Antibes 回酒店"}};
+
+function googlePlace(p) {
+  return `https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}`;
+}
+function applePlace(p) {
+  return `https://maps.apple.com/?ll=${p.lat},${p.lng}&q=${encodeURIComponent(p.short)}`;
+}
+
+function badgeClass(type) {
+  if (["photo"].includes(type)) return "photo";
+  if (["walk","beach","harbour"].includes(type)) return type;
+  if (["market","landmark","view"].includes(type)) return type;
+  return "";
+}
+
+function renderRouteCards() {
+  const el = document.getElementById("routeCards");
+  el.innerHTML = Object.entries(routes).map(([key,r]) => `
+    <div class="route-card">
+      <b>${r.name}</b>
+      <p>${r.summary}</p>
+      <div class="mini-actions">
+        <a href="${r.google}" target="_blank">Google路线</a>
+        <a href="${r.apple}" target="_blank" class="apple">Apple路线</a>
+        <a href="#" onclick="setRoute('${key}'); return false;">地图显示</a>
+      </div>
+    </div>
+  `).join("");
+}
+
+function renderPointList() {
+  const el = document.getElementById("pointList");
+  el.innerHTML = points.map(p => `
+    <div class="point-card">
+      <div class="badge ${badgeClass(p.type)}">${p.id}</div>
+      <div>
+        <div class="point-name">${p.name}</div>
+        <span class="city-pill">${p.city}</span>
+        <div class="point-note">${p.note}</div>
+        <div class="mini-actions">
+          <a href="${googlePlace(p)}" target="_blank">Google Maps</a>
+          <a href="${applePlace(p)}" target="_blank" class="apple">Apple Maps</a>
+        </div>
+      </div>
+    </div>
+  `).join("");
+}
+
+function setRoute(key) {
+  const r = routes[key];
+  document.getElementById("routeName").textContent = r.name;
+  document.getElementById("routeSummary").textContent = r.summary;
+  document.getElementById("googleRoute").href = r.google;
+  document.getElementById("appleRoute").href = r.apple;
+  document.getElementById("gmap").src = r.embed;
+  document.querySelectorAll("button[data-route]").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.route === key);
+  });
+}
+
+document.querySelectorAll("button[data-route]").forEach(btn => {
+  btn.addEventListener("click", () => setRoute(btn.dataset.route));
+});
+
+renderRouteCards();
+renderPointList();
+setRoute("cannes");
+</script>
+</body>
+</html>
