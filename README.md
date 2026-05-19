@@ -18,8 +18,8 @@ From there, choose a country or route. Each route is a standalone HTML page with
 
 | Route | URL |
 | --- | --- |
-| London | https://howieu.github.io/travel/london/ |
-| London map | https://howieu.github.io/travel/london/map.html |
+| UK / London | https://howieu.github.io/travel/uk/london.html |
+| UK / London map | https://howieu.github.io/travel/uk/map.html |
 | France | https://howieu.github.io/travel/france/ |
 | France + Switzerland | https://howieu.github.io/travel/france-switzerland/ |
 | France + Switzerland: Rigi | https://howieu.github.io/travel/france-switzerland/rigi.html |
@@ -34,8 +34,12 @@ From there, choose a country or route. Each route is a standalone HTML page with
 
 ```text
 .
+├── .nojekyll
+├── README.md
 ├── index.html                  # Main travel landing page
-├── london.html                 # Compatibility redirect to london/
+├── uk/
+│   ├── london.html
+│   └── map.html
 ├── london/
 │   ├── index.html
 │   └── map.html
@@ -61,8 +65,8 @@ From there, choose a country or route. Each route is a standalone HTML page with
 
 ## Adding a New Trip
 
-1. Create a folder using a clear lowercase route name, for example `japan/` or `portugal-spain/`.
-2. Add the main page as `index.html`.
+1. Create a folder using a clear lowercase country or route name, for example `japan/` or `portugal-spain/`.
+2. Add the page inside that folder, for example `japan/tokyo.html` or `portugal-spain/index.html`.
 3. Keep extra pages inside the same folder, for example `map.html` or `day2.html`.
 4. Update the root `index.html` so the new trip appears on the main landing page.
 5. Update this README with the new direct link.
