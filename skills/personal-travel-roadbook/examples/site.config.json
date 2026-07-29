@@ -1,0 +1,13 @@
+{
+  "title": "My Travel Roadbooks",
+  "description": "按国家、城市和跨国路线整理的个人旅行路书。",
+  "author": "Howieu",
+  "theme": {
+    "primaryColor": "#0f766e",
+    "accentColor": "#f59e0b",
+    "backgroundColor": "#f5f7f8",
+    "showSources": true,
+    "showConfidence": true,
+    "language": "zh-CN"
+  }
+}

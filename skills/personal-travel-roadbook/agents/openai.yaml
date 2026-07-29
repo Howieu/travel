@@ -1,0 +1,4 @@
+interface:
+  display_name: "Personal Travel Roadbook"
+  short_description: "Generate personal travel roadbook sites"
+  default_prompt: "Use $personal-travel-roadbook to turn my travel notes, links, and booking details into a personalized roadbook website."

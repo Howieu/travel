@@ -1,0 +1,139 @@
+{
+  "trip": {
+    "slug": "rigi",
+    "title": "Rigi",
+    "destination": "Luzern + Rigi",
+    "pace": "standard",
+    "interests": [
+      "游船",
+      "登山铁路",
+      "湖景"
+    ],
+    "legacyPaths": [
+      "france-switzerland/rigi.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1530841344029-ec3ae0fa4cc4?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Rigi personal route",
+      "url": null,
+      "excerpt": "Lake Lucerne boat and mountain railway loop",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Rigi Loop",
+      "summary": "卢塞恩湖 + Rigi 山顶一日环线。",
+      "stops": [
+        {
+          "time": "10:30",
+          "name": "Luzern",
+          "description": "卡贝尔桥和湖边。",
+          "mapQueries": {
+            "amap": "Luzern",
+            "google": "Lucerne Switzerland",
+            "apple": "Lucerne Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/2009_08_24_06262_Lucerne.jpg/1280px-2009_08_24_06262_Lucerne.jpg"
+        },
+        {
+          "time": "12:40",
+          "name": "Boat to Vitznau",
+          "description": "卢塞恩湖游船。",
+          "mapQueries": {
+            "amap": "Boat to Vitznau",
+            "google": "Vitznau",
+            "apple": "Vitznau"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Vierwaldstaettersee.jpg"
+        },
+        {
+          "time": "13:50",
+          "name": "Vitznau → Rigi Kulm",
+          "description": "登山铁路上山。",
+          "mapQueries": {
+            "amap": "Vitznau → Rigi Kulm",
+            "google": "Rigi Kulm",
+            "apple": "Rigi Kulm"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bahnhof_Rigi-Kulm_im_Winter.jpg/960px-Bahnhof_Rigi-Kulm_im_Winter.jpg"
+        },
+        {
+          "time": "14:30",
+          "name": "Rigi Kulm",
+          "description": "山顶观景。",
+          "mapQueries": {
+            "amap": "Rigi Kulm",
+            "google": "Rigi Kulm",
+            "apple": "Rigi Kulm"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Lauerzersee.jpg"
+        },
+        {
+          "time": "15:30",
+          "name": "Rigi Kaltbad",
+          "description": "中转下山。",
+          "mapQueries": {
+            "amap": "Rigi Kaltbad",
+            "google": "Rigi Kaltbad",
+            "apple": "Rigi Kaltbad"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Lauerzersee.jpg"
+        },
+        {
+          "time": "16:30",
+          "name": "Weggis → Luzern",
+          "description": "缆车和船回卢塞恩。",
+          "mapQueries": {
+            "amap": "Weggis → Luzern",
+            "google": "Weggis Switzerland",
+            "apple": "Weggis Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Weggis2002.jpg/1280px-Weggis2002.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

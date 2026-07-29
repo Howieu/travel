@@ -1,0 +1,249 @@
+{
+  "trip": {
+    "slug": "barcelona",
+    "title": "Barcelona",
+    "destination": "Barcelona",
+    "pace": "standard",
+    "interests": [
+      "建筑",
+      "街区",
+      "海边"
+    ],
+    "legacyPaths": [
+      "spain/barcelona.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1583422409516-2895a77efded?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Barcelona personal route",
+      "url": null,
+      "excerpt": "Gaudi buildings, Gothic quarter and beach walk",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Arrival + Montjuic Area",
+      "summary": "抵达后走酒店周边和西班牙广场。",
+      "stops": [
+        {
+          "time": "16:55",
+          "name": "Barcelona Airport T2",
+          "description": "抵达巴塞罗那。",
+          "mapQueries": {
+            "amap": "Barcelona Airport T2",
+            "google": "Barcelona Airport T2",
+            "apple": "Barcelona Airport T2"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/BCN_AIRPORT_FROM_FLIGHT_BCN-ORY_A320_EC-MLE_%2843952944862%29.jpg/1280px-BCN_AIRPORT_FROM_FLIGHT_BCN-ORY_A320_EC-MLE_%2843952944862%29.jpg"
+        },
+        {
+          "time": "17:30",
+          "name": "Hampton by Hilton Fira",
+          "description": "入住或寄存行李。",
+          "mapQueries": {
+            "amap": "Hampton by Hilton Fira",
+            "google": "Hampton by Hilton Barcelona Fira Gran Via",
+            "apple": "Hampton by Hilton Barcelona Fira Gran Via"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Fira_Barcelona_Mobile_World_Congress_2013.jpg/1280px-Fira_Barcelona_Mobile_World_Congress_2013.jpg"
+        },
+        {
+          "time": "17:45",
+          "name": "Placa d'Espanya / Arenas",
+          "description": "广场、双塔、Arenas 顶楼视角。",
+          "mapQueries": {
+            "amap": "Placa d'Espanya / Arenas",
+            "google": "Placa d'Espanya Barcelona",
+            "apple": "Placa d'Espanya Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Pla%C3%A7a_Espanya.jpg/1280px-Pla%C3%A7a_Espanya.jpg"
+        },
+        {
+          "time": "19:00",
+          "name": "Dinner",
+          "description": "酒店或广场周边用餐。",
+          "mapQueries": {
+            "amap": "Dinner",
+            "google": "restaurants near Placa d'Espanya Barcelona",
+            "apple": "restaurants near Placa d'Espanya Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg/1280px-Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 2",
+      "title": "Gaudi + Old Town",
+      "summary": "上午建筑，下午老城和海边。",
+      "stops": [
+        {
+          "time": "09:15",
+          "name": "Casa Batllo",
+          "description": "外观和内部参观。",
+          "mapQueries": {
+            "amap": "Casa Batllo",
+            "google": "Casa Batllo Barcelona",
+            "apple": "Casa Batllo Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Casa_Batllo_Overview_Barcelona_Spain_cut.jpg/1280px-Casa_Batllo_Overview_Barcelona_Spain_cut.jpg"
+        },
+        {
+          "time": "11:00",
+          "name": "La Pedrera",
+          "description": "米拉之家外观和屋顶。",
+          "mapQueries": {
+            "amap": "La Pedrera",
+            "google": "Casa Mila Barcelona",
+            "apple": "Casa Mila Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Casa_Mil%C3%A0%2C_general_view.jpg/1280px-Casa_Mil%C3%A0%2C_general_view.jpg"
+        },
+        {
+          "time": "13:15",
+          "name": "La Rambla / Boqueria",
+          "description": "市场小吃和主街步行。",
+          "mapQueries": {
+            "amap": "La Rambla / Boqueria",
+            "google": "La Boqueria Barcelona",
+            "apple": "La Boqueria Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Barcelona_-_Mercat_de_Sant_Josep_%28la_Boqueria%29_-_Entrance.jpg/1280px-Barcelona_-_Mercat_de_Sant_Josep_%28la_Boqueria%29_-_Entrance.jpg"
+        },
+        {
+          "time": "14:30",
+          "name": "Gothic Quarter / El Born",
+          "description": "老城街巷和小店。",
+          "mapQueries": {
+            "amap": "Gothic Quarter / El Born",
+            "google": "Gothic Quarter Barcelona",
+            "apple": "Gothic Quarter Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Barcelona_-_Carrer_del_Bisbe.jpg"
+        },
+        {
+          "time": "17:00",
+          "name": "Barceloneta",
+          "description": "海边散步和拍照。",
+          "mapQueries": {
+            "amap": "Barceloneta",
+            "google": "Barceloneta Beach Barcelona",
+            "apple": "Barceloneta Beach Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Barcelona_Barceloneta.svg/1280px-Barcelona_Barceloneta.svg.png"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "Departure",
+      "summary": "早餐、退房、去机场。",
+      "stops": [
+        {
+          "time": "07:30",
+          "name": "Breakfast",
+          "description": "酒店附近早餐。",
+          "mapQueries": {
+            "amap": "Breakfast",
+            "google": "breakfast near Fira Gran Via Barcelona",
+            "apple": "breakfast near Fira Gran Via Barcelona"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg/1280px-Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg"
+        },
+        {
+          "time": "08:30",
+          "name": "Check out",
+          "description": "退房整理行李。",
+          "mapQueries": {
+            "amap": "Check out",
+            "google": "Hampton by Hilton Barcelona Fira Gran Via",
+            "apple": "Hampton by Hilton Barcelona Fira Gran Via"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg/1280px-Aerial_view_of_Barcelona%2C_Spain_%2851227309370%29_edited.jpg"
+        },
+        {
+          "time": "09:00",
+          "name": "Airport Transfer",
+          "description": "前往机场。",
+          "mapQueries": {
+            "amap": "Airport Transfer",
+            "google": "Barcelona Airport",
+            "apple": "Barcelona Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/BCN_AIRPORT_FROM_FLIGHT_BCN-ORY_A320_EC-MLE_%2843952944862%29.jpg/1280px-BCN_AIRPORT_FROM_FLIGHT_BCN-ORY_A320_EC-MLE_%2843952944862%29.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

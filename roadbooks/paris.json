@@ -1,0 +1,273 @@
+{
+  "trip": {
+    "slug": "paris",
+    "title": "Paris",
+    "destination": "Paris",
+    "pace": "standard",
+    "interests": [
+      "博物馆",
+      "游船",
+      "购物"
+    ],
+    "legacyPaths": [
+      "france/paris.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Paris personal route",
+      "url": null,
+      "excerpt": "Seine cruise, Versailles, museums and shopping",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "落地 + 塞纳河",
+      "summary": "抵达后只安排夜游船和入住。",
+      "stops": [
+        {
+          "time": "19:15",
+          "name": "Charles de Gaulle Airport",
+          "description": "抵达、出关、拿行李。",
+          "mapQueries": {
+            "amap": "Charles de Gaulle Airport",
+            "google": "Paris Charles de Gaulle Airport",
+            "apple": "Paris Charles de Gaulle Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Charles_de_Gaulle_International_Airport_in_France.jpg/960px-Charles_de_Gaulle_International_Airport_in_France.jpg"
+        },
+        {
+          "time": "21:30",
+          "name": "Bateaux Parisiens",
+          "description": "塞纳河夜游船，看铁塔和河岸。",
+          "mapQueries": {
+            "amap": "Bateaux Parisiens",
+            "google": "Bateaux Parisiens Paris",
+            "apple": "Bateaux Parisiens Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Bateaux_Parisiens_on_the_Seine%2C_Paris_2010.jpg/960px-Bateaux_Parisiens_on_the_Seine%2C_Paris_2010.jpg"
+        },
+        {
+          "time": "22:30",
+          "name": "Convention Montparnasse",
+          "description": "入住休息。",
+          "mapQueries": {
+            "amap": "Convention Montparnasse",
+            "google": "Hotel Convention Montparnasse Paris",
+            "apple": "Hotel Convention Montparnasse Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/March%C3%A9_de_la_cr%C3%A9ation_de_Paris-Montparnasse.jpg/960px-March%C3%A9_de_la_cr%C3%A9ation_de_Paris-Montparnasse.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 2",
+      "title": "Brunch + Versailles",
+      "summary": "上午放慢，下午凡尔赛。",
+      "stops": [
+        {
+          "time": "10:30",
+          "name": "15区 Brunch",
+          "description": "酒店附近早餐和咖啡。",
+          "mapQueries": {
+            "amap": "15区 Brunch",
+            "google": "Convention Montparnasse Paris brunch",
+            "apple": "Convention Montparnasse Paris brunch"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/8_rue_Valentin-Ha%C3%BCy_1.jpg/1280px-8_rue_Valentin-Ha%C3%BCy_1.jpg"
+        },
+        {
+          "time": "14:00",
+          "name": "Palace of Versailles",
+          "description": "宫殿、镜厅和花园。",
+          "mapQueries": {
+            "amap": "Palace of Versailles",
+            "google": "Palace of Versailles",
+            "apple": "Palace of Versailles"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Versailles-Chateau-Jardins02.jpg/1280px-Versailles-Chateau-Jardins02.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "Louvre + Right Bank",
+      "summary": "博物馆、概念店、经典机位和百货。",
+      "stops": [
+        {
+          "time": "10:30",
+          "name": "Louvre Museum",
+          "description": "重点看馆藏和中庭。",
+          "mapQueries": {
+            "amap": "Louvre Museum",
+            "google": "Louvre Museum Paris",
+            "apple": "Louvre Museum Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Louvre_Museum_Wikimedia_Commons.jpg/1280px-Louvre_Museum_Wikimedia_Commons.jpg"
+        },
+        {
+          "time": "13:00",
+          "name": "LV Dream",
+          "description": "巧克力、咖啡和展览空间。",
+          "mapQueries": {
+            "amap": "LV Dream",
+            "google": "LV Dream Paris",
+            "apple": "LV Dream Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/La_Samaritaine_depuis_le_Pont_Neuf%2C_Paris_5_July_2021.jpg/960px-La_Samaritaine_depuis_le_Pont_Neuf%2C_Paris_5_July_2021.jpg"
+        },
+        {
+          "time": "14:00",
+          "name": "Saint Laurent Rive Droite",
+          "description": "概念店和小物件。",
+          "mapQueries": {
+            "amap": "Saint Laurent Rive Droite",
+            "google": "Saint Laurent Rive Droite Paris",
+            "apple": "Saint Laurent Rive Droite Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Rue_Saint-Honor%C3%A9%2C_2_August_2015.jpg/1280px-Rue_Saint-Honor%C3%A9%2C_2_August_2015.jpg"
+        },
+        {
+          "time": "15:00",
+          "name": "Tuileries → Arc de Triomphe",
+          "description": "从花园一路向西走经典轴线。",
+          "mapQueries": {
+            "amap": "Tuileries → Arc de Triomphe",
+            "google": "Arc de Triomphe Paris",
+            "apple": "Arc de Triomphe Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Arc_de_Triomphe%2C_Paris_21_October_2010.jpg/1280px-Arc_de_Triomphe%2C_Paris_21_October_2010.jpg"
+        },
+        {
+          "time": "16:30",
+          "name": "Trocadero",
+          "description": "拍铁塔的稳定机位。",
+          "mapQueries": {
+            "amap": "Trocadero",
+            "google": "Trocadero Paris",
+            "apple": "Trocadero Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Paris_-_Eiffelturm_und_Marsfeld2.jpg/960px-Paris_-_Eiffelturm_und_Marsfeld2.jpg"
+        },
+        {
+          "time": "18:30",
+          "name": "Galeries Lafayette",
+          "description": "百货购物和穹顶。",
+          "mapQueries": {
+            "amap": "Galeries Lafayette",
+            "google": "Galeries Lafayette Paris",
+            "apple": "Galeries Lafayette Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/GaleriesLafayetteNuit.jpg/1280px-GaleriesLafayetteNuit.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 4",
+      "title": "Marais + Airport",
+      "summary": "补购物和返程。",
+      "stops": [
+        {
+          "time": "10:00",
+          "name": "Le Marais",
+          "description": "按现场情况安排停留。",
+          "mapQueries": {
+            "amap": "Le Marais",
+            "google": "Le Marais Paris",
+            "apple": "Le Marais Paris"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "fallback": "Lemaire 备选、街区散步。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Paris_Hotel_de_Sens_dsc04028.jpg/1280px-Paris_Hotel_de_Sens_dsc04028.jpg"
+        },
+        {
+          "time": "13:20",
+          "name": "Charles de Gaulle Airport",
+          "description": "前往机场返程。",
+          "mapQueries": {
+            "amap": "Charles de Gaulle Airport",
+            "google": "Paris Charles de Gaulle Airport",
+            "apple": "Paris Charles de Gaulle Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Charles_de_Gaulle_International_Airport_in_France.jpg/960px-Charles_de_Gaulle_International_Airport_in_France.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

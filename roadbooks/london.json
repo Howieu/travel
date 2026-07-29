@@ -1,0 +1,632 @@
+{
+  "trip": {
+    "slug": "london",
+    "title": "UK / London",
+    "destination": "London + Eastbourne",
+    "pace": "standard",
+    "interests": [
+      "城市漫步",
+      "购物",
+      "海岸"
+    ],
+    "legacyPaths": [
+      "uk/london.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "UK / London personal route",
+      "url": null,
+      "excerpt": "London city walk + Eastbourne coast",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Notting Hill + Harrods",
+      "summary": "轻松落地节奏，先走西伦敦街区和百货。",
+      "stops": [
+        {
+          "time": "16:10",
+          "name": "Notting Hill",
+          "description": "彩色街区、Portobello Road、街拍。",
+          "mapQueries": {
+            "amap": "Notting Hill",
+            "google": "Notting Hill London",
+            "apple": "Notting Hill London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/0/04/London_110.jpg"
+        },
+        {
+          "time": "17:20",
+          "name": "Cheeky Scone",
+          "description": "英式司康和茶，适合短暂停留。",
+          "mapQueries": {
+            "amap": "Cheeky Scone",
+            "google": "Cheeky Scone London",
+            "apple": "Cheeky Scone London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Portobello_road_sign.jpg"
+        },
+        {
+          "time": "18:35",
+          "name": "Harrods",
+          "description": "设计师楼层和食品区，重点购物。",
+          "mapQueries": {
+            "amap": "Harrods",
+            "google": "Harrods London",
+            "apple": "Harrods London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Harrods_%28London%29.jpg/1280px-Harrods_%28London%29.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 2",
+      "title": "Westminster + City View",
+      "summary": "签证事项后走伦敦经典轴线。",
+      "stops": [
+        {
+          "time": "09:15",
+          "name": "U.S. Embassy London",
+          "description": "提前到达，轻装进入。",
+          "mapQueries": {
+            "amap": "U.S. Embassy London",
+            "google": "US Embassy London",
+            "apple": "US Embassy London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/U.S._Embassy%2C_London_-_2022-04-30.jpg/1280px-U.S._Embassy%2C_London_-_2022-04-30.jpg"
+        },
+        {
+          "time": "12:00",
+          "name": "Big Ben / Westminster Abbey",
+          "description": "河岸视角拍照，教堂按时间决定是否入内。",
+          "mapQueries": {
+            "amap": "Big Ben / Westminster Abbey",
+            "google": "Big Ben London",
+            "apple": "Big Ben London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Elizabeth_Tower%2C_June_2022.jpg/1280px-Elizabeth_Tower%2C_June_2022.jpg"
+        },
+        {
+          "time": "14:00",
+          "name": "Borough Market",
+          "description": "午餐和小吃补给。",
+          "mapQueries": {
+            "amap": "Borough Market",
+            "google": "Borough Market London",
+            "apple": "Borough Market London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/London_2018_March_IMG_0663.jpg/1280px-London_2018_March_IMG_0663.jpg"
+        },
+        {
+          "time": "15:00",
+          "name": "Millennium Bridge / St Paul's",
+          "description": "桥上拍圣保罗大教堂正面。",
+          "mapQueries": {
+            "amap": "Millennium Bridge / St Paul's",
+            "google": "St Paul's Cathedral London",
+            "apple": "St Paul's Cathedral London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Millenium_bridge_2015.jpg/1280px-Millenium_bridge_2015.jpg"
+        },
+        {
+          "time": "17:30",
+          "name": "Horizon 22",
+          "description": "免费高空景观，适合日落前后。",
+          "mapQueries": {
+            "amap": "Horizon 22",
+            "google": "Horizon 22 London",
+            "apple": "Horizon 22 London"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/22.Reza_05.jpg/1280px-22.Reza_05.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "May 22 Greenwich + Seven Sisters",
+      "summary": "上午按 Greenwich 节点执行，下午到 Eastbourne 后不去酒店，直接换 12X 去 Seven Sisters 白崖线。",
+      "stops": [
+        {
+          "time": "08:53",
+          "name": "Archway → Cutty Sark Area",
+          "description": "从住处/Archway 出发。地铁按 Archway southbound Platform 2，上 Northern line via Bank（不要上 via Charing Cross）到 Bank，再按站内指示换 DLR eastbound towards Lewisham，到 Cutty Sark for Maritime Greenwich 下车。DLR 站台以现场屏幕为准。",
+          "mapQueries": {
+            "amap": "Archway → Cutty Sark Area",
+            "google": "Archway to Cutty Sark Greenwich",
+            "apple": "Archway to Cutty Sark Greenwich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开 Archway：08:53；目标 10:15 前到 Cutty Sark 区域",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Archway_station_main_entrance.JPG",
+          "links": [
+            {
+              "label": "TfL Archway",
+              "url": "https://tfl.gov.uk/tube/stop/940GZZLUACY/archway-underground-station?lineId=northern"
+            },
+            {
+              "label": "TfL Bank DLR",
+              "url": "https://tfl.gov.uk/dlr/stop/940GZZDLBNK/bank-dlr-station"
+            }
+          ]
+        },
+        {
+          "time": "10:15",
+          "name": "Cutty Sark + Gardens",
+          "description": "船体外景和河边花园短暂停留。",
+          "mapQueries": {
+            "amap": "Cutty Sark + Gardens",
+            "google": "Cutty Sark Greenwich",
+            "apple": "Cutty Sark Greenwich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开：10:35",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Northeast_View_of_the_Cutty_Sark_in_Greenwich.jpg/1280px-Northeast_View_of_the_Cutty_Sark_in_Greenwich.jpg"
+        },
+        {
+          "time": "10:35",
+          "name": "Old Royal Naval College",
+          "description": "外景和河边中轴线拍照，不安排长时间入内。",
+          "mapQueries": {
+            "amap": "Old Royal Naval College",
+            "google": "Old Royal Naval College Greenwich",
+            "apple": "Old Royal Naval College Greenwich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开：10:55",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Royal_Naval_College_Greenwich_view_from_the_Thames.jpg/1280px-Royal_Naval_College_Greenwich_view_from_the_Thames.jpg"
+        },
+        {
+          "time": "10:55",
+          "name": "Queen's House / National Maritime Museum",
+          "description": "只做快逛；",
+          "mapQueries": {
+            "amap": "Queen's House / National Maritime Museum",
+            "google": "Queen's House Greenwich",
+            "apple": "Queen's House Greenwich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开：11:15",
+          "fallback": "如果前面慢了，这一站直接跳过。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/EH1211481_National_Maritime_Museum_10_%28cropped%29.JPG/1280px-EH1211481_National_Maritime_Museum_10_%28cropped%29.JPG"
+        },
+        {
+          "time": "11:15",
+          "name": "Royal Observatory + Free Meridian Line",
+          "description": "上坡到天文台，打卡免费子午线和山坡视角。",
+          "mapQueries": {
+            "amap": "Royal Observatory + Free Meridian Line",
+            "google": "Royal Observatory Greenwich",
+            "apple": "Royal Observatory Greenwich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开：11:45",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Royal_observatory_greenwich.jpg"
+        },
+        {
+          "time": "11:45",
+          "name": "Observatory → IFS Greenwich Peninsula",
+          "description": "从天文台下坡返回缆车站。",
+          "mapQueries": {
+            "amap": "Observatory → IFS Greenwich Peninsula",
+            "google": "Royal Observatory Greenwich to IFS Greenwich Peninsula",
+            "apple": "Royal Observatory Greenwich to IFS Greenwich Peninsula"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开天文台：11:45",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Royal_observatory_greenwich.jpg"
+        },
+        {
+          "time": "12:05",
+          "name": "IFS Cable Car → Royal Docks",
+          "description": "坐缆车过河，控制在 10 分钟左右。",
+          "mapQueries": {
+            "amap": "IFS Cable Car → Royal Docks",
+            "google": "IFS Cloud Cable Car Greenwich Peninsula",
+            "apple": "IFS Cloud Cable Car Greenwich Peninsula"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚登车：12:05",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Emirates_Air_Line_towers_24_May_2012.jpg"
+        },
+        {
+          "time": "12:15",
+          "name": "Royal Docks → London Victoria",
+          "description": "从 Royal Docks 回 Victoria，预留 43 分钟。",
+          "mapQueries": {
+            "amap": "Royal Docks → London Victoria",
+            "google": "Royal Docks to London Victoria",
+            "apple": "Royal Docks to London Victoria"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开 Royal Docks：12:15",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/The_building_of_Victoria_docks.jpg/1280px-The_building_of_Victoria_docks.jpg"
+        },
+        {
+          "time": "12:58",
+          "name": "London Victoria Buffer",
+          "description": "到站后找站台，保留 18 分钟缓冲。",
+          "mapQueries": {
+            "amap": "London Victoria Buffer",
+            "google": "London Victoria Station",
+            "apple": "London Victoria Station"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "13:16 发车，最晚 13:10 到站台",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Victoria_Bus_and_Railway_Station.jpg/1280px-Victoria_Bus_and_Railway_Station.jpg"
+        },
+        {
+          "time": "13:16",
+          "name": "Victoria → Eastbourne",
+          "description": "从 Victoria 发车前往 Eastbourne；到站后不去酒店，直接去 12X 公交候车点。National Rail 站台以 Victoria 当日大屏为准。",
+          "mapQueries": {
+            "amap": "Victoria → Eastbourne",
+            "google": "London Victoria to Eastbourne",
+            "apple": "London Victoria to Eastbourne"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚离开 Victoria：13:16",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Victoria_Bus_and_Railway_Station.jpg/1280px-Victoria_Bus_and_Railway_Station.jpg"
+        },
+        {
+          "time": "14:50",
+          "name": "Eastbourne Station → 12X Bus Stop",
+          "description": "出站后不去 East Beach Hotel check-in，直接步行到 Cornfield Road C3 / Gildredge Road G1 一带等 Coaster 12X。上车按司机/刷卡机提示付费；若司机问目的地，就说 Seven Sisters Park Centre。",
+          "mapQueries": {
+            "amap": "Eastbourne Station → 12X Bus Stop",
+            "google": "Eastbourne Station to Eastbourne Cornfield Road C3",
+            "apple": "Eastbourne Station to Eastbourne Cornfield Road C3"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "目标 15:25 前到候车点，优先赶 15:32 / 15:42 / 15:47 一带班次；当天以 buses.co.uk 或 App 实时为准",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Eastbourne_train_station.jpg/1280px-Eastbourne_train_station.jpg",
+          "links": [
+            {
+              "label": "Contactless",
+              "url": "https://www.buses.co.uk/contactless"
+            },
+            {
+              "label": "12X Timetable",
+              "url": "https://www.buses.co.uk/services/BH/12X"
+            }
+          ]
+        },
+        {
+          "time": "15:47",
+          "name": "Coaster 12X → Seven Sisters Park Centre",
+          "description": "坐 12X/同方向 Coaster 到 Seven Sisters Park Centre，沿途海岸和村庄风景很好。官方时刻表显示 15:47 Eastbourne Cornfield Road C3 候选车约 16:10 到 Park Centre。",
+          "mapQueries": {
+            "amap": "Coaster 12X → Seven Sisters Park Centre",
+            "google": "Eastbourne Cornfield Road C3 to Seven Sisters Park Centre",
+            "apple": "Eastbourne Cornfield Road C3 to Seven Sisters Park Centre"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "目标 16:10 左右到 Park Centre；越早上车，后面越稳",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Coastguard_Cottages_-_view_towards_the_Seven_Sisters_-_geograph.org.uk_-_6833312.jpg/1280px-Coastguard_Cottages_-_view_towards_the_Seven_Sisters_-_geograph.org.uk_-_6833312.jpg",
+          "links": [
+            {
+              "label": "12X Timetable",
+              "url": "https://www.buses.co.uk/services/BH/12X"
+            }
+          ]
+        },
+        {
+          "time": "16:10",
+          "name": "Seven Sisters Park Centre → Coastguard Cottages",
+          "description": "到站后用 Google Maps 导航 Coastguard Cottages。过桥到停车场后，看到木门就搬动扳手进去，继续沿木门路线走；不要走木门旁边的小路，路况更难。",
+          "mapQueries": {
+            "amap": "Seven Sisters Park Centre → Coastguard Cottages",
+            "google": "Seven Sisters Park Centre to Coastguard Cottages Cuckmere Haven",
+            "apple": "Seven Sisters Park Centre to Coastguard Cottages Cuckmere Haven"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "目标 16:50 前到 Coastguard Cottages；官方步行时间约 40 分钟",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Seven_Sisters_cliffs_and_the_coastguard_cottages%2C_from_Seaford_Head_showing_Cuckmere_Haven_%28looking_east_-_2003-05-26%29.jpg",
+          "links": [
+            {
+              "label": "Walking Info",
+              "url": "https://www.sevensisters.org.uk/things-to-do/walking/"
+            }
+          ]
+        },
+        {
+          "time": "16:50",
+          "name": "Coastguard Cottages Viewpoint",
+          "description": "这里是经典 Seven Sisters 视角，短暂停留拍照。靠近悬崖和河口时留足距离，不要为了取景走到边缘。",
+          "mapQueries": {
+            "amap": "Coastguard Cottages Viewpoint",
+            "google": "Coastguard Cottages Cuckmere Haven",
+            "apple": "Coastguard Cottages Cuckmere Haven"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "最晚 17:00 原路返回 Park Centre",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Seven_Sisters_cliffs_and_the_coastguard_cottages%2C_from_Seaford_Head_showing_Cuckmere_Haven_%28looking_east_-_2003-05-26%29.jpg"
+        },
+        {
+          "time": "17:00",
+          "name": "Return to Seven Sisters Park Centre",
+          "description": "原路返回游客中心，不抄小路。",
+          "mapQueries": {
+            "amap": "Return to Seven Sisters Park Centre",
+            "google": "Coastguard Cottages to Seven Sisters Park Centre",
+            "apple": "Coastguard Cottages to Seven Sisters Park Centre"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "目标 17:40 前回到 Park Centre 站",
+          "fallback": "若 17:40 前回不到 Park Centre，就直接改为 Park Centre 坐 12/12A/12X 回 Eastbourne 或叫车。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Coastguard_Cottages_-_view_towards_the_Seven_Sisters_-_geograph.org.uk_-_6833312.jpg/1280px-Coastguard_Cottages_-_view_towards_the_Seven_Sisters_-_geograph.org.uk_-_6833312.jpg"
+        },
+        {
+          "time": "17:45",
+          "name": "12X / Coaster → East Dean",
+          "description": "只有在 17:40 前回到 Park Centre 且实时有车时，才继续坐 Coaster 到 East Dean Bus Shelter / Tiger Inn 一带，再步行去 Birling Gap。",
+          "mapQueries": {
+            "amap": "12X / Coaster → East Dean",
+            "google": "Seven Sisters Park Centre to East Dean Bus Shelter",
+            "apple": "Seven Sisters Park Centre to East Dean Bus Shelter"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "如果等车太久，优先取消 Birling Gap / Belle Tout，直接回 Eastbourne",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/7/70/Seven_Sisters_from_Birling_Gap%2C_Sussex%2C_UK.jpg",
+          "links": [
+            {
+              "label": "12X Timetable",
+              "url": "https://www.buses.co.uk/services/BH/12X"
+            }
+          ]
+        },
+        {
+          "time": "18:15",
+          "name": "East Dean → Birling Gap",
+          "description": "从 East Dean 步行约 30 分钟到 Birling Gap。按最新开放信息，Birling Gap shop / visitor centre 通常 17:00 关，厕所到 18:00；这段按当前节奏大概率只能看外景，不能依赖纪念品店和直饮水。",
+          "mapQueries": {
+            "amap": "East Dean → Birling Gap",
+            "google": "East Dean to Birling Gap",
+            "apple": "East Dean to Birling Gap"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "目标 18:40 前到 Birling Gap；天气差或天色暗就到此为止",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/7/70/Seven_Sisters_from_Birling_Gap%2C_Sussex%2C_UK.jpg",
+          "links": [
+            {
+              "label": "Opening Times",
+              "url": "https://www.nationaltrust.org.uk/visit/sussex/birling-gap-and-the-seven-sisters/index"
+            }
+          ]
+        },
+        {
+          "time": "18:40",
+          "name": "Birling Gap → Belle Tout",
+          "description": "Birling Gap 拍照后再视体力往 Belle Tout 方向走，翻过坡能看到红白色灯塔。最新 Eastbourne Sightseeing 官方表显示 Belle Tout 往 Eastbourne Pier 的末班是 17:51；按本主线节奏大概率赶不上，不要依赖观光巴士。",
+          "mapQueries": {
+            "amap": "Birling Gap → Belle Tout",
+            "google": "Birling Gap to Belle Tout Lighthouse",
+            "apple": "Birling Gap to Belle Tout Lighthouse"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "如果 17:50 前到不了 Belle Tout，就改 12/12A/12X 或打车回 Eastbourne",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Seven_Sisters_3.jpg/1280px-Seven_Sisters_3.jpg"
+        },
+        {
+          "time": "return",
+          "name": "Belle Tout → Eastbourne Station",
+          "description": "返程优先按实时公交从 Birling Gap / East Dean 坐 12/12A/12X 回 Eastbourne；若已确认 17:51 前能到 Belle Tout，才使用 Eastbourne Sightseeing open-top bus。",
+          "mapQueries": {
+            "amap": "Belle Tout → Eastbourne Station",
+            "google": "Belle Tout to Eastbourne Station",
+            "apple": "Belle Tout to Eastbourne Station"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "deadline": "观光巴士末班参考：17:51 Belle Tout → 18:13 Gildredge Road / 18:20 Eastbourne Pier；错过就改 12/12A/12X 或打车",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Seven_Sisters_3.jpg/1280px-Seven_Sisters_3.jpg",
+          "links": [
+            {
+              "label": "Sightseeing Timetable",
+              "url": "https://www.buses.co.uk/services/BH/ESS"
+            }
+          ]
+        },
+        {
+          "time": "19:15",
+          "name": "Eastbourne Evening Buffer",
+          "description": "回到 Eastbourne Station / 市中心后，视体力回酒店或吃晚饭。",
+          "mapQueries": {
+            "amap": "Eastbourne Evening Buffer",
+            "google": "Eastbourne Station",
+            "apple": "Eastbourne Station"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "fallback": "整段海岸线时间很紧，若天气差、起风或下雨，直接缩短 Coastguard Cottages 或跳过 Birling Gap。",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Beach_huts_-_Eastbourne_-_geograph.org.uk_-_2375843.jpg/1280px-Beach_huts_-_Eastbourne_-_geograph.org.uk_-_2375843.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 4",
+      "title": "Eastbourne Return",
+      "summary": "海边收尾，回伦敦后转回曼城。",
+      "stops": [
+        {
+          "time": "09:30",
+          "name": "Eastbourne Seafront",
+          "description": "海滨散步和早餐。",
+          "mapQueries": {
+            "amap": "Eastbourne Seafront",
+            "google": "Eastbourne Seafront",
+            "apple": "Eastbourne Seafront"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Eastbourne_Pier%2C_East_Sussex%2C_England_20June2018_arp.jpg/1280px-Eastbourne_Pier%2C_East_Sussex%2C_England_20June2018_arp.jpg"
+        },
+        {
+          "time": "12:00",
+          "name": "Eastbourne → London Victoria",
+          "description": "回伦敦取转乘。",
+          "mapQueries": {
+            "amap": "Eastbourne → London Victoria",
+            "google": "Eastbourne Station",
+            "apple": "Eastbourne Station"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Eastbourne_train_station.jpg/1280px-Eastbourne_train_station.jpg"
+        },
+        {
+          "time": "15:00",
+          "name": "London Euston → Manchester",
+          "description": "行程结束。",
+          "mapQueries": {
+            "amap": "London Euston → Manchester",
+            "google": "London Euston",
+            "apple": "London Euston"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Euston_Station_%2849445780187%29.jpg/1280px-Euston_Station_%2849445780187%29.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "trip": {
+    "slug": "london-city-coast",
+    "title": "London City + Eastbourne Coast",
+    "destination": "London / Eastbourne",
+    "startDate": "2026-05-20",
+    "endDate": "2026-05-23",
+    "pace": "standard",
+    "interests": ["city walk", "food", "coast"],
+    "mustGo": ["Notting Hill", "Seven Sisters"],
+    "avoid": ["tight arrival-day transfers"],
+    "coverImage": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "user-route-001",
+      "type": "pasted-note",
+      "platform": "user",
+      "title": "London route notes",
+      "excerpt": "City walk, shopping, and Eastbourne coast day.",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "2026-05-20",
+      "title": "Notting Hill + Harrods",
+      "summary": "Easy first afternoon for a west London walk and shopping.",
+      "stops": [
+        {
+          "time": "16:10",
+          "name": "Notting Hill",
+          "type": "city walk",
+          "description": "Colourful streets and Portobello Road for a relaxed first walk.",
+          "durationMinutes": 70,
+          "mustGo": true,
+          "fallback": "Shorten the street walk if arrival runs late.",
+          "mapQueries": {
+            "amap": "Notting Hill London",
+            "google": "Notting Hill London",
+            "apple": "Notting Hill London"
+          },
+          "source": "London route notes",
+          "sourceIds": ["user-route-001"],
+          "confidence": "high"
+        },
+        {
+          "time": "18:35",
+          "name": "Harrods",
+          "type": "shopping",
+          "description": "Focus on the designer floors and food hall.",
+          "durationMinutes": 90,
+          "mapQueries": {
+            "amap": "Harrods London",
+            "google": "Harrods London",
+            "apple": "Harrods London"
+          },
+          "source": "London route notes",
+          "sourceIds": ["user-route-001"],
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Eastbourne + Seven Sisters",
+      "summary": "Keep a transport buffer before the coastal walk.",
+      "stops": [
+        {
+          "time": "15:47",
+          "name": "Seven Sisters",
+          "type": "coast",
+          "description": "Follow the white-cliff route only if the bus connection and weather are suitable.",
+          "durationMinutes": 180,
+          "mustGo": true,
+          "deadline": "Confirm the same-day 12X bus and daylight before leaving Eastbourne.",
+          "fallback": "Stay on Eastbourne seafront if the bus or weather is not reliable.",
+          "mapQueries": {
+            "amap": "Seven Sisters Country Park",
+            "google": "Seven Sisters Country Park",
+            "apple": "Seven Sisters Country Park"
+          },
+          "source": "London route notes",
+          "sourceIds": ["user-route-001"],
+          "confidence": "medium"
+        }
+      ]
+    }
+  ],
+  "warnings": ["Check live rail, bus, weather, and trail conditions before the coast day."]
+}

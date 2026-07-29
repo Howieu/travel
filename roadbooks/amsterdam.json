@@ -1,0 +1,272 @@
+{
+  "trip": {
+    "slug": "amsterdam",
+    "title": "Amsterdam",
+    "destination": "Amsterdam",
+    "pace": "standard",
+    "interests": [
+      "运河",
+      "博物馆",
+      "花田"
+    ],
+    "legacyPaths": [
+      "netherlands/amsterdam.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Amsterdam personal route",
+      "url": null,
+      "excerpt": "Canals, museums, windmills and tulips",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Arrival",
+      "summary": "抵达、入住、城市中心轻松走。",
+      "stops": [
+        {
+          "time": "Arrival",
+          "name": "Schiphol Airport",
+          "description": "抵达和进城。",
+          "mapQueries": {
+            "amap": "Schiphol Airport",
+            "google": "Amsterdam Airport Schiphol",
+            "apple": "Amsterdam Airport Schiphol"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/9A-KOR%2C_Boeing_737-800_of_ETF_Airways_at_Amsterdam_Airport_Schiphol%2C_2024_14.jpg/960px-9A-KOR%2C_Boeing_737-800_of_ETF_Airways_at_Amsterdam_Airport_Schiphol%2C_2024_14.jpg"
+        },
+        {
+          "time": "Check-in",
+          "name": "Hotel Flipper",
+          "description": "住宿大本营。",
+          "mapQueries": {
+            "amap": "Hotel Flipper",
+            "google": "Hotel Flipper Amsterdam",
+            "apple": "Hotel Flipper Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png/1280px-Imagen_de_los_canales_conc%C3%A9ntricos_en_%C3%81msterdam.png"
+        },
+        {
+          "time": "Evening",
+          "name": "Dam Square / De Wallen",
+          "description": "水坝广场和老城夜间散步。",
+          "mapQueries": {
+            "amap": "Dam Square / De Wallen",
+            "google": "Dam Square Amsterdam",
+            "apple": "Dam Square Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Dam_Square_2024.jpg/1280px-Dam_Square_2024.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 2",
+      "title": "Windmills + Van Gogh",
+      "summary": "上午城外风车，下午回城看艺术。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Zaanse Schans",
+          "description": "风车、木鞋、奶酪。",
+          "mapQueries": {
+            "amap": "Zaanse Schans",
+            "google": "Zaanse Schans",
+            "apple": "Zaanse Schans"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Zaanstad_Zaanse_Schans_22.jpg/1280px-Zaanstad_Zaanse_Schans_22.jpg"
+        },
+        {
+          "time": "Midday",
+          "name": "Zaandam",
+          "description": "童话积木酒店外观。",
+          "mapQueries": {
+            "amap": "Zaandam",
+            "google": "Inntel Hotels Amsterdam Zaandam",
+            "apple": "Inntel Hotels Amsterdam Zaandam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Zaanse_Schans_-_Windmills_3.jpg/1280px-Zaanse_Schans_-_Windmills_3.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Van Gogh Museum",
+          "description": "梵高藏品，建议预约。",
+          "mapQueries": {
+            "amap": "Van Gogh Museum",
+            "google": "Van Gogh Museum Amsterdam",
+            "apple": "Van Gogh Museum Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Exterior_of_Rietveldgebouw_Van_Gogh_Museum_IMG_5158.jpg/960px-Exterior_of_Rietveldgebouw_Van_Gogh_Museum_IMG_5158.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "Museums + Canals",
+      "summary": "经典博物馆和运河街区。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Rijksmuseum",
+          "description": "外观、花园和重点展厅。",
+          "mapQueries": {
+            "amap": "Rijksmuseum",
+            "google": "Rijksmuseum Amsterdam",
+            "apple": "Rijksmuseum Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/South_facade_of_the_Rijksmuseum_Amsterdam_%28DSCF0528%29.jpg/1280px-South_facade_of_the_Rijksmuseum_Amsterdam_%28DSCF0528%29.jpg"
+        },
+        {
+          "time": "Noon",
+          "name": "De Negen Straatjes",
+          "description": "九街购物和咖啡。",
+          "mapQueries": {
+            "amap": "De Negen Straatjes",
+            "google": "De Negen Straatjes Amsterdam",
+            "apple": "De Negen Straatjes Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Brug_24_in_de_Hartenstraat_over_de_Herengracht_foto_2.jpg/1280px-Brug_24_in_de_Hartenstraat_over_de_Herengracht_foto_2.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Bloemenmarkt",
+          "description": "水上花市和纪念品。",
+          "mapQueries": {
+            "amap": "Bloemenmarkt",
+            "google": "Bloemenmarkt Amsterdam",
+            "apple": "Bloemenmarkt Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/SingelBloemenmarkt.jpg/1280px-SingelBloemenmarkt.jpg"
+        },
+        {
+          "time": "Optional",
+          "name": "Keukenhof / Tulip Barn",
+          "description": "花季可安排郁金香。",
+          "mapQueries": {
+            "amap": "Keukenhof / Tulip Barn",
+            "google": "Keukenhof",
+            "apple": "Keukenhof"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/26Y_1599_2.jpg/1280px-26Y_1599_2.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 4",
+      "title": "Flexible City Day",
+      "summary": "按天气和返程时间调整。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Stedelijk Museum",
+          "description": "现当代艺术和设计。",
+          "mapQueries": {
+            "amap": "Stedelijk Museum",
+            "google": "Stedelijk Museum Amsterdam",
+            "apple": "Stedelijk Museum Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/De_nieuwe_vleugel_van_het_Stedelijk_Museum_Amsterdam.jpg/1280px-De_nieuwe_vleugel_van_het_Stedelijk_Museum_Amsterdam.jpg"
+        },
+        {
+          "time": "Lunch",
+          "name": "Albert Cuyp Market",
+          "description": "焦糖煎饼和市集小吃。",
+          "mapQueries": {
+            "amap": "Albert Cuyp Market",
+            "google": "Albert Cuyp Market Amsterdam",
+            "apple": "Albert Cuyp Market Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/6/62/Albert_Cuypmarkt.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Heineken Experience",
+          "description": "啤酒体验馆。",
+          "mapQueries": {
+            "amap": "Heineken Experience",
+            "google": "Heineken Experience Amsterdam",
+            "apple": "Heineken Experience Amsterdam"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Former_Heineken_Brewery_in_Amsterdam.jpg/1280px-Former_Heineken_Brewery_in_Amsterdam.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

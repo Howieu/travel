@@ -1,0 +1,343 @@
+{
+  "trip": {
+    "slug": "italy-switzerland",
+    "title": "Italy + Switzerland",
+    "destination": "Italy + Switzerland",
+    "pace": "standard",
+    "interests": [
+      "城市线",
+      "购物",
+      "湖山"
+    ],
+    "legacyPaths": [
+      "italy-switzerland/italy-switzerland.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Italy + Switzerland personal route",
+      "url": null,
+      "excerpt": "Milan, Florence, Rome, Olten and Zurich",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "2 · Milan → Florence",
+      "summary": "米兰短停后高铁去佛罗伦萨。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Sforza Castle",
+          "description": "古堡外观和公园。",
+          "mapQueries": {
+            "amap": "Sforza Castle",
+            "google": "Sforza Castle Milan",
+            "apple": "Sforza Castle Milan"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/20110725_Castello_Sforzesco_Milan_5557.jpg/1280px-20110725_Castello_Sforzesco_Milan_5557.jpg"
+        },
+        {
+          "time": "Late morning",
+          "name": "Duomo di Milano",
+          "description": "大教堂广场拍照。",
+          "mapQueries": {
+            "amap": "Duomo di Milano",
+            "google": "Duomo di Milano",
+            "apple": "Duomo di Milano"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/1280px-Milan_Cathedral_from_Piazza_del_Duomo.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Firenze SMN",
+          "description": "高铁抵达佛罗伦萨。",
+          "mapQueries": {
+            "amap": "Firenze SMN",
+            "google": "Firenze Santa Maria Novella",
+            "apple": "Firenze Santa Maria Novella"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Stazione_di_santa_maria_novella_vista_dal_convento_di_santa_maria_novella.jpg/1280px-Stazione_di_santa_maria_novella_vista_dal_convento_di_santa_maria_novella.jpg"
+        },
+        {
+          "time": "Evening",
+          "name": "Santa Maria del Fiore",
+          "description": "夜景和晚餐。",
+          "mapQueries": {
+            "amap": "Santa Maria del Fiore",
+            "google": "Cathedral of Santa Maria del Fiore",
+            "apple": "Cathedral of Santa Maria del Fiore"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Cattedrale_di_Santa_Maria_del_Fiore_%E2%80%93_Il_Duomo_di_Firenze.jpg/1280px-Cattedrale_di_Santa_Maria_del_Fiore_%E2%80%93_Il_Duomo_di_Firenze.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "Florence → Rome",
+      "summary": "佛城核心点后前往罗马。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Piazza della Signoria",
+          "description": "露天雕塑和市政广场。",
+          "mapQueries": {
+            "amap": "Piazza della Signoria",
+            "google": "Piazza della Signoria Florence",
+            "apple": "Piazza della Signoria Florence"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Piazza_Signoria_-_Firenze.jpg/1280px-Piazza_Signoria_-_Firenze.jpg"
+        },
+        {
+          "time": "Noon",
+          "name": "Ponte Vecchio",
+          "description": "老桥和阿诺河。",
+          "mapQueries": {
+            "amap": "Ponte Vecchio",
+            "google": "Ponte Vecchio Florence",
+            "apple": "Ponte Vecchio Florence"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg/1280px-Ponte_Vecchio_from_Ponte_alle_Grazie.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Roma Termini",
+          "description": "高铁到罗马。",
+          "mapQueries": {
+            "amap": "Roma Termini",
+            "google": "Roma Termini",
+            "apple": "Roma Termini"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Roma_termini_01.jpg/1280px-Roma_termini_01.jpg"
+        },
+        {
+          "time": "Evening",
+          "name": "Trevi Fountain",
+          "description": "许愿池夜景。",
+          "mapQueries": {
+            "amap": "Trevi Fountain",
+            "google": "Trevi Fountain Rome",
+            "apple": "Trevi Fountain Rome"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Trevi_Fountain_-_Roma.jpg/1280px-Trevi_Fountain_-_Roma.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 4",
+      "title": "Rome Classic Walk",
+      "summary": "古罗马和巴洛克广场外观线。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Colosseum",
+          "description": "斗兽场和凯旋门外观。",
+          "mapQueries": {
+            "amap": "Colosseum",
+            "google": "Colosseum Rome",
+            "apple": "Colosseum Rome"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1280px-Colosseo_2020.jpg"
+        },
+        {
+          "time": "Noon",
+          "name": "Pantheon",
+          "description": "古建筑和穹顶。",
+          "mapQueries": {
+            "amap": "Pantheon",
+            "google": "Pantheon Rome",
+            "apple": "Pantheon Rome"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Pantheon_%28Rome%29_-_Right_side_and_front.jpg/1280px-Pantheon_%28Rome%29_-_Right_side_and_front.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Piazza Navona",
+          "description": "喷泉和冰淇淋。",
+          "mapQueries": {
+            "amap": "Piazza Navona",
+            "google": "Piazza Navona Rome",
+            "apple": "Piazza Navona Rome"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Piazza_Navona_%28Rome%29_at_night.jpg/1280px-Piazza_Navona_%28Rome%29_at_night.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 5",
+      "title": "Rome Shopping → Olten",
+      "summary": "上午购物，晚上飞瑞士。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Spanish Steps",
+          "description": "购物街起点。",
+          "mapQueries": {
+            "amap": "Spanish Steps",
+            "google": "Spanish Steps Rome",
+            "apple": "Spanish Steps Rome"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Piazza_di_Spagna_%28Rome%29_0004.jpg"
+        },
+        {
+          "time": "Noon",
+          "name": "Rinascente / Longchamp",
+          "description": "百货和退税。",
+          "mapQueries": {
+            "amap": "Rinascente / Longchamp",
+            "google": "Rinascente Rome Tritone",
+            "apple": "Rinascente Rome Tritone"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Via_del_Corso_%2852501354470%29.jpg/1280px-Via_del_Corso_%2852501354470%29.jpg"
+        },
+        {
+          "time": "Evening",
+          "name": "Zurich Airport → Olten",
+          "description": "落地后火车去奥尔滕。",
+          "mapQueries": {
+            "amap": "Zurich Airport → Olten",
+            "google": "Olten Switzerland",
+            "apple": "Olten Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Aerial_view_of_the_Zurich_Airport%2C_April_2019.jpg/1280px-Aerial_view_of_the_Zurich_Airport%2C_April_2019.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 6",
+      "title": "7 · Swiss Lake + Zurich",
+      "summary": "瑞士段看湖山和苏黎世收尾。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Luzern",
+          "description": "卡贝尔桥和湖边。",
+          "mapQueries": {
+            "amap": "Luzern",
+            "google": "Lucerne Switzerland",
+            "apple": "Lucerne Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/2009_08_24_06262_Lucerne.jpg/1280px-2009_08_24_06262_Lucerne.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Interlaken / Lungern",
+          "description": "湖山风景。",
+          "mapQueries": {
+            "amap": "Interlaken / Lungern",
+            "google": "Interlaken Switzerland",
+            "apple": "Interlaken Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Aerial_image_of_Lake_Lungern_%28view_from_the_southwest%29.jpg/1280px-Aerial_image_of_Lake_Lungern_%28view_from_the_southwest%29.jpg"
+        },
+        {
+          "time": "Final day",
+          "name": "Zurich HB / Bahnhofstrasse",
+          "description": "寄存行李、逛街、去机场。",
+          "mapQueries": {
+            "amap": "Zurich HB / Bahnhofstrasse",
+            "google": "Zurich HB",
+            "apple": "Zurich HB"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Zuerich_Hauptbahnhof-2.jpg/1280px-Zuerich_Hauptbahnhof-2.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

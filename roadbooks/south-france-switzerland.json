@@ -1,0 +1,288 @@
+{
+  "trip": {
+    "slug": "south-france-switzerland",
+    "title": "South France + Switzerland",
+    "destination": "Nice + Spiez",
+    "pace": "standard",
+    "interests": [
+      "南法",
+      "瑞士",
+      "湖山"
+    ],
+    "legacyPaths": [
+      "france-switzerland/south-france-switzerland.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "South France + Switzerland personal route",
+      "url": null,
+      "excerpt": "Nice, Monaco, Menton, Spiez, Rigi, First and Zurich",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Nice Arrival",
+      "summary": "抵达尼斯，晚上看海边和老城。",
+      "stops": [
+        {
+          "time": "16:55",
+          "name": "Nice Airport",
+          "description": "抵达南法。",
+          "mapQueries": {
+            "amap": "Nice Airport",
+            "google": "Nice Côte d'Azur Airport",
+            "apple": "Nice Côte d'Azur Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/A%C3%A9roport_de_Nice-C%C3%B4te_d%27Azur_-_2026-04-04_%28DSC00145%29.jpg/1280px-A%C3%A9roport_de_Nice-C%C3%B4te_d%27Azur_-_2026-04-04_%28DSC00145%29.jpg"
+        },
+        {
+          "time": "Evening",
+          "name": "Place Massena",
+          "description": "广场夜景。",
+          "mapQueries": {
+            "amap": "Place Massena",
+            "google": "Place Massena Nice",
+            "apple": "Place Massena Nice"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Place-Mass%C3%A9na_01.jpg/1280px-Place-Mass%C3%A9na_01.jpg"
+        },
+        {
+          "time": "Night",
+          "name": "Promenade des Anglais",
+          "description": "天使湾海边散步。",
+          "mapQueries": {
+            "amap": "Promenade des Anglais",
+            "google": "Promenade des Anglais Nice",
+            "apple": "Promenade des Anglais Nice"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/CollineDuChateau_NiceFrance2022.png/1280px-CollineDuChateau_NiceFrance2022.png"
+        }
+      ]
+    },
+    {
+      "date": "Day 2",
+      "title": "Menton + Monaco",
+      "summary": "上午芒通，下午摩纳哥。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Menton Old Town",
+          "description": "彩色老城和黄楼梯。",
+          "mapQueries": {
+            "amap": "Menton Old Town",
+            "google": "Menton Old Town",
+            "apple": "Menton Old Town"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Menton_february_13.jpg"
+        },
+        {
+          "time": "Noon",
+          "name": "Basilique Saint-Michel",
+          "description": "教堂台阶和海景。",
+          "mapQueries": {
+            "amap": "Basilique Saint-Michel",
+            "google": "Basilique Saint-Michel Menton",
+            "apple": "Basilique Saint-Michel Menton"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Basilique_Saint-Michel-Archange_01.jpg/960px-Basilique_Saint-Michel-Archange_01.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Monaco Port Hercule",
+          "description": "游艇港和城市坡道。",
+          "mapQueries": {
+            "amap": "Monaco Port Hercule",
+            "google": "Port Hercule Monaco",
+            "apple": "Port Hercule Monaco"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Port_Hercules%2C_Monaco.jpg/1280px-Port_Hercules%2C_Monaco.jpg"
+        },
+        {
+          "time": "Evening",
+          "name": "Monte Carlo Casino",
+          "description": "赌场外观和广场。",
+          "mapQueries": {
+            "amap": "Monte Carlo Casino",
+            "google": "Monte Carlo Casino",
+            "apple": "Monte Carlo Casino"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2016_Casino_de_Monte_Carlo_06.jpg/960px-2016_Casino_de_Monte_Carlo_06.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "Nice Half Day → Spiez",
+      "summary": "尼斯收尾后飞日内瓦，晚上到 Spiez。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Castle Hill",
+          "description": "俯瞰天使湾。",
+          "mapQueries": {
+            "amap": "Castle Hill",
+            "google": "Castle Hill Nice",
+            "apple": "Castle Hill Nice"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/View_of_Nice_from_colline_du_Ch%C3%A2teau_to_Northwest.jpg/960px-View_of_Nice_from_colline_du_Ch%C3%A2teau_to_Northwest.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Geneva Airport",
+          "description": "飞抵瑞士。",
+          "mapQueries": {
+            "amap": "Geneva Airport",
+            "google": "Geneva Airport",
+            "apple": "Geneva Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Geneva_airport_from_air.jpg/1280px-Geneva_airport_from_air.jpg"
+        },
+        {
+          "time": "Night",
+          "name": "Spiez Hotel",
+          "description": "湖边入住。",
+          "mapQueries": {
+            "amap": "Spiez Hotel",
+            "google": "Hotel-Restaurant Seegarten-Marina Spiez",
+            "apple": "Hotel-Restaurant Seegarten-Marina Spiez"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Spiez.JPG/1280px-Spiez.JPG"
+        }
+      ]
+    },
+    {
+      "date": "Day 4",
+      "title": "7 · Swiss Mountain Line",
+      "summary": "以 Spiez 为大本营，走 Rigi、First、Zurich。",
+      "stops": [
+        {
+          "time": "Day 4",
+          "name": "Rigi",
+          "description": "游船 + 登山铁路 + 山顶。",
+          "mapQueries": {
+            "amap": "Rigi",
+            "google": "Rigi Kulm",
+            "apple": "Rigi Kulm"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/e/e4/Lauerzersee.jpg"
+        },
+        {
+          "time": "Day 5",
+          "name": "Grindelwald First",
+          "description": "First Cliff Walk 和 Bachalpsee。",
+          "mapQueries": {
+            "amap": "Grindelwald First",
+            "google": "Grindelwald First",
+            "apple": "Grindelwald First"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Grindelwald_First.jpg"
+        },
+        {
+          "time": "Day 6",
+          "name": "Brienz / Lungern",
+          "description": "湖边小镇机动。",
+          "mapQueries": {
+            "amap": "Brienz / Lungern",
+            "google": "Lungern Switzerland",
+            "apple": "Lungern Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Aerial_image_of_Lake_Brienz_%28view_from_the_southwest%29.jpg/1280px-Aerial_image_of_Lake_Brienz_%28view_from_the_southwest%29.jpg"
+        },
+        {
+          "time": "Day 7",
+          "name": "Zurich",
+          "description": "老城、湖边、机场返程。",
+          "mapQueries": {
+            "amap": "Zurich",
+            "google": "Zurich Switzerland",
+            "apple": "Zurich Switzerland"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Altstadt_Z%C3%BCrich_2015.jpg/1280px-Altstadt_Z%C3%BCrich_2015.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

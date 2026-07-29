@@ -1,0 +1,139 @@
+{
+  "trip": {
+    "slug": "monaco-menton",
+    "title": "Monaco + Menton",
+    "destination": "Menton + Monaco",
+    "pace": "standard",
+    "interests": [
+      "南法",
+      "海岸",
+      "一日线"
+    ],
+    "legacyPaths": [
+      "france-switzerland/monaco-menton.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Monaco + Menton personal route",
+      "url": null,
+      "excerpt": "A compact Riviera day route",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Day Route · Menton → Monaco",
+      "summary": "适合从 Nice 出发的一日往返。",
+      "stops": [
+        {
+          "time": "10:30",
+          "name": "Menton Station",
+          "description": "下车后步行进老城。",
+          "mapQueries": {
+            "amap": "Menton Station",
+            "google": "Menton Station",
+            "apple": "Menton Station"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Menton_february_13.jpg"
+        },
+        {
+          "time": "11:00",
+          "name": "Rue Saint-Michel",
+          "description": "彩色街道和小店。",
+          "mapQueries": {
+            "amap": "Rue Saint-Michel",
+            "google": "Rue Saint-Michel Menton",
+            "apple": "Rue Saint-Michel Menton"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/2/26/Menton_february_13.jpg"
+        },
+        {
+          "time": "11:40",
+          "name": "Basilique Saint-Michel",
+          "description": "教堂台阶和海湾视角。",
+          "mapQueries": {
+            "amap": "Basilique Saint-Michel",
+            "google": "Basilique Saint-Michel Menton",
+            "apple": "Basilique Saint-Michel Menton"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Basilique_Saint-Michel-Archange_01.jpg/960px-Basilique_Saint-Michel-Archange_01.jpg"
+        },
+        {
+          "time": "14:30",
+          "name": "Monaco-Monte-Carlo Station",
+          "description": "抵达摩纳哥。",
+          "mapQueries": {
+            "amap": "Monaco-Monte-Carlo Station",
+            "google": "Monaco Monte Carlo Station",
+            "apple": "Monaco Monte Carlo Station"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Monaco_Monte-Carlo_Train_Station_%2849800541117%29.jpg/1280px-Monaco_Monte-Carlo_Train_Station_%2849800541117%29.jpg"
+        },
+        {
+          "time": "15:00",
+          "name": "Port Hercule",
+          "description": "游艇港拍照。",
+          "mapQueries": {
+            "amap": "Port Hercule",
+            "google": "Port Hercule Monaco",
+            "apple": "Port Hercule Monaco"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Port_Hercules%2C_Monaco.jpg/1280px-Port_Hercules%2C_Monaco.jpg"
+        },
+        {
+          "time": "16:00",
+          "name": "Casino de Monte-Carlo",
+          "description": "赌场广场和外观。",
+          "mapQueries": {
+            "amap": "Casino de Monte-Carlo",
+            "google": "Monte Carlo Casino",
+            "apple": "Monte Carlo Casino"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2016_Casino_de_Monte_Carlo_06.jpg/960px-2016_Casino_de_Monte_Carlo_06.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

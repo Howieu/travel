@@ -1,0 +1,13 @@
+{
+  "title": "Howieu Travel Roadbooks",
+  "description": "从真实旅行攻略迁移而来的可执行移动端路书合集。",
+  "author": "Howieu",
+  "theme": {
+    "primaryColor": "#0f766e",
+    "accentColor": "#f59e0b",
+    "backgroundColor": "#f5f7f8",
+    "showSources": true,
+    "showConfidence": true,
+    "language": "zh-CN"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "trip": {
+    "slug": "grindelwald-first",
+    "title": "Grindelwald First",
+    "destination": "Grindelwald",
+    "pace": "standard",
+    "interests": [
+      "雪山",
+      "徒步",
+      "活动"
+    ],
+    "legacyPaths": [
+      "france-switzerland/grindelwald-first.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Grindelwald First personal route",
+      "url": null,
+      "excerpt": "First cliff walk, Bachalpsee and mountain activities",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Mountain Day · First Line",
+      "summary": "时间允许再加山地车或滑板车。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Olten / Spiez Station",
+          "description": "早起出发去 Grindelwald。",
+          "mapQueries": {
+            "amap": "Olten / Spiez Station",
+            "google": "Grindelwald Bahnhof",
+            "apple": "Grindelwald Bahnhof"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Spiez.JPG/1280px-Spiez.JPG"
+        },
+        {
+          "time": "Late morning",
+          "name": "Firstbahn Valley Station",
+          "description": "换乘缆车上山。",
+          "mapQueries": {
+            "amap": "Firstbahn Valley Station",
+            "google": "Firstbahn Grindelwald",
+            "apple": "Firstbahn Grindelwald"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Grindelwald_First.jpg"
+        },
+        {
+          "time": "Noon",
+          "name": "First Mountain Station",
+          "description": "First Cliff Walk。",
+          "mapQueries": {
+            "amap": "First Mountain Station",
+            "google": "First Cliff Walk",
+            "apple": "First Cliff Walk"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Grindelwald_First.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Bachalpsee",
+          "description": "轻徒步看湖。",
+          "mapQueries": {
+            "amap": "Bachalpsee",
+            "google": "Bachalpsee",
+            "apple": "Bachalpsee"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Bachalpsee_reflection.jpg/1280px-Bachalpsee_reflection.jpg"
+        },
+        {
+          "time": "Optional",
+          "name": "Schreckfeld / Bort",
+          "description": "山地车、滑板车活动。",
+          "mapQueries": {
+            "amap": "Schreckfeld / Bort",
+            "google": "Schreckfeld Grindelwald",
+            "apple": "Schreckfeld Grindelwald"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/6/60/Grindelwald_First.jpg"
+        },
+        {
+          "time": "Return",
+          "name": "Grindelwald Bahnhof",
+          "description": "下山返程。",
+          "mapQueries": {
+            "amap": "Grindelwald Bahnhof",
+            "google": "Grindelwald Bahnhof",
+            "apple": "Grindelwald Bahnhof"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2012-07-26_Berner_Oberland_5605.JPG/1280px-2012-07-26_Berner_Oberland_5605.JPG"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

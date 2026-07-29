@@ -1,0 +1,171 @@
+{
+  "trip": {
+    "slug": "zurich",
+    "title": "Zurich",
+    "destination": "Zurich",
+    "pace": "standard",
+    "interests": [
+      "城市漫步",
+      "湖边",
+      "返程"
+    ],
+    "legacyPaths": [
+      "france-switzerland/zurich.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Zurich personal route",
+      "url": null,
+      "excerpt": "ETH viewpoint, old town, lake and airport transfer",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Zurich City Walk",
+      "summary": "适合返程日前的轻量城市线。",
+      "stops": [
+        {
+          "time": "13:20",
+          "name": "ETH Hauptgebaude",
+          "description": "校园主楼和观景平台。",
+          "mapQueries": {
+            "amap": "ETH Hauptgebaude",
+            "google": "ETH Zurich main building",
+            "apple": "ETH Zurich main building"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/ETH_Z%C3%BCrich_-_Hauptgeb%C3%A4ude_-_Unispital_2012-07-30_07-57-03_ShiftN.jpg/1280px-ETH_Z%C3%BCrich_-_Hauptgeb%C3%A4ude_-_Unispital_2012-07-30_07-57-03_ShiftN.jpg"
+        },
+        {
+          "time": "13:35",
+          "name": "Polyterrasse",
+          "description": "俯瞰苏黎世老城。",
+          "mapQueries": {
+            "amap": "Polyterrasse",
+            "google": "Polyterrasse Zurich",
+            "apple": "Polyterrasse Zurich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/ETH_Z%C3%BCrich_-_Hauptgeb%C3%A4ude_-_Unispital_2012-07-30_07-57-03_ShiftN.jpg/1280px-ETH_Z%C3%BCrich_-_Hauptgeb%C3%A4ude_-_Unispital_2012-07-30_07-57-03_ShiftN.jpg"
+        },
+        {
+          "time": "14:05",
+          "name": "Kunsthaus Zurich",
+          "description": "美术馆外观或短停。",
+          "mapQueries": {
+            "amap": "Kunsthaus Zurich",
+            "google": "Kunsthaus Zurich",
+            "apple": "Kunsthaus Zurich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Kunsthaus_Z%C3%BCrich_2011-08-06_17-33-46.jpg/1280px-Kunsthaus_Z%C3%BCrich_2011-08-06_17-33-46.jpg"
+        },
+        {
+          "time": "14:35",
+          "name": "Lake Zurich",
+          "description": "湖边和天鹅。",
+          "mapQueries": {
+            "amap": "Lake Zurich",
+            "google": "Lake Zurich",
+            "apple": "Lake Zurich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Pfannenstiel_-_Z%C3%BCrichsee_-_Sihltal_-_Albis_Baldern_IMG_5316.jpg/1280px-Pfannenstiel_-_Z%C3%BCrichsee_-_Sihltal_-_Albis_Baldern_IMG_5316.jpg"
+        },
+        {
+          "time": "15:25",
+          "name": "Grossmunster / Fraumunster",
+          "description": "老城双教堂。",
+          "mapQueries": {
+            "amap": "Grossmunster / Fraumunster",
+            "google": "Grossmunster Zurich",
+            "apple": "Grossmunster Zurich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Grossm%C3%BCnster_-_M%C3%BCnsterhof_2014-05-23_12-08-43.JPG/1280px-Grossm%C3%BCnster_-_M%C3%BCnsterhof_2014-05-23_12-08-43.JPG"
+        },
+        {
+          "time": "16:25",
+          "name": "Bahnhofstrasse",
+          "description": "购物街。",
+          "mapQueries": {
+            "amap": "Bahnhofstrasse",
+            "google": "Bahnhofstrasse Zurich",
+            "apple": "Bahnhofstrasse Zurich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Bahnhofstrasse-2019.jpg/1280px-Bahnhofstrasse-2019.jpg"
+        },
+        {
+          "time": "17:20",
+          "name": "Lindenhof",
+          "description": "老城高点。",
+          "mapQueries": {
+            "amap": "Lindenhof",
+            "google": "Lindenhof Zurich",
+            "apple": "Lindenhof Zurich"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Lindenhof_Square_and_Hill%2C_Zurich_%28Ank_Kumar%29_07.jpg/1280px-Lindenhof_Square_and_Hill%2C_Zurich_%28Ank_Kumar%29_07.jpg"
+        },
+        {
+          "time": "19:05",
+          "name": "Zurich Airport",
+          "description": "取行李后去机场。",
+          "mapQueries": {
+            "amap": "Zurich Airport",
+            "google": "Zurich Airport",
+            "apple": "Zurich Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Aerial_view_of_the_Zurich_Airport%2C_April_2019.jpg/1280px-Aerial_view_of_the_Zurich_Airport%2C_April_2019.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}

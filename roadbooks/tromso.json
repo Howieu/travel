@@ -1,0 +1,240 @@
+{
+  "trip": {
+    "slug": "tromso",
+    "title": "Tromso",
+    "destination": "Tromso",
+    "pace": "standard",
+    "interests": [
+      "极光",
+      "峡湾",
+      "雪景"
+    ],
+    "legacyPaths": [
+      "norway/tromso.html"
+    ],
+    "coverImage": "https://images.unsplash.com/photo-1516571748831-5d81767b788d?q=80&w=1800&auto=format&fit=crop"
+  },
+  "sourceRecords": [
+    {
+      "id": "legacy-route",
+      "type": "user-roadbook",
+      "platform": "user",
+      "title": "Tromso personal route",
+      "url": null,
+      "excerpt": "Arctic city, fjord views and aurora nights",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    }
+  ],
+  "lodging": [],
+  "transport": [],
+  "days": [
+    {
+      "date": "Day 1",
+      "title": "Arrival + City Base",
+      "summary": "抵达后先入住和补给。",
+      "stops": [
+        {
+          "time": "09:10",
+          "name": "Tromso Airport",
+          "description": "抵达北极圈城市。",
+          "mapQueries": {
+            "amap": "Tromso Airport",
+            "google": "Tromso Airport",
+            "apple": "Tromso Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Troms%C3%B8_airport%2C_Norway.jpg/1280px-Troms%C3%B8_airport%2C_Norway.jpg"
+        },
+        {
+          "time": "11:30",
+          "name": "Hotel / Luggage",
+          "description": "寄存行李或入住。",
+          "mapQueries": {
+            "amap": "Hotel / Luggage",
+            "google": "Simen Workinns veg 15 Tromso",
+            "apple": "Simen Workinns veg 15 Tromso"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Troms%C3%B8_sentrum_%285835702754%29.jpg/1280px-Troms%C3%B8_sentrum_%285835702754%29.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Tromso City Centre",
+          "description": "主街、港口、超市补给。",
+          "mapQueries": {
+            "amap": "Tromso City Centre",
+            "google": "Tromso city centre",
+            "apple": "Tromso city centre"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Troms%C3%B8_sentrum_%285835702754%29.jpg/1280px-Troms%C3%B8_sentrum_%285835702754%29.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 2",
+      "title": "Cable Car + Arctic Cathedral",
+      "summary": "城市经典视角和地标建筑。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Arctic Cathedral",
+          "description": "外观和桥边视角。",
+          "mapQueries": {
+            "amap": "Arctic Cathedral",
+            "google": "Arctic Cathedral Tromso",
+            "apple": "Arctic Cathedral Tromso"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Arctic_Cathedral_in_Tromsoe.jpg/1280px-Arctic_Cathedral_in_Tromsoe.jpg"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Fjellheisen",
+          "description": "缆车上山看城市和峡湾。",
+          "mapQueries": {
+            "amap": "Fjellheisen",
+            "google": "Fjellheisen Tromso",
+            "apple": "Fjellheisen Tromso"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Fjellheisen%2C_Troms%C3%B8_2019.jpg/1280px-Fjellheisen%2C_Troms%C3%B8_2019.jpg"
+        },
+        {
+          "time": "Night",
+          "name": "Aurora Chasing",
+          "description": "按天气选择极光团。",
+          "mapQueries": {
+            "amap": "Aurora Chasing",
+            "google": "Tromso aurora tour",
+            "apple": "Tromso aurora tour"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Aurora_borealis_over_Eielson_Air_Force_Base%2C_Alaska.jpg/1280px-Aurora_borealis_over_Eielson_Air_Force_Base%2C_Alaska.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 3",
+      "title": "Fjord Day",
+      "summary": "留给峡湾、雪景和户外体验。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Kvaloya",
+          "description": "峡湾路和海边雪景。",
+          "mapQueries": {
+            "amap": "Kvaloya",
+            "google": "Kvaloya Tromso",
+            "apple": "Kvaloya Tromso"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Troms%C3%B8-landskap_1.JPG/960px-Troms%C3%B8-landskap_1.JPG"
+        },
+        {
+          "time": "Afternoon",
+          "name": "Ersfjordbotn",
+          "description": "短途看峡湾村落。",
+          "mapQueries": {
+            "amap": "Ersfjordbotn",
+            "google": "Ersfjordbotn Norway",
+            "apple": "Ersfjordbotn Norway"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Ersfjordbotn_2012.JPG/1280px-Ersfjordbotn_2012.JPG"
+        },
+        {
+          "time": "Night",
+          "name": "Aurora Backup",
+          "description": "视天气再安排追光。",
+          "mapQueries": {
+            "amap": "Aurora Backup",
+            "google": "Tromso northern lights",
+            "apple": "Tromso northern lights"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Aurora_borealis_over_Eielson_Air_Force_Base%2C_Alaska.jpg/1280px-Aurora_borealis_over_Eielson_Air_Force_Base%2C_Alaska.jpg"
+        }
+      ]
+    },
+    {
+      "date": "Day 4",
+      "title": "Departure Buffer",
+      "summary": "返程日保留机动。",
+      "stops": [
+        {
+          "time": "Morning",
+          "name": "Cafe / Harbour Walk",
+          "description": "慢节奏早餐和港口散步。",
+          "mapQueries": {
+            "amap": "Cafe / Harbour Walk",
+            "google": "Tromso harbour",
+            "apple": "Tromso harbour"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Troms%C3%B8_sentrum_%285835702754%29.jpg/1280px-Troms%C3%B8_sentrum_%285835702754%29.jpg"
+        },
+        {
+          "time": "Departure",
+          "name": "Tromso Airport",
+          "description": "提前到机场。",
+          "mapQueries": {
+            "amap": "Tromso Airport",
+            "google": "Tromso Airport",
+            "apple": "Tromso Airport"
+          },
+          "source": "Migrated personal roadbook",
+          "sourceIds": [
+            "legacy-route"
+          ],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Troms%C3%B8_airport%2C_Norway.jpg/1280px-Troms%C3%B8_airport%2C_Norway.jpg"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "出发前请再次确认实时营业时间、天气和交通安排。"
+  ]
+}
