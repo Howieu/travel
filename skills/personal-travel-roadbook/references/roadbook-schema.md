@@ -55,7 +55,19 @@ Each file in `roadbooks/` is a JSON object with this shape:
           "links": [{"label": "Official site", "url": "https://example.com/louvre"}],
           "source": "pasted notes",
           "sourceIds": ["note-001"],
-          "confidence": "medium"
+          "confidence": "medium",
+          "options": [
+            {
+              "name": "Parallel choice",
+              "description": "Shown beside the other choices.",
+              "deadline": "Pick one",
+              "mapQueries": {
+                "amap": "卢浮宫 巴黎",
+                "google": "Louvre Museum Paris",
+                "apple": "Louvre Museum Paris"
+              }
+            }
+          ]
         }
       ]
     }
@@ -67,3 +79,5 @@ Each file in `roadbooks/` is a JSON object with this shape:
 Required fields: `trip.title`, `trip.destination`, `days[].date`, and `days[].stops[].name`. Keep old-style `source` for human display, but prefer stable `sourceIds` for evidence tracing. Optional fields can be omitted; the renderer supplies safe defaults.
 
 `trip.legacyPaths` is optional. Each value must be a relative `.html` path without `..`; the builder creates a redirect so existing GitHub Pages links remain valid after migration.
+
+`stops[].options` is optional. When present, the builder shows those choices side by side, each with its own map buttons. Use it for mutually exclusive endings, not for stops the traveler should visit in sequence.

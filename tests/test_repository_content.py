@@ -20,9 +20,9 @@ def load_routes() -> list[dict]:
 def test_migrated_route_inventory_is_complete() -> None:
     routes = load_routes()
 
-    assert len(routes) == 11
-    assert sum(len(route["days"]) for route in routes) == 32
-    assert sum(len(day["stops"]) for route in routes for day in route["days"]) == 137
+    assert len(routes) == 12
+    assert sum(len(route["days"]) for route in routes) == 33
+    assert sum(len(day["stops"]) for route in routes for day in route["days"]) == 145
     assert all(not validate_roadbook(route) for route in routes)
 
 
@@ -31,7 +31,7 @@ def test_routes_have_unique_slugs_and_legacy_paths() -> None:
     slugs = [route["trip"]["slug"] for route in routes]
     legacy_paths = [path for route in routes for path in route["trip"].get("legacyPaths", [])]
 
-    assert len(slugs) == len(set(slugs)) == 11
+    assert len(slugs) == len(set(slugs)) == 12
     assert len(legacy_paths) == len(set(legacy_paths)) == 11
 
 
@@ -85,9 +85,9 @@ def test_full_collection_builds_with_legacy_redirects(tmp_path: Path) -> None:
 
     result = build_site(ROOT / "site.config.json", ROOT / "roadbooks", output_dir)
 
-    assert result.route_count == 11
+    assert result.route_count == 12
     for route in load_routes():
         slug = route["trip"]["slug"]
         assert (output_dir / "routes" / slug / "index.html").exists()
-        for legacy_path in route["trip"]["legacyPaths"]:
+        for legacy_path in route["trip"].get("legacyPaths", []):
             assert (output_dir / legacy_path).exists()

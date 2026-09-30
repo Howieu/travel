@@ -228,8 +228,18 @@ def route_dates(trip: dict) -> str:
 
 
 def render_map_links(stop: dict) -> str:
+    button_class = {
+        "高德": "map-primary",
+        "Google Maps": "map-secondary",
+        "Apple Maps": "map-tertiary",
+    }
+    button_label = {
+        "高德": "高德导航",
+        "Google Maps": "Google 地图",
+        "Apple Maps": "Apple 地图",
+    }
     links = [
-        f'<a href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(label)}</a>'
+        f'<a class="{button_class.get(label, "map-tertiary")}" href="{esc(url)}" target="_blank" rel="noopener noreferrer">{esc(button_label.get(label, label))}</a>'
         for label, url in map_links(stop)
     ]
     for link in stop.get("links") or []:
@@ -241,6 +251,29 @@ def render_map_links(stop: dict) -> str:
                     f'{esc(link.get("label"), "打开链接")}</a>'
                 )
     return "".join(links)
+
+
+def render_choice_row(stop: dict) -> str:
+    options = stop.get("options")
+    if not isinstance(options, list):
+        return ""
+    cards: list[str] = []
+    for option in options:
+        if not isinstance(option, dict) or not option.get("name"):
+            continue
+        deadline = (
+            f'<p class="deadline">{esc(option.get("deadline"))}</p>'
+            if option.get("deadline")
+            else ""
+        )
+        cards.append(
+            f'<article class="choice-card"><h4>{esc(option.get("name"))}</h4>'
+            f'<p>{esc(option.get("description"))}</p>{deadline}'
+            f'<div class="stop-links">{render_map_links(option)}</div></article>'
+        )
+    if not cards:
+        return ""
+    return f'<div class="choice-row">{"".join(cards)}</div>'
 
 
 def render_stop(stop: dict, selected_theme: dict) -> str:
@@ -287,6 +320,7 @@ def render_stop(stop: dict, selected_theme: dict) -> str:
         {image_html}
         <p>{esc(stop.get("description"), "按现场情况安排停留。")}</p>
         {deadline}{fallback}
+        {render_choice_row(stop)}
         <div class="stop-links">{render_map_links(stop)}</div>
         {confidence}
       </div>
@@ -372,7 +406,7 @@ def render_route(route: Route, config: dict) -> str:
     return f"""<!doctype html>
 <html lang="{esc(selected_theme.get("language"), "zh-CN")}">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="description" content="{esc(trip.get("title"))} · {esc(trip.get("destination"))}">
   <title>{esc(trip.get("title"))}</title><link rel="icon" href="data:,"><link rel="stylesheet" href="../../assets/roadbook.css">
 </head>

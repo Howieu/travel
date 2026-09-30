@@ -115,11 +115,36 @@ def test_build_site_renders_escaped_content_maps_sources_and_fallbacks(tmp_path:
     assert "routes/paris-weekend/index.html" in collection
     assert "Louvre &lt; Museum" in route
     assert "https://uri.amap.com/search?keyword=%E5%8D%A2%E6%B5%AE%E5%AE%AB+%E5%B7%B4%E9%BB%8E" in route
-    assert "Google Maps" in route
-    assert "Apple Maps" in route
+    assert 'class="map-primary"' in route
+    assert "高德导航" in route
+    assert 'class="map-secondary"' in route
+    assert "Google 地图" in route
+    assert "Apple 地图" in route
+    assert route.index("高德导航") < route.index("Google 地图")
     assert "Skip the interior if arrival is late." in route
     assert "Paris notes" in route
     assert "#123456" in route
+
+
+def test_choice_options_render_side_by_side(tmp_path: Path) -> None:
+    input_dir = tmp_path / "roadbooks"
+    output_dir = tmp_path / "dist"
+    input_dir.mkdir()
+    route = sample_route()
+    route["days"][0]["stops"][0]["options"] = [
+        {"name": "East", "description": "Stay east.", "mapQueries": {"amap": "东", "google": "East"}},
+        {"name": "West", "description": "Walk west.", "mapQueries": {"amap": "西", "google": "West"}},
+        {"name": "Hung Hom", "description": "Continue east.", "mapQueries": {"amap": "红磡", "google": "Hung Hom"}},
+    ]
+    write_json(input_dir / "paris.json", route)
+    config_path = tmp_path / "site.config.json"
+    write_json(config_path, {"title": "Routes"})
+
+    build_site(config_path, input_dir, output_dir)
+
+    html = (output_dir / "routes" / "paris-weekend" / "index.html").read_text(encoding="utf-8")
+    assert html.count('class="choice-card"') == 3
+    assert "choice-row" in html
 
 
 def test_build_site_supports_multiple_routes_and_default_theme(tmp_path: Path) -> None:

@@ -34,7 +34,7 @@ jobs:
             --out dist
       - name: Verify migrated route count
         run: |
-          test "$(find dist/routes -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')" = "11"
+          test "$(find dist/routes -mindepth 1 -maxdepth 1 -type d | wc -l | tr -d ' ')" = "12"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
