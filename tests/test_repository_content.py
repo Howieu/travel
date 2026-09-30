@@ -22,7 +22,7 @@ def test_migrated_route_inventory_is_complete() -> None:
 
     assert len(routes) == 12
     assert sum(len(route["days"]) for route in routes) == 33
-    assert sum(len(day["stops"]) for route in routes for day in route["days"]) == 144
+    assert sum(len(day["stops"]) for route in routes for day in route["days"]) == 145
     assert all(not validate_roadbook(route) for route in routes)
 
 
