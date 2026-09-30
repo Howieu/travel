@@ -22,14 +22,14 @@ flowchart LR
 - JSON 是唯一内容源，路线可以直接编辑、审查和版本管理。
 - Agent 负责非结构化资料理解和路线编排。
 - Python 构建器负责必填校验、敏感字段清理、HTML 转义、地图链接和静态页面生成。
-- GitHub Actions 在每次推送后运行测试、构建 11 条路线并部署。
+- GitHub Actions 在每次推送后运行测试、构建 12 条路线并部署。
 - 原有 URL 会生成跳转页，例如 `uk/london.html` 仍可访问。
 
 ## 数据规模
 
-- 11 条路线
-- 32 个行程日
-- 137 个停靠点
+- 12 条路线
+- 33 个行程日
+- 144 个停靠点
 - 11 个旧 URL 兼容入口
 
 路线包括 7 条主路线和 4 条子路线。公开仓库不保存姓名、订单号、证件、联系方式、支付信息或二维码。
@@ -56,7 +56,7 @@ python -m http.server 8000 --directory dist
 
 ```text
 .
-├── roadbooks/                         # 11 条路线的 JSON 单一数据源
+├── roadbooks/                         # 12 条路线的 JSON 单一数据源
 ├── skills/personal-travel-roadbook/
 │   ├── SKILL.md                       # Agent 工作流
 │   ├── scripts/build_site.py          # 确定性静态构建器

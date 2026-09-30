@@ -1,0 +1,342 @@
+{
+  "trip": {
+    "slug": "hong-kong-national-day",
+    "title": "香港国庆：太平山到维港烟花",
+    "destination": "香港",
+    "startDate": "2026-10-01",
+    "endDate": "2026-10-01",
+    "pace": "compact",
+    "interests": ["观景", "海港", "小吃"],
+    "mustGo": ["太平山", "城巴下山", "天星小轮", "尖沙咀钟楼", "星光大道", "维港烟花"],
+    "avoid": ["回头路", "18:30 后的天星小轮", "封路后才赶去海滨"],
+    "coverImage": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Former_Kowloon-Canton_Railway_Clock_Tower_2013-08.JPG"
+  },
+  "sourceRecords": [
+    {
+      "id": "xhs-peak",
+      "type": "guide-url",
+      "platform": "xiaohongshu",
+      "title": "2026太平山最强指南：缆车、巴士、步行怎么选？",
+      "url": "https://xhslink.cn/o/P5EwXqSt9k",
+      "excerpt": "短链只打开到小红书空壳页。小红书渠道没有可用登录态，未读到正文。",
+      "accessStatus": "unreadable",
+      "confidence": "low"
+    },
+    {
+      "id": "user-note",
+      "type": "pasted-note",
+      "platform": "user",
+      "title": "当天约束",
+      "url": null,
+      "excerpt": "中午 12 点开始。太平山坐公交下山，天星小轮到星光大道，并看到钟楼。海港城或旺角小吃是可选项。20:00 前必须到位看烟花。路线不要走回头路。",
+      "accessStatus": "user-summary",
+      "confidence": "high"
+    },
+    {
+      "id": "peak-transport",
+      "type": "official",
+      "platform": "web",
+      "title": "The Peak Transportation",
+      "url": "https://www.thepeak.com.hk/en/getting-to-the-peak/transportation",
+      "excerpt": "缆车总站 07:30–23:00。中环站步行到花园道总站约 10–15 分钟，出口 J2。城巴 15 公众假期由山顶 07:00–01:00，页上写班距 7–15 分钟。小巴 1 号公众假期由山顶 07:00–00:00。由中环站步行上山约 1–1.5 小时。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "peak-oct1",
+      "type": "official",
+      "platform": "web",
+      "title": "Sky Terrace 428 国庆特别安排",
+      "url": "https://www.thepeak.com.hk/sites/peak/files/2026-09/Special%20Arrangement%20at%20Sky%20Terrace%20428%20for%201%20October%202026%20Fireworks%20Display.pdf",
+      "excerpt": "10 月 1 日 18:00–20:30 白加道站围封。凌霄阁摩天台 428 于 18:00 停止公众入场，18:00 前进入的客人最晚 18:30 离开。19:00–20:30 只接待当日 Ruby Special 且摩天台门票未使用的客人。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "star-ferry",
+      "type": "official",
+      "platform": "web",
+      "title": "天星小轮中环至尖沙咀时刻",
+      "url": "https://www.starferry.com.hk/en/service",
+      "excerpt": "公众假期中环开出约 07:25–22:40 每 6/8 分钟一班，上层票价 6.5 港元。这是日常时刻，当天另有停航。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "fireworks-news",
+      "type": "official",
+      "platform": "web",
+      "title": "news.gov.hk 国庆烟花",
+      "url": "https://www.news.gov.hk/eng/2026/09/20260902/20260902_161136_658.html",
+      "excerpt": "2026 年 10 月 1 日 20:00，维港烟花约 23 分钟，超过 3 万发，分 8 段。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "fireworks-dhk",
+      "type": "official",
+      "platform": "web",
+      "title": "香港旅游发展局烟花页",
+      "url": "https://www.discoverhongkong.com/eng/events/event.id89562.2026-national-day-fireworks-display.html",
+      "excerpt": "10 月 1 日 20:00，维港免费观赏。提及范围包括尖沙咀、半山、中环、湾仔、铜锣湾和红磡绕道。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "td-notice",
+      "type": "official",
+      "platform": "web",
+      "title": "运输署国庆交通安排 2026-09-28",
+      "url": "https://www.td.gov.hk/filemanager/en/content_13/TDN%20-%20National%20Day%202026_English_Full_20260928.pdf",
+      "excerpt": "尖沙咀 17:00 起分阶段封路，含广东道、弥敦道南段和梳士巴利道。天星码头巴士总站 17:30 起停用。西九文化区一带 18:00 起封车，小巴 CX1 18:00 停驶。天星小轮中环至九龙尖取消 18:30–21:15 航班。港岛中环、湾仔一带多数封路 18:30 起。地铁傍晚加密。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "wiki-clock",
+      "type": "guide",
+      "platform": "web",
+      "title": "前九广铁路钟楼",
+      "url": "https://en.wikipedia.org/wiki/Clock_Tower,_Hong_Kong",
+      "excerpt": "钟楼在尖沙咀海旁、梳士巴利道西端，天星码头就在附近。塔内目前因维修关闭。",
+      "accessStatus": "read",
+      "confidence": "high"
+    },
+    {
+      "id": "food-search",
+      "type": "guide",
+      "platform": "web",
+      "title": "旺角小吃检索",
+      "url": "https://www.openrice.com/zh/hongkong/r-%E9%80%9A%E9%81%94%E9%A3%9F%E5%BA%97-%E6%97%BA%E8%A7%92-%E6%B8%AF%E5%BC%8F-%E7%B2%89%E9%BA%B5-%E7%B1%B3%E7%B7%9A-r7899",
+      "excerpt": "检索摘要：肥姐小食店在登打士街 55 号地下 4A，二手资料写约 14:00 开档。旦王在山东街 50 号地下 C。通达食店花园街 172 号据 2026-06-06 报道已结业，油麻地店是否仍开未核对。",
+      "accessStatus": "partial",
+      "confidence": "low"
+    }
+  ],
+  "lodging": [],
+  "transport": [
+    {
+      "type": "上山",
+      "from": "中环站 J2 / 交易广场",
+      "to": "太平山",
+      "departAt": "12:00",
+      "notes": "优先山顶缆车。排队过长就改城巴 15 或小巴 1 号。不要步行上山。"
+    },
+    {
+      "type": "下山",
+      "from": "太平山",
+      "to": "中环",
+      "departAt": "15:40",
+      "arriveAt": "最晚 16:00 离山",
+      "notes": "城巴 15。小巴 1 号到中环国际金融中心二期，可作备用。不要等 18:00 的 X15。"
+    },
+    {
+      "type": "天星小轮",
+      "from": "中环",
+      "to": "尖沙咀",
+      "departAt": "17:00 前上船",
+      "notes": "18:30–21:15 中环至九龙尖航班取消。错过就留在港岛，改去添马。"
+    }
+  ],
+  "days": [
+    {
+      "date": "2026-10-01",
+      "title": "山顶单向下山，渡轮后守住海滨",
+      "summary": "默认 12:00 已经在中环。方向只有一条：上山、坐巴士下山、天星小轮过海、在钟楼旁的星光大道停住看烟花。海港城、旺角和西九都是分叉，主线不折返。",
+      "stops": [
+        {
+          "time": "12:00",
+          "name": "中环出发上太平山",
+          "type": "transit",
+          "description": "从中环站 J2 步行约 10–15 分钟到花园道山顶缆车总站。缆车营业到 23:00，但排队时长官方页没有写。队伍明显很长时，改去交易广场或中环码头乘城巴 15，或乘小巴 1 号。不要走路上去，官方步行时间是 1–1.5 小时，会吃掉下山窗口。",
+          "durationMinutes": 75,
+          "mustGo": true,
+          "deadline": "13:15 前要在上山途中，否则压缩山顶停留。",
+          "fallback": "若 12:00 人不在中环，先放弃山顶用餐，只保留能在 16:00 前离山的上山方式。",
+          "mapQueries": {
+            "amap": "中环站 J2 山顶缆车 花园道",
+            "google": "Peak Tram Central Terminus Garden Road",
+            "apple": "Peak Tram Lower Terminus Hong Kong"
+          },
+          "links": [
+            {
+              "label": "山顶交通",
+              "url": "https://www.thepeak.com.hk/en/getting-to-the-peak/transportation"
+            },
+            {
+              "label": "缆车票务",
+              "url": "https://webstore.thepeak.com.hk/?lang=en_us"
+            }
+          ],
+          "source": "The Peak Transportation",
+          "sourceIds": ["peak-transport", "user-note"],
+          "confidence": "high"
+        },
+        {
+          "time": "13:15",
+          "name": "太平山顶观景",
+          "type": "viewpoint",
+          "description": "在山顶看海港和市区。午餐吃山顶现成的餐厅，不要为了旺角小吃现在下山。凌霄阁摩天台可以在 18:00 前进入，但本线 15:40 就离开，用不上当晚的 Ruby Special。",
+          "durationMinutes": 140,
+          "mustGo": true,
+          "deadline": "15:40 开始去巴士站。",
+          "fallback": "云低或排队太久时，看完露台就走，不进额外付费项目。",
+          "mapQueries": {
+            "amap": "香港太平山 凌霄阁",
+            "google": "The Peak Tower Hong Kong",
+            "apple": "The Peak Tower Hong Kong"
+          },
+          "links": [
+            {
+              "label": "山顶缆车",
+              "url": "https://www.thepeak.com.hk/en/the-peak-experience/the-peak-tram"
+            }
+          ],
+          "source": "The Peak Transportation",
+          "sourceIds": ["peak-transport", "peak-oct1", "user-note"],
+          "confidence": "medium"
+        },
+        {
+          "time": "15:40",
+          "name": "城巴 15 下山到中环",
+          "type": "transit",
+          "description": "按你的要求坐公交下山，不乘缆车原路返回。公众假期城巴 15 由山顶开到 01:00，页上班距 7–15 分钟，行车时间没有公布，所以把离山死线放在 16:00。小巴 1 号到国际金融中心二期是备用。X15 只有 18:00 一班，到中环时渡轮已经开始取消，不要等。",
+          "durationMinutes": 60,
+          "mustGo": true,
+          "deadline": "16:00 前必须坐上下山的车。",
+          "fallback": "15 路大排长龙就上小巴 1 号。巴士完全走不了、时间已过 16:30，就放弃过海，留在港岛改去添马。",
+          "mapQueries": {
+            "amap": "太平山 城巴15 中环码头",
+            "google": "Citybus 15 The Peak to Central",
+            "apple": "The Peak Bus Terminus Hong Kong"
+          },
+          "links": [
+            {
+              "label": "城巴",
+              "url": "https://www.citybus.com.hk/"
+            }
+          ],
+          "source": "The Peak Transportation",
+          "sourceIds": ["peak-transport", "td-notice", "user-note"],
+          "confidence": "medium"
+        },
+        {
+          "time": "16:45",
+          "name": "中环天星码头",
+          "type": "transit",
+          "description": "上船前往尖沙咀。公众假期日常班距约 6–8 分钟，上层 6.5 港元，但运输署通告取消 18:30–21:15 的中环至九龙尖航班。中环码头巴士总站 17:30 起不对车辆开放，所以不要在码头附近再转车。",
+          "durationMinutes": 25,
+          "mustGo": true,
+          "deadline": "17:10 前上船。18:20 还在码头就停止等待。",
+          "fallback": "错过渡轮：步行或乘地铁到金钟，再去添马公园 / 中环海滨。港岛封路多从 18:30 开始，要在那之前走到海滨。",
+          "mapQueries": {
+            "amap": "中环天星码头",
+            "google": "Central Star Ferry Pier",
+            "apple": "Central Ferry Pier 7 Hong Kong"
+          },
+          "links": [
+            {
+              "label": "天星小轮时刻与票价",
+              "url": "https://www.starferry.com.hk/en/service"
+            },
+            {
+              "label": "运输署通告",
+              "url": "https://www.td.gov.hk/filemanager/en/content_13/TDN%20-%20National%20Day%202026_English_Full_20260928.pdf"
+            }
+          ],
+          "source": "天星小轮及运输署通告",
+          "sourceIds": ["star-ferry", "td-notice"],
+          "confidence": "high"
+        },
+        {
+          "time": "17:15",
+          "name": "尖沙咀钟楼与星光大道",
+          "type": "viewpoint",
+          "description": "下船就能看见前九广铁路钟楼，它在梳士巴利道西端，天星码头旁边。塔内目前关闭，只在外面看。随后沿海滨进入星光大道并占住位置，一直留到烟花结束。17:00 起尖沙咀对车辆封路，人可以停留，但不要再离开去吃饭。",
+          "durationMinutes": 160,
+          "mustGo": true,
+          "deadline": "17:40 前站到海滨。之后不再移动。",
+          "fallback": "若到达时星光大道已经密不透风，只往西走到西九龙文化区、香港故宫文化博物馆前的草坪，并在 18:00 前到位。西九 18:00 起封车，前往故宫的小巴 CX1 同刻停驶。到位后不要走回星光大道。红磡海滨和海港城都不插入这条主线。",
+          "mapQueries": {
+            "amap": "尖沙咀钟楼 星光大道",
+            "google": "Tsim Sha Tsui Clock Tower Avenue of Stars",
+            "apple": "Clock Tower Tsim Sha Tsui"
+          },
+          "links": [
+            {
+              "label": "钟楼",
+              "url": "https://en.wikipedia.org/wiki/Clock_Tower,_Hong_Kong"
+            }
+          ],
+          "source": "钟楼词条与运输署通告",
+          "sourceIds": ["wiki-clock", "td-notice", "user-note"],
+          "confidence": "high",
+          "image": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Former_Kowloon-Canton_Railway_Clock_Tower_2013-08.JPG"
+        },
+        {
+          "time": "20:00",
+          "name": "维港国庆烟花",
+          "type": "event",
+          "description": "就在星光大道看。烟花 20:00 开始，约 23 分钟，免费，超过 3 万发。看完走地铁离开。荃湾线 20:00–23:30 加密，不要在封路区等出租车。",
+          "durationMinutes": 30,
+          "mustGo": true,
+          "deadline": "20:00 已经在海滨，不是在路上。",
+          "fallback": "人太多就保持原地，不中途换观赏点。",
+          "mapQueries": {
+            "amap": "尖沙咀海滨长廊 星光大道",
+            "google": "Avenue of Stars Tsim Sha Tsui fireworks",
+            "apple": "Avenue of Stars Hong Kong"
+          },
+          "links": [
+            {
+              "label": "政府新闻",
+              "url": "https://www.news.gov.hk/eng/2026/09/20260902/20260902_161136_658.html"
+            },
+            {
+              "label": "旅游发展局",
+              "url": "https://www.discoverhongkong.com/eng/events/event.id89562.2026-national-day-fireworks-display.html"
+            }
+          ],
+          "source": "news.gov.hk 与旅游发展局",
+          "sourceIds": ["fireworks-news", "fireworks-dhk", "user-note"],
+          "confidence": "high"
+        },
+        {
+          "time": "20:35",
+          "name": "可选：旺角只吃一家",
+          "type": "food",
+          "description": "烟花结束后乘地铁往北，这不是折返海滨。肥姐小食店检索地址是登打士街 55 号地下 4A，旦王是山东街 50 号地下 C，两家都在旺角站附近。只排较短的那一家。二手资料写肥姐大约 14:00 才开、卖完即止，收档时间不稳定。通达食店花园街店据 2026 年 6 月报道已结业，不要去。",
+          "durationMinutes": 45,
+          "mustGo": false,
+          "deadline": "只在烟花散场之后去。",
+          "fallback": "任何一家在排队或已打烊，就直接回酒店。不要改去海港城，那是往回走。",
+          "mapQueries": {
+            "amap": "旺角 肥姐小食店 登打士街",
+            "google": "Fei Jie snack shop Dundas Street Mong Kok",
+            "apple": "Dundas Street Mong Kok"
+          },
+          "links": [
+            {
+              "label": "通达结业报道",
+              "url": "https://www.stheadline.com/zh-hans/food/3580218/%E6%97%BA%E8%A7%92%E9%80%9A%E8%BE%BE%E9%A3%9F%E5%BA%97%E5%AE%A3%E5%B8%83%E7%BB%93%E4%B8%9A30%E5%B9%B4%E8%80%81%E5%AD%97%E5%8F%B7-%E8%8A%B1%E5%9B%AD%E8%A1%97%E5%BA%97%E5%91%8A%E5%88%AB%E9%A3%9F%E5%AE%A2-%E7%BD%91%E6%B0%91%E4%B8%8D%E8%88%8D%E9%A3%98%E9%A6%99%E5%92%96%E5%93%A9%E8%BE%A3%E9%B1%BC%E8%9B%8B"
+            }
+          ],
+          "source": "小吃检索摘要",
+          "sourceIds": ["food-search", "user-note"],
+          "confidence": "low"
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "没有提供出发酒店。时刻表默认 12:00 人在中环。若不是，以 16:00 离山、17:10 前登上天星小轮为准，砍掉山顶用餐。",
+    "小红书原文没有读到。缆车、巴士和步行的比较用的是山顶官网，不是那篇笔记。",
+    "城巴 15 和小巴 1 号的行车时间官网没写。15:40 离山是缓冲，不是实测车程。出发前打开城巴 App 看实时班次。",
+    "10 月 1 日是公众假期。天星小轮按假日票价，但 18:30–21:15 中环至九龙尖停航，以运输署通告为准。",
+    "尖沙咀 17:00 起封车，天星码头巴士总站 17:30 起停用。过海之后不要再去海港城或旺角，否则会回头，也可能被封路挡住。",
+    "想改西九故宫草坪：只能在 17:15 左右从码头往西走一次，18:00 前到位，然后留下。红磡海滨要从黄埔站过去，不接在天星小轮后面。",
+    "白加道站 18:00–20:30 围封。留在山顶看烟花需要当日 Ruby Special，和这条过海路线冲突。",
+    "通达食店旺角花园街店不宜再去。肥姐营业时间来自二手摘要，可能卖完即止。",
+    "钟楼内部关闭，只看外观。"
+  ]
+}
